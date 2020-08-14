@@ -11,7 +11,8 @@
     "gc": "git-cz",
     "release:major": "standard-version --release-as major",
     "release:minor": "standard-version --release-as minor",
-    "release:patch": "standard-version --release-as patch"
+    "release:patch": "standard-version --release-as patch",
+    "format": "prettier --write '**/*.{ts,js,html,scss,yaml,yml,md}'"
   },
   "config": {
     "commitizen": {
@@ -25,7 +26,25 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.scss": "stylelint --fix --max-warnings 0",
+    "*.{ts,js,html,scss,yaml,yml,md}": "prettier --write"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-sass-guidelines"
+    ],
+    "ignoreFiles": [
+      "dist/**/*"
+    ],
+    "defaultSeverity": "warning",
+    "rules": {
+      "function-parentheses-space-inside": "never-single-line",
+      "no-empty-source": null
     }
   },
   "private": true,
@@ -62,10 +81,17 @@
     "karma-coverage-istanbul-reporter": "~3.0.2",
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
+    "lint-staged": "^10.2.11",
+    "prettier": "2.0.5",
     "protractor": "~7.0.0",
+    "rxjs-tslint-rules": "^4.34.0",
     "standard-version": "^8.0.2",
+    "stylelint": "^13.6.1",
+    "stylelint-config-sass-guidelines": "^7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-etc": "^1.13.1",
     "typescript": "~3.9.5"
   }
 }
