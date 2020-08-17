@@ -12,7 +12,7 @@
     "release:major": "standard-version --release-as major",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
-    "format": "prettier --write '**/*.{ts,js,html,scss,yaml,yml,md}'"
+    "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'"
   },
   "config": {
     "commitizen": {
@@ -32,7 +32,7 @@
   },
   "lint-staged": {
     "*.scss": "stylelint --fix --max-warnings 0",
-    "*.{ts,js,html,scss,yaml,yml,md}": "prettier --write"
+    "*.{ts,js,html,scss,json,yaml,yml,md}": "prettier --write"
   },
   "stylelint": {
     "extends": [
