@@ -2,6 +2,7 @@
   "recommendations": [
     "ms-vscode.vscode-typescript-tslint-plugin",
     "esbenp.prettier-vscode",
-    "stylelint.vscode-stylelint"
+    "stylelint.vscode-stylelint",
+    "msjsdiag.debugger-for-chrome"
   ]
 }

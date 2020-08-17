@@ -22,3 +22,11 @@ npm run release:major
 npm run release:minor
 npm run release:patch
 ```
+
+## VSCode Chrome debugger
+
+You can easily launch this app in debug mode, you need this [extension](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome), and Google Chrome. Follow this [guide](https://github.com/microsoft/vscode-recipes/tree/master/Angular-CLI) to know more.
+
+> **Use Chromium instead of Chrome on Linux distros**
+>
+> create an alias with this command : `sudo ln -s /usr/bin/chromium /usr/bin/google-chrome`, path can be different on your distro !
