@@ -1,1 +1,12 @@
-<span>{{ title }}</span>
+<main
+  [class]="
+    themeDarkToggled ? 'theme-dark mat-app-background' : 'mat-app-background'
+  "
+  style="height: 100%;"
+>
+  <h1 class="theme-primary">{{ title }}</h1>
+
+  <mat-slide-toggle (toggleChange)="themeDarkToggled = !themeDarkToggled"
+    >Dark theme</mat-slide-toggle
+  >
+</main>
