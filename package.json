@@ -4,15 +4,17 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:prod": "ng build --prod --output-path docs --base-href /ng-start/",
+    "build:stats": "ng build --stats-json",
+    "analyze": "npm run build:stats && npx webpack-bundle-analyzer dist/ng-start/stats.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
     "gc": "git-cz",
-    "release:major": "standard-version --release-as major",
-    "release:minor": "standard-version --release-as minor",
-    "release:patch": "standard-version --release-as patch",
-    "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'"
+    "release:major": "npm run build:prod && git add docs && standard-version --release-as major --commitAll",
+    "release:minor": "npm run build:prod && git add docs && standard-version --release-as minor --commitAll",
+    "release:patch": "npm run build:prod && git add docs && standard-version --release-as patch --commitAll"
   },
   "config": {
     "commitizen": {
