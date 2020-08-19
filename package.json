@@ -7,7 +7,8 @@
     "start": "ng serve",
     "start:en-US": "npm run locale && ng serve --open",
     "start:fr": "npm run locale && ng serve --configuration=fr --port=4201 --open",
-    "build:prod": "ng build --prod --output-path docs --base-href /ng-start/",
+    "build:prod": "ng build --prod",
+    "build:docs": "ng build --prod --output-path docs --base-href /ng-start/",
     "build:stats": "ng build --stats-json",
     "analyze": "npm run build:stats && npx webpack-bundle-analyzer dist/ng-start/en-US/stats.json",
     "test": "ng test",
@@ -15,9 +16,10 @@
     "e2e": "ng e2e",
     "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
     "gc": "git-cz",
-    "release:major": "npm run build:prod && git add docs && standard-version --release-as major --commitAll",
-    "release:minor": "npm run build:prod && git add docs && standard-version --release-as minor --commitAll",
-    "release:patch": "npm run build:prod && git add docs && standard-version --release-as patch --commitAll"
+    "release:major": "npm run build:docs && git add docs && standard-version --release-as major --commitAll",
+    "release:minor": "npm run build:docs && git add docs && standard-version --release-as minor --commitAll",
+    "release:patch": "npm run build:docs && git add docs && standard-version --release-as patch --commitAll",
+    "container": "docker stop ng-start || true && docker build -t ng-start . && docker run --rm --name ng-start -d -p 80:80 -p 443:443 ng-start"
   },
   "config": {
     "commitizen": {

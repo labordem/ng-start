@@ -9,14 +9,35 @@ Angular progressive web app starter.
 
 ### Run this project on your machine
 
+Get this repo :
+
 ```bash
 # get this repo
 git clone https://github.com/mIaborde/ng-start
-# move in and install dependencies
-cd ng-start && npm i
+# move in
+cd ng-start
+```
+
+Run it with Node.js :
+
+```bash
 # run dev mode (en-US)
 npm start
 ```
+
+Run it with Docker or Podman :
+
+```bash
+# build image
+docker build -t ng-start .
+# run container
+docker run --rm --name ng-start -d -p 80:80 ng-start
+
+# OR let npm script remove container rebuild and rerun (require node.js)
+npm run container
+```
+
+> during build you can see `npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents`, it's normal, fsevents > is just for mac osx systems, not required on Linux.
 
 ### Internationalization
 
