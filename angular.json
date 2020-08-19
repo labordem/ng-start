@@ -16,6 +16,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": "src/locale/messages.fr.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -25,6 +31,8 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "localize": true,
+            "i18nMissingTranslation": "warning",
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -64,17 +72,26 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "en-US": {
+              "localize": ["en-US"]
+            },
+            "fr": {
+              "localize": ["fr"]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-start:build"
+            "browserTarget": "ng-start:build:en-US"
           },
           "configurations": {
             "production": {
               "browserTarget": "ng-start:build:production"
+            },
+            "fr": {
+              "browserTarget": "ng-start:build:fr"
             }
           }
         },

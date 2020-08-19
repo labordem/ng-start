@@ -1,6 +1,6 @@
 # NgStart
 
-A try to make a production ready angular progressive web app starter.
+Angular progressive web app starter.
 
 - Github Pages [here](https://miaborde.github.io/ng-start)
 - Change log [here](./CHANGELOG.md)
@@ -14,8 +14,23 @@ A try to make a production ready angular progressive web app starter.
 git clone https://github.com/mIaborde/ng-start
 # move in and install dependencies
 cd ng-start && npm i
-# run this project in dev mode
+# run dev mode (en-US)
 npm start
+```
+
+### Internationalization
+
+This app include Angular i18n, see [Angular i18n](https://angular.io/guide/i18n) to know more. I use [ngx-i18nsupport-lib](https://github.com/martinroob/ngx-i18nsupport-lib) to easily update .xlf locale files, thanks to [martinroob](https://github.com/martinroob) for sharing his awesome library !
+
+```bash
+# update locale files :
+# generate messages.xlf with angular built in i18n
+# then auto update messages.fr.xlf from messages.xlf
+npm run locale
+# update locale files, open dev mode in french
+npm run start:fr
+# update locale files, open dev mode in english
+npm run start:en-US
 ```
 
 ### Make your commits

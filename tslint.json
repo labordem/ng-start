@@ -94,7 +94,7 @@
     "no-import-side-effect": [
       true,
       {
-        "ignore-module": "(hammerjs|core-js|zone.js)"
+        "ignore-module": "(hammerjs|core-js|zone.js|@angular/localize/init)"
       }
     ],
     "comment-format": [true, "check-space"],
