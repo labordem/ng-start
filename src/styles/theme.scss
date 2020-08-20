@@ -11,11 +11,9 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$palette-primary: mat-palette($mat-indigo);
-$palette-accent: mat-palette($mat-pink, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$palette-warn: mat-palette($mat-red);
+$palette-primary: mat-palette($mat-indigo, 700, 400, 900);
+$palette-accent: mat-palette($mat-pink, 700, 400, 900);
+$palette-warn: mat-palette($mat-red, 700, 400, 900);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -38,38 +36,123 @@ $dark-theme: mat-dark-theme(
   )
 );
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Uncomment only really used angular material components to keep a tiny bundle
+@mixin angular-material-theme($theme) {
+  @include mat-core-theme($theme);
+  // @include mat-autocomplete-theme($theme);
+  @include mat-button-theme($theme);
+  @include mat-button-toggle-theme($theme);
+  // @include mat-card-theme($theme);
+  // @include mat-checkbox-theme($theme);
+  // @include mat-chips-theme($theme);
+  // @include mat-datepicker-theme($theme);
+  // @include mat-dialog-theme($theme);
+  // @include mat-grid-list-theme($theme);
+  // @include mat-icon-theme($theme);
+  // @include mat-input-theme($theme);
+  // @include mat-list-theme($theme);
+  // @include mat-menu-theme($theme);
+  // @include mat-progress-bar-theme($theme);
+  // @include mat-progress-spinner-theme($theme);
+  // @include mat-radio-theme($theme);
+  // @include mat-select-theme($theme);
+  // @include mat-sidenav-theme($theme);
+  @include mat-slide-toggle-theme($theme);
+  // @include mat-slider-theme($theme);
+  // @include mat-tabs-theme($theme);
+  // @include mat-toolbar-theme($theme);
+  // @include mat-tooltip-theme($theme);
+}
+
+// Use color palettes from your template
+@mixin class-theme($palette, $shade) {
+  background: mat-color($palette, $shade);
+  color: mat-color($palette, #{$shade}-contrast);
+}
+
+@mixin class-theme-txt($palette, $shade) {
+  color: mat-color($palette, $shade);
+}
+
+@mixin class-builder {
+  .theme-primary {
+    @include class-theme($palette-primary, default);
+  }
+
+  .theme-primary-txt {
+    @include class-theme-txt($palette-primary, default);
+  }
+
+  .theme-primary-darker {
+    @include class-theme($palette-primary, darker);
+  }
+
+  .theme-primary-txt-darker {
+    @include class-theme-txt($palette-primary, darker);
+  }
+
+  .theme-primary-lighter {
+    @include class-theme($palette-primary, lighter);
+  }
+
+  .theme-primary-txt-lighter {
+    @include class-theme-txt($palette-primary, lighter);
+  }
+
+  .theme-accent {
+    @include class-theme($palette-accent, default);
+  }
+
+  .theme-accent-txt {
+    @include class-theme-txt($palette-accent, default);
+  }
+
+  .theme-accent-darker {
+    @include class-theme($palette-accent, darker);
+  }
+
+  .theme-accent-txt-darker {
+    @include class-theme-txt($palette-accent, darker);
+  }
+
+  .theme-accent-lighter {
+    @include class-theme($palette-accent, lighter);
+  }
+
+  .theme-accent-txt-lighter {
+    @include class-theme-txt($palette-accent, lighter);
+  }
+
+  .theme-warn {
+    @include class-theme($palette-warn, default);
+  }
+
+  .theme-warn-txt {
+    @include class-theme-txt($palette-warn, default);
+  }
+
+  .theme-warn-darker {
+    @include class-theme($palette-warn, darker);
+  }
+
+  .theme-warn-txt-darker {
+    @include class-theme-txt($palette-warn, darker);
+  }
+
+  .theme-warn-lighter {
+    @include class-theme($palette-warn, lighter);
+  }
+
+  .theme-warn-txt-lighter {
+    @include class-theme-txt($palette-warn, lighter);
+  }
+}
+
+// body themes, light by default
 @include angular-material-theme($light-theme);
+@include class-builder();
 
 .theme-dark {
   @include angular-material-color($dark-theme);
-}
-
-.theme-primary {
-  background: mat-color($palette-primary, 500);
-  color: mat-contrast($palette-primary, 500);
-}
-
-.theme-primary-txt {
-  color: mat-color($palette-primary, 500);
-}
-
-.theme-accent {
-  background: mat-color($palette-accent, 500);
-  color: mat-contrast($palette-accent, 500);
-}
-
-.theme-accent-txt {
-  color: mat-color($palette-accent, 500);
-}
-
-.theme-warn {
-  background: mat-color($palette-warn, 500);
-  color: mat-contrast($palette-warn, 500);
-}
-
-.theme-warn-txt {
-  color: mat-color($palette-warn, 500);
+  @include class-builder();
 }

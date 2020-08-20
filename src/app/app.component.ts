@@ -4,6 +4,8 @@ import {
   ElementRef,
   Inject,
   LOCALE_ID,
+  OnInit,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
@@ -13,11 +15,12 @@ import { Meta, Title } from '@angular/platform-browser';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements AfterViewChecked {
+export class AppComponent implements AfterViewChecked, OnInit {
   @ViewChild('title') title!: ElementRef<HTMLElement>;
   @ViewChild('description') description!: ElementRef<HTMLElement>;
 
-  isDarkToggled = false;
+  isDarkToggled =
+    localStorage.getItem('isDarkToggled') === 'true' ? true : false;
 
   languages = [
     { code: 'en-US', label: 'English' },
@@ -27,21 +30,39 @@ export class AppComponent implements AfterViewChecked {
   constructor(
     private readonly titleService: Title,
     private readonly metaService: Meta,
-    @Inject(LOCALE_ID) readonly localeId: string
+    @Inject(LOCALE_ID) readonly localeId: string,
+    private readonly renderer: Renderer2
   ) {}
+
+  ngOnInit(): void {
+    this.applyProperTheme(!!this.isDarkToggled);
+  }
 
   ngAfterViewChecked(): void {
     this.setMeta();
   }
 
-  setMeta(): void {
+  toggleDark(): void {
+    this.isDarkToggled = !this.isDarkToggled;
+    this.applyProperTheme(this.isDarkToggled);
+    localStorage.setItem('isDarkToggled', `${this.isDarkToggled}`);
+  }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
+
+  private setMeta(): void {
     const title = this.title.nativeElement.textContent as string;
     this.titleService.setTitle(title);
     const description = this.description.nativeElement.textContent as string;
     this.metaService.updateTag({ name: 'description', content: description });
   }
 
-  trackByIndex(index: number, item: { code: string; label: string }): number {
-    return index;
+  private applyProperTheme(isDarkTheme: boolean): void {
+    this.renderer[isDarkTheme ? 'addClass' : 'removeClass'](
+      document.body,
+      'theme-dark'
+    );
   }
 }

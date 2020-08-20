@@ -34,7 +34,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "ng lint --fix && lint-staged"
+      "pre-commit": "ng lint && lint-staged"
     }
   },
   "lint-staged": {
