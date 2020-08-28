@@ -1,0 +1,29 @@
+.auth-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+}
+
+mat-form-field {
+  width: 100%;
+
+  &:first-of-type {
+    margin-top: 40px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+}
+
+.button-group {
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.sumbit-error {
+  margin: 20px;
+}

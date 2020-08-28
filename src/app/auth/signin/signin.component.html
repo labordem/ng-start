@@ -1,0 +1,110 @@
+<section class="centred-layout anime-zoom-in">
+  <mat-card class="auth-card" [ngClass]="{ 'anime-wobble': errorMessage }">
+    <mat-card-header>
+      <mat-card-title i18n="@@signin">Sign In</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formGroup" (ngSubmit)="submit(formGroup)">
+        <mat-divider></mat-divider>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label i18n="@@enter-your-email">Enter your email</mat-label>
+          <input matInput formControlName="email" autofocus />
+          <mat-error
+            *ngIf="email?.touched && email?.errors?.required"
+            i18n="@@you-must-enter-a-value"
+          >
+            You must enter a value
+          </mat-error>
+          <mat-error
+            *ngIf="email?.touched && email?.errors?.pattern"
+            i18n="@@must-be-an-email"
+          >
+            Must be an email
+          </mat-error>
+          <mat-error
+            *ngIf="email?.touched && email?.errors?.mustNotBeRejected"
+            i18n="@@incorrect-email"
+          >
+            Incorrect email
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <input
+            matInput
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+          />
+          <mat-label i18n="@@enter-your-password"
+            >Enter your password</mat-label
+          >
+          <button
+            type="button"
+            *ngIf="!isLoading"
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            i18n-aria-label="@@toggle-password-visibility"
+            aria-label="Toggle password visibility"
+          >
+            <mat-icon>
+              {{ hidePassword ? 'visibility_off' : 'visibility' }}
+            </mat-icon>
+          </button>
+          <mat-error
+            *ngIf="password?.touched && password?.errors?.required"
+            i18n="@@you-must-enter-a-value"
+          >
+            You must enter a value
+          </mat-error>
+          <mat-error
+            *ngIf="email?.touched && email?.errors?.mustNotBeRejected"
+            i18n="@@incorrect-password"
+          >
+            Incorrect password
+          </mat-error>
+        </mat-form-field>
+
+        <mat-divider></mat-divider>
+
+        <div class="button-group">
+          <mat-progress-bar
+            *ngIf="isLoading"
+            mode="indeterminate"
+            color="accent"
+          ></mat-progress-bar>
+          <button
+            type="button"
+            *ngIf="!isLoading"
+            mat-button
+            color="accent"
+            routerLink="/auth/signup"
+            i18n
+          >
+            I don't have an account
+          </button>
+          <button
+            *ngIf="!isLoading"
+            mat-raised-button
+            color="accent"
+            type="submit"
+            [disabled]="!formGroup.valid"
+            i18n="@@submit"
+          >
+            Submit
+          </button>
+        </div>
+
+        <mat-error *ngIf="errorMessage" class="submit-error">
+          {{ errorMessage }}
+        </mat-error>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<div hidden>
+  <p i18n="@@please-check-your-email">Please check your email</p>
+  <p i18n="@@please-check-your-password">Please check your password</p>
+</div>

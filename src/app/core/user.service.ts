@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 
 export interface User {
   id: number;
@@ -15,21 +15,11 @@ export interface User {
   providedIn: 'root',
 })
 export class UserService {
-  private readonly userSubject$: BehaviorSubject<User>;
+  private readonly userSubject$: ReplaySubject<User>;
 
   constructor() {
-    this.userSubject$ = new BehaviorSubject(
-      // MOCK data - replace it by getUserFromStorage(); when auth system ready
-      {
-        id: 0,
-        created: new Date(),
-        updated: new Date(),
-        username: 'johndoe',
-        email: 'john@doe.com',
-        avatar: undefined,
-        isConfirmed: true,
-      } as User
-    );
+    this.userSubject$ = new ReplaySubject<User>(1);
+    this.setUser(this.getUserFromStorage());
   }
 
   getUser$(): Observable<User> {
@@ -42,7 +32,7 @@ export class UserService {
   }
 
   deleteUser(): void {
-    this.userSubject$.complete();
+    this.userSubject$.next(undefined);
     localStorage.removeItem('user');
   }
 

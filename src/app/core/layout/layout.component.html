@@ -17,7 +17,7 @@
       <a
         *ngFor="let destination of destinations; trackBy: trackByIndex"
         mat-menu-item
-        routerLinkActive="list-item-active"
+        routerLinkActive="theme-accent-txt"
         [routerLink]="destination.path"
         (click)="sidenav.close()"
       >
@@ -59,7 +59,7 @@
         <a
           *ngFor="let destination of destinations; trackBy: trackByIndex"
           mat-button
-          routerLinkActive="list-item-active"
+          routerLinkActive="active"
           [routerLink]="destination.path"
         >
           <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
@@ -96,8 +96,8 @@
       <router-outlet></router-outlet>
     </main>
 
-    <footer class="theme-primary-darker">
-      <p class="footer-description" i18n="@@app-description">
+    <footer class="theme-primary">
+      <p i18n="@@app-description">
         Angular progressive web app starter.
       </p>
     </footer>
@@ -114,7 +114,12 @@
 </div>
 
 <ng-template #notAuthedTemplate>
-  <a mat-raised-button class="theme-accent" routerLink="auth/signin">
+  <a
+    mat-raised-button
+    class="theme-accent"
+    routerLink="/auth/signin"
+    (click)="sidenav.close()"
+  >
     <mat-icon mat-list-icon>person</mat-icon>
     <span i18n="@@sign-in">Sign in</span>
   </a>

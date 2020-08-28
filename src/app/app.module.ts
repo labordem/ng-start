@@ -15,6 +15,10 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./not-found/not-found.module').then((m) => m.NotFoundModule),
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 

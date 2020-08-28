@@ -18,17 +18,9 @@ mat-sidenav {
 }
 
 .brand {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: normal;
   margin: 0;
-}
-
-mat-divider {
-  opacity: 0.2;
-}
-
-.list-item-active {
-  background: #0000001f;
 }
 
 .mat-nav-list {
@@ -81,6 +73,18 @@ footer {
   }
 }
 
+footer {
+  p {
+    margin: 0 15px;
+  }
+}
+
+.mat-button {
+  &.active {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
 .mat-raised-button {
   border-radius: 20px;
 }
@@ -97,8 +101,4 @@ footer {
     object-fit: cover;
     width: 33px;
   }
-}
-
-.footer-description {
-  margin: 0;
 }

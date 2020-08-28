@@ -10,28 +10,32 @@
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$palette-primary: mat-palette($mat-indigo, 700, 400, 900);
-$palette-accent: mat-palette($mat-pink, 700, 400, 900);
-$palette-warn: mat-palette($mat-red, 700, 400, 900);
+// hue. Available color palettes: https://material.io/resources/color
+$palette-light-primary: mat-palette($mat-grey, 800, 100, 900);
+$palette-light-accent: mat-palette($mat-light-blue, 600, 100, 900);
+$palette-light-warn: mat-palette($mat-red, 600, 100, 800);
+
+$palette-dark-primary: mat-palette($mat-grey, 900, 100, 900);
+$palette-dark-accent: mat-palette($mat-light-blue, 300, 100, 500);
+$palette-dark-warn: mat-palette($mat-red, 500, 100, 900);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
 $light-theme: mat-light-theme(
   (
     color: (
-      primary: $palette-primary,
-      accent: $palette-accent,
-      warn: $palette-warn,
+      primary: $palette-light-primary,
+      accent: $palette-light-accent,
+      warn: $palette-light-warn,
     ),
   )
 );
 $dark-theme: mat-dark-theme(
   (
     color: (
-      primary: $palette-primary,
-      accent: $palette-accent,
-      warn: $palette-warn,
+      primary: $palette-dark-primary,
+      accent: $palette-dark-accent,
+      warn: $palette-dark-warn,
     ),
   )
 );
@@ -42,17 +46,19 @@ $dark-theme: mat-dark-theme(
   // @include mat-autocomplete-theme($theme);
   @include mat-button-theme($theme);
   @include mat-button-toggle-theme($theme);
-  // @include mat-card-theme($theme);
+  @include mat-card-theme($theme);
   // @include mat-checkbox-theme($theme);
   // @include mat-chips-theme($theme);
   // @include mat-datepicker-theme($theme);
   @include mat-dialog-theme($theme);
+  @include mat-divider-theme($theme);
+  @include mat-form-field-theme($theme);
   // @include mat-grid-list-theme($theme);
   @include mat-icon-theme($theme);
-  // @include mat-input-theme($theme);
+  @include mat-input-theme($theme);
   @include mat-list-theme($theme);
   @include mat-menu-theme($theme);
-  // @include mat-progress-bar-theme($theme);
+  @include mat-progress-bar-theme($theme);
   // @include mat-progress-spinner-theme($theme);
   // @include mat-radio-theme($theme);
   // @include mat-select-theme($theme);
@@ -66,15 +72,15 @@ $dark-theme: mat-dark-theme(
 
 // Use color palettes from your template
 @mixin class-theme($palette, $shade) {
-  background: mat-color($palette, $shade);
-  color: mat-color($palette, #{$shade}-contrast);
+  background: mat-color($palette, $shade) !important;
+  color: mat-color($palette, #{$shade}-contrast) !important;
 }
 
 @mixin class-theme-txt($palette, $shade) {
-  color: mat-color($palette, $shade);
+  color: mat-color($palette, $shade) !important;
 }
 
-@mixin class-builder {
+@mixin class-builder($palette-primary, $palette-accent, $palette-warn) {
   .theme-primary {
     @include class-theme($palette-primary, default);
   }
@@ -150,9 +156,17 @@ $dark-theme: mat-dark-theme(
 
 // body themes, light by default
 @include angular-material-theme($light-theme);
-@include class-builder();
+@include class-builder(
+  $palette-light-primary,
+  $palette-light-accent,
+  $palette-light-warn
+);
 
 .theme-dark {
   @include angular-material-color($dark-theme);
-  @include class-builder();
+  @include class-builder(
+    $palette-dark-primary,
+    $palette-dark-accent,
+    $palette-dark-warn
+  );
 }
