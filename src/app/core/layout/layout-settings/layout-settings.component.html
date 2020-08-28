@@ -1,0 +1,28 @@
+<button
+  mat-icon-button
+  mat-suffix
+  [matMenuTriggerFor]="settingsMenu"
+  i18n-aria-label
+  aria-label="Trigger settings menu"
+>
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+<mat-menu #settingsMenu="matMenu">
+  <ng-template matMenuContent>
+    <button mat-menu-item (click)="onToggleDarkTheme()">
+      <ng-container>
+        <mat-icon>nights_stay</mat-icon>
+        <span i18n="@@dark-theme">Dark theme</span>
+      </ng-container>
+      <ng-template #lightThemeTemplate>
+        <mat-icon>wb_sunny</mat-icon>
+        <span i18n="@@light-theme">Light theme</span>
+      </ng-template>
+    </button>
+    <a mat-menu-item href="../{{ localeId === 'fr' ? 'en-US' : 'fr' }}/">
+      <mat-icon>translate</mat-icon>
+      <span>{{ localeId === 'fr' ? 'English' : 'Français' }}</span>
+    </a>
+  </ng-template>
+</mat-menu>

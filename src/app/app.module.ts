@@ -1,33 +1,26 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { ServiceWorkerModule } from '@angular/service-worker';
-
-import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'not-found',
+    loadChildren: () =>
+      import('./not-found/not-found.module').then((m) => m.NotFoundModule),
+  },
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
+];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-    }),
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatButtonToggleModule,
-    RouterModule.forRoot(routes),
-  ],
+  imports: [CoreModule, RouterModule.forRoot(routes)],
   providers: [],
   bootstrap: [AppComponent],
 })

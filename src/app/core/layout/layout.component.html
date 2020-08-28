@@ -1,0 +1,150 @@
+<mat-sidenav-container hasBackdrop="true" fullscreen>
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list>
+      <div class="sidenav-header theme-primary">
+        <ng-container *ngIf="user$ | async as user; else notAuthedTemplate">
+          <img
+            src="{{ user.avatar }}"
+            default="profile"
+            class="img-user"
+            i18n-alt="@@your-avatar"
+            alt="Your avatar"
+          />
+          <h2>{{ user.username }}</h2>
+          <h3>{{ user.email }}</h3>
+        </ng-container>
+      </div>
+      <a
+        *ngFor="let destination of destinations; trackBy: trackByIndex"
+        mat-menu-item
+        routerLinkActive="list-item-active"
+        [routerLink]="destination.path"
+        (click)="sidenav.close()"
+      >
+        <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
+        <span>{{ destination.name }}</span>
+      </a>
+      <mat-divider></mat-divider>
+      <ng-container *ngIf="user$ | async">
+        <a routerLink="profile/me" (click)="sidenav.close()" mat-menu-item>
+          <mat-icon mat-list-icon>edit</mat-icon>
+          <span i18n="@@edit-your-profile">Edit your profile</span>
+        </a>
+        <a
+          routerLink="home"
+          (click)="sidenav.close(); onOpenDialog(dialogTemplate)"
+          mat-menu-item
+        >
+          <mat-icon mat-list-icon>exit_to_app</mat-icon>
+          <span i18n="@@sign-out">Sign out</span>
+        </a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <nav class="theme-primary mat-elevation-z2">
+      <div class="hide-on-large-screen">
+        <button
+          mat-icon-button
+          (click)="sidenav.toggle()"
+          i18n-aria-label
+          aria-label="Toggle sidenav"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <h1 #appTitle class="brand" i18n="@@app-title">ng-start</h1>
+      <div class="container hide-on-small-screen">
+        <a
+          *ngFor="let destination of destinations; trackBy: trackByIndex"
+          mat-button
+          routerLinkActive="list-item-active"
+          [routerLink]="destination.path"
+        >
+          <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
+          <span>{{ destination.name }}</span>
+        </a>
+      </div>
+
+      <span class="fill-remaining-space hide-on-small-screen"></span>
+
+      <div class="hide-on-small-screen">
+        <button
+          *ngIf="user$ | async as user; else notAuthedTemplate"
+          mat-raised-button
+          [matMenuTriggerFor]="profileMenu"
+          class="profile-button"
+          i18n-aria-label
+          aria-label="Trigger profile menu"
+        >
+          <span>{{ user.username }}</span>
+          <img
+            src="{{ user.avatar }}"
+            default="profile"
+            class="img-user-button"
+            i18n-alt="@@your-avatar"
+            alt="Your avatar"
+          />
+        </button>
+      </div>
+
+      <app-layout-settings></app-layout-settings>
+    </nav>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="theme-primary-darker">
+      <p class="footer-description" i18n="@@app-description">
+        Angular progressive web app starter.
+      </p>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<div hidden>
+  <p i18n="@@home">Home</p>
+  <p i18n="@@profile">Profile</p>
+  <p i18n="@@articles">Articles</p>
+  <p #appDescription i18n="@@app-description">
+    Angular progressive web app starter.
+  </p>
+</div>
+
+<ng-template #notAuthedTemplate>
+  <a mat-raised-button class="theme-accent" routerLink="auth/signin">
+    <mat-icon mat-list-icon>person</mat-icon>
+    <span i18n="@@sign-in">Sign in</span>
+  </a>
+</ng-template>
+
+<ng-template #dialogTemplate>
+  <h2 matDialogTitle i18n="@@are-you-sure">Are you sure ?</h2>
+  <mat-dialog-content>
+    <p i18n>
+      If you sign out you will have to enter your credentials again to use
+      application !
+    </p>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCloseDialog()" i18n="@@cancel">Cancel</button>
+    <button mat-button (click)="onSignout(); onCloseDialog()" i18n="@@sign-out">
+      Sign out
+    </button>
+  </div>
+</ng-template>
+
+<mat-menu #profileMenu="matMenu">
+  <ng-template matMenuContent>
+    <a mat-menu-item routerLink="profile/me">
+      <mat-icon>edit</mat-icon>
+      <span i18n="@@edit-your-profile">Edit your profile</span>
+    </a>
+    <a mat-menu-item (click)="onOpenDialog(dialogTemplate)">
+      <mat-icon>exit_to_app</mat-icon>
+      <span routerLink="/" i18n="@@sign-out">Sign out</span>
+    </a>
+  </ng-template>
+</mat-menu>

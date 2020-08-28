@@ -8,4 +8,15 @@ body {
   margin: 0;
 }
 
+@media screen and (min-width: 960px) {
+  .hide-on-large-screen {
+    display: none;
+  }
+}
+@media screen and (max-width: 959px) {
+  .hide-on-small-screen {
+    display: none;
+  }
+}
+
 @import 'styles/theme';
