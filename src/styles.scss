@@ -14,18 +14,16 @@ body {
   flex-direction: column;
   height: 100%;
   justify-content: center;
-}
+  text-align: center;
 
-@media screen and (min-width: 960px) {
-  .hide-on-large-screen {
-    display: none;
-  }
-}
-@media screen and (max-width: 959px) {
-  .hide-on-small-screen {
-    display: none;
+  .card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 500px;
   }
 }
 
-@import 'styles/theme';
 @import 'styles/anime';
+@import 'styles/media';
+@import 'styles/theme';

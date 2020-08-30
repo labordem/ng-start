@@ -1,0 +1,52 @@
+@import '../../styles/media';
+
+.upload-image-container {
+  border-radius: 50%;
+  margin: 15px;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  @include media(small) {
+    height: 150px;
+    width: 150px;
+  }
+  @include media(large) {
+    height: 200px;
+    width: 200px;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+
+  &:first-of-type {
+    margin-top: 40px;
+  }
+
+  &:last-of-type {
+    margin-bottom: 20px;
+  }
+}
+
+.button-group {
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  margin-top: 20px;
+}
+
+.submit-error {
+  margin: 20px;
+}

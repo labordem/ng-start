@@ -9,6 +9,7 @@ export interface User {
   email: string;
   avatar?: string;
   isConfirmed?: boolean;
+  description?: string;
 }
 
 @Injectable({
@@ -36,7 +37,7 @@ export class UserService {
     localStorage.removeItem('user');
   }
 
-  private getUserFromStorage(): User {
+  getUserFromStorage(): User {
     return JSON.parse(localStorage.getItem('user') as string) as User;
   }
 }

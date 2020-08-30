@@ -13,6 +13,10 @@
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
           <context context-type="linenumber">87</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="edit-your-profile" datatype="html">
         <source>Edit your profile</source>
@@ -23,7 +27,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">149</context>
+          <context context-type="linenumber">148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sign-out" datatype="html">
@@ -35,11 +39,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">138</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">153</context>
+          <context context-type="linenumber">152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a4a34f62d65eec96b8583d499ec01300f36a6466" datatype="html">
@@ -79,7 +83,7 @@
         <target state="new">Accueil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile" datatype="html">
@@ -87,7 +91,7 @@
         <target state="new">Profil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="articles" datatype="html">
@@ -95,7 +99,7 @@
         <target state="new">Articles</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">110</context>
         </context-group>
       </trans-unit>
       <trans-unit id="app-description" datatype="html">
@@ -109,7 +113,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sign-in" datatype="html">
@@ -117,7 +121,7 @@
         <target state="new">Connexion</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="are-you-sure" datatype="html">
@@ -125,7 +129,7 @@
         <target state="new">Êtes-vous sûr ?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">130</context>
+          <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cf76cbc9ca1bb0bef3aaf1bd15d0f1b90dc13c3c" datatype="html">
@@ -139,7 +143,7 @@
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">132</context>
+          <context context-type="linenumber">131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="cancel" datatype="html">
@@ -147,7 +151,7 @@
         <target state="new">Annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">138</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="light-theme" datatype="html">
@@ -163,7 +167,7 @@
         <target state="new">Votre page d'accueil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/home/home.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="page-not-found" datatype="html">
@@ -305,13 +309,17 @@
           <context context-type="sourcefile">src/app/auth/signup/signup.component.html</context>
           <context context-type="linenumber">167</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="c27a2fa4eb4209da40b7a0435b7782ec099d6e63" datatype="html">
         <source>
             I don't have an account
           </source>
         <target state="new">
-            I don't have an account
+            Je n'ai pas de compte
           </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin/signin.component.html</context>
@@ -330,7 +338,7 @@
       </trans-unit>
       <trans-unit id="please-check-your-email" datatype="html">
         <source>Please check your email</source>
-        <target state="new">Please check your email</target>
+        <target state="new">Veuillez vérifier votre email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin/signin.component.html</context>
           <context context-type="linenumber">108</context>
@@ -338,7 +346,7 @@
       </trans-unit>
       <trans-unit id="please-check-your-password" datatype="html">
         <source>Please check your password</source>
-        <target state="new">Please check your password</target>
+        <target state="new">Veuillez vérifier votre mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin/signin.component.html</context>
           <context context-type="linenumber">109</context>
@@ -346,7 +354,7 @@
       </trans-unit>
       <trans-unit id="528990707d0d984a27c08d1aed61a9175f8e75ee" datatype="html">
         <source>Check your mailbox</source>
-        <target state="new">Vérifier votre boîte mail</target>
+        <target state="new">Veuillez vérifier votre boîte mail</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/dialog-check-mailbox/dialog-check-mailbox.component.html</context>
           <context context-type="linenumber">1</context>
@@ -463,7 +471,7 @@
             I already have an account
           </source>
         <target state="new">
-            I already have an account
+            J'ai déjà un compte
           </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup/signup.component.html</context>
@@ -484,6 +492,46 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup/signup.component.html</context>
           <context context-type="linenumber">182</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1d4d2a95fc900b745fec5468980efaa224fd3bd7" datatype="html">
+        <source>Click or drag here your image to set your avatar</source>
+        <target state="new">Cliquez ou faites glisser ici votre image pour définir votre avatar</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="81c2c97bbe58cb442697dee1284a2f34c8e421e7" datatype="html">
+        <source>Your informations</source>
+        <target state="new">Vos informations</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="your-username" datatype="html">
+        <source>Your username</source>
+        <target state="new">Votre nom d'utilisateur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="your-email" datatype="html">
+        <source>Your email</source>
+        <target state="new">Votre email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="your-description" datatype="html">
+        <source>Your description</source>
+        <target state="new">Votre description</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dark-theme" datatype="html">

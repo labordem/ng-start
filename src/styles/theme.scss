@@ -67,7 +67,7 @@ $dark-theme: mat-dark-theme(
   // @include mat-slider-theme($theme);
   // @include mat-tabs-theme($theme);
   // @include mat-toolbar-theme($theme);
-  // @include mat-tooltip-theme($theme);
+  @include mat-tooltip-theme($theme);
 }
 
 // Use color palettes from your template

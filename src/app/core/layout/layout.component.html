@@ -26,7 +26,7 @@
       </a>
       <mat-divider></mat-divider>
       <ng-container *ngIf="user$ | async">
-        <a routerLink="profile/me" (click)="sidenav.close()" mat-menu-item>
+        <a routerLink="/user-edit" (click)="sidenav.close()" mat-menu-item>
           <mat-icon mat-list-icon>edit</mat-icon>
           <span i18n="@@edit-your-profile">Edit your profile</span>
         </a>
@@ -143,7 +143,7 @@
 
 <mat-menu #profileMenu="matMenu">
   <ng-template matMenuContent>
-    <a mat-menu-item routerLink="profile/me">
+    <a mat-menu-item routerLink="/user-edit">
       <mat-icon>edit</mat-icon>
       <span i18n="@@edit-your-profile">Edit your profile</span>
     </a>

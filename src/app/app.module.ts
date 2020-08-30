@@ -19,6 +19,11 @@ export const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'user-edit',
+    loadChildren: () =>
+      import('./user-edit/user-edit.module').then((m) => m.UserEditModule),
+  },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];
 
