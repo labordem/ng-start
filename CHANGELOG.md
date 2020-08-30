@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/mIaborde/ng-start/compare/v1.0.0...v1.1.0) (2020-08-30)
+
+### Features
+
+- base responsive layout, lazy loaded routes, fake profile ([d683496](https://github.com/mIaborde/ng-start/commit/d683496395e318b6594699baccc477ebdc82b31f))
+- signin and singup pages ([bf77379](https://github.com/mIaborde/ng-start/commit/bf77379620f0e4d33d976c8d4af42daf601a3164))
+- user edit page with avatar upload template ([a081009](https://github.com/mIaborde/ng-start/commit/a081009e6e1cc9bbb150da12339573d7a8d051ad))
+
 ## 1.0.0 (2020-08-20)
 
 ### ⚠ BREAKING CHANGES
