@@ -11,13 +11,13 @@
 <mat-menu #settingsMenu="matMenu">
   <ng-template matMenuContent>
     <button mat-menu-item (click)="onToggleDarkTheme()">
-      <ng-container>
-        <mat-icon>nights_stay</mat-icon>
-        <span i18n="@@dark-theme">Dark theme</span>
-      </ng-container>
-      <ng-template #lightThemeTemplate>
+      <ng-container *ngIf="isDarkThemeToggled; else darkThemeTemplate">
         <mat-icon>wb_sunny</mat-icon>
         <span i18n="@@light-theme">Light theme</span>
+      </ng-container>
+      <ng-template #darkThemeTemplate>
+        <mat-icon>nights_stay</mat-icon>
+        <span i18n="@@dark-theme">Dark theme</span>
       </ng-template>
     </button>
     <a mat-menu-item href="../{{ localeId === 'fr' ? 'en-US' : 'fr' }}/">
