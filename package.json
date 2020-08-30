@@ -16,6 +16,7 @@
     "e2e": "ng e2e",
     "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
     "gc": "git-cz",
+    "push": "git push --follow-tags",
     "release:major": "npm run build:docs && git add docs && standard-version --release-as major --commitAll",
     "release:minor": "npm run build:docs && git add docs && standard-version --release-as minor --commitAll",
     "release:patch": "npm run build:docs && git add docs && standard-version --release-as patch --commitAll",

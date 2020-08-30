@@ -61,8 +61,8 @@ npm run start:en-US
 git add .
 # commit respecting the conventions
 npm run gc
-# push changes to repo
-git push
+# push changes to repo with git tags
+npm run push
 ```
 
 ### Deploy a version
