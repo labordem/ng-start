@@ -5,8 +5,8 @@
     "ng": "ng",
     "locale": "ng xi18n --output-path src/locale --format xlf && xliffmerge --profile xliffmerge.json",
     "start": "ng serve",
-    "start:en-US": "npm run locale && ng serve --open",
-    "start:fr": "npm run locale && ng serve --configuration=fr --port=4201 --open",
+    "start:fr": "ng serve --configuration=fr --port=4201",
+    "build": "ng build",
     "build:prod": "ng build --prod",
     "build:docs": "ng build --prod --output-path docs --base-href /ng-start/",
     "build:stats": "ng build --stats-json",
@@ -15,8 +15,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
-    "gc": "git-cz",
-    "push": "git push --follow-tags",
+    "release": "standard-version --commitAll",
     "release:major": "npm run build:docs && git add docs && standard-version --release-as major --commitAll",
     "release:minor": "npm run build:docs && git add docs && standard-version --release-as minor --commitAll",
     "release:patch": "npm run build:docs && git add docs && standard-version --release-as patch --commitAll",
@@ -34,8 +33,10 @@
   },
   "husky": {
     "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "ng lint && lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "ng lint"
     }
   },
   "lint-staged": {
