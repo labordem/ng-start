@@ -10,6 +10,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { Meta, Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { ThemeService } from '../theme.service';
 import { User, UserService } from '../user.service';
@@ -31,6 +32,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked {
   @ViewChild('appDescription') appDescription?: ElementRef<HTMLElement>;
   destinations: Destination[] = [];
   user$: Observable<User>;
+  version = environment.version;
 
   constructor(
     private readonly themeService: ThemeService,
