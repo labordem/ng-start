@@ -8,9 +8,8 @@ import {
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { User, UserService } from 'src/app/core/user.service';
 
-import { AuthService, AuthSigninInput, validEmail } from '../auth.service';
+import { AuthService, AuthSigninInput } from '../auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -27,7 +26,6 @@ export class SigninComponent implements OnDestroy {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly userService: UserService,
     private readonly formBuilder: FormBuilder,
     private readonly router: Router
   ) {
@@ -36,7 +34,7 @@ export class SigninComponent implements OnDestroy {
       {
         email: [
           undefined,
-          [Validators.required, Validators.pattern(validEmail.regexp)],
+          [Validators.required, Validators.pattern(authService.emailRegexp)],
         ],
         password: [undefined, [Validators.required]],
       },
@@ -69,10 +67,7 @@ export class SigninComponent implements OnDestroy {
       .signin$(authSigninInput)
       .pipe(takeUntil(this.isDestroyed$))
       .subscribe({
-        next: (user: User) => {
-          this.userService.setUser(user);
-          this.router.navigate(['home']);
-        },
+        next: () => this.router.navigate(['home']),
         error: (err: string) => {
           this.errorMessage = err;
           this.isLoading = false;
@@ -82,7 +77,7 @@ export class SigninComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.info('💥 component detroyed');
+    console.info(`💥 destroyed: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }

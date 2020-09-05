@@ -51,6 +51,7 @@ mat-sidenav {
 nav,
 footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   line-height: 39px;
   padding: 2px;

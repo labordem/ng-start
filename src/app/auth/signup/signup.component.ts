@@ -9,15 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { User, UserService } from 'src/app/core/user.service';
 
-import {
-  AuthService,
-  AuthSignupInput,
-  validEmail,
-  validPassword,
-  validUsername,
-} from '../auth.service';
+import { AuthService, AuthSignupInput } from '../auth.service';
 import { DialogCheckMailboxComponent } from '../dialog-check-mailbox/dialog-check-mailbox.component';
 
 @Component({
@@ -35,12 +28,36 @@ export class SignupComponent implements OnDestroy {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly userService: UserService,
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly dialog: MatDialog
   ) {
-    this.formGroup = this.initFormGroup();
+    this.formGroup = this.formBuilder.group(
+      // tslint:disable
+      {
+        username: [
+          undefined,
+
+          [Validators.required, Validators.pattern(authService.usernameRegexp)],
+        ],
+        email: [
+          null,
+          [Validators.required, Validators.pattern(authService.emailRegexp)],
+        ],
+        password: [
+          null,
+          [Validators.required, Validators.pattern(authService.passwordRegexp)],
+        ],
+        confirmPassword: [null, [Validators.required]],
+      },
+      {
+        validators: [
+          this.mustMatchValidator('password', 'confirmPassword'),
+          this.mustNotBeRejectedValidator(),
+        ],
+      }
+      // tslint:enable
+    );
   }
 
   get email(): AbstractControl | null {
@@ -74,8 +91,7 @@ export class SignupComponent implements OnDestroy {
       .signup$(authSignupInput)
       .pipe(takeUntil(this.isDestroyed$))
       .subscribe({
-        next: async (user: User) => {
-          this.userService.setUser(user);
+        next: async () => {
           const dialog = this.dialog.open(DialogCheckMailboxComponent);
           await dialog.afterClosed().toPromise();
           this.router.navigate(['/home']);
@@ -99,38 +115,9 @@ export class SignupComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.info('💥 component detroyed');
+    console.info(`💥 destroyed: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
-  }
-
-  private initFormGroup(): FormGroup {
-    return this.formBuilder.group(
-      // tslint:disable
-      {
-        username: [
-          undefined,
-
-          [Validators.required, Validators.pattern(validUsername.regexp)],
-        ],
-        email: [
-          null,
-          [Validators.required, Validators.pattern(validEmail.regexp)],
-        ],
-        password: [
-          null,
-          [Validators.required, Validators.pattern(validPassword.regexp)],
-        ],
-        confirmPassword: [null, [Validators.required]],
-      },
-      {
-        validators: [
-          this.mustMatchValidator('password', 'confirmPassword'),
-          this.mustNotBeRejectedValidator(),
-        ],
-      }
-      // tslint:enable
-    );
   }
 
   private mustMatchValidator(
@@ -140,14 +127,12 @@ export class SignupComponent implements OnDestroy {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
-      // Another validator has already found an error on the matchingControl
       if (
         matchingControl.errors !== null &&
         !matchingControl.errors.mustMatch
       ) {
         return;
       }
-      // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
         matchingControl.setErrors({ mustMatch: true });
       } else {

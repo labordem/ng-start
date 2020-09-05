@@ -47,6 +47,7 @@
           <mat-label i18n="@@your-description">Your description</mat-label>
           <textarea
             matInput
+            cdkTextareaAutosize
             formControlName="description"
             [value]="user?.description"
             autofocus

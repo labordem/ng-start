@@ -2,7 +2,7 @@
   <mat-sidenav #sidenav mode="over">
     <mat-nav-list>
       <div class="sidenav-header theme-primary">
-        <ng-container *ngIf="user$ | async as user; else notAuthedTemplate">
+        <ng-container *ngIf="user; else notAuthedTemplate">
           <img
             src="{{ user.avatar }}"
             default="profile"
@@ -25,13 +25,17 @@
         <span>{{ destination.name }}</span>
       </a>
       <mat-divider></mat-divider>
-      <ng-container *ngIf="user$ | async">
-        <a routerLink="/user-edit" (click)="sidenav.close()" mat-menu-item>
+      <ng-container *ngIf="user">
+        <a
+          mat-menu-item
+          routerLinkActive="theme-accent-txt"
+          routerLink="/user-edit"
+          (click)="sidenav.close()"
+        >
           <mat-icon mat-list-icon>edit</mat-icon>
           <span i18n="@@edit-your-profile">Edit your profile</span>
         </a>
         <a
-          routerLink="home"
           (click)="sidenav.close(); onOpenDialog(dialogTemplate)"
           mat-menu-item
         >
@@ -48,8 +52,8 @@
         <button
           mat-icon-button
           (click)="sidenav.toggle()"
-          i18n-aria-label
-          aria-label="Toggle sidenav"
+          matTooltip="Toggle sidenav"
+          i18n-matTooltip
         >
           <mat-icon>menu</mat-icon>
         </button>
@@ -71,12 +75,12 @@
 
       <div class="hide-on-small-screen">
         <button
-          *ngIf="user$ | async as user; else notAuthedTemplate"
+          *ngIf="user; else notAuthedTemplate"
           mat-raised-button
           [matMenuTriggerFor]="profileMenu"
           class="profile-button"
-          i18n-aria-label
-          aria-label="Trigger profile menu"
+          matTooltip="Trigger profile menu"
+          i18n-matTooltip
         >
           <span>{{ user.username }}</span>
           <img

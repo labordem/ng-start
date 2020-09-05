@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 
 export interface User {
   id: number;
-  created: Date;
-  updated: Date;
+  createdAt: Date;
+  updatedAt: Date;
   username: string;
   email: string;
   avatar?: string;
@@ -16,28 +16,29 @@ export interface User {
   providedIn: 'root',
 })
 export class UserService {
-  private readonly userSubject$: ReplaySubject<User>;
+  private readonly userKey = 'user';
+  private readonly userSubject$ = new ReplaySubject<User | undefined>(1);
+  user$ = this.userSubject$.asObservable();
 
   constructor() {
-    this.userSubject$ = new ReplaySubject<User>(1);
-    this.setUser(this.getUserFromStorage());
+    this.init();
   }
 
-  getUser$(): Observable<User> {
-    return this.userSubject$.asObservable();
+  update(user: User): User {
+    localStorage.setItem(this.userKey, JSON.stringify(user));
+    this.userSubject$.next(user);
+
+    return user;
   }
 
-  setUser(value: User): void {
-    this.userSubject$.next(value);
-    localStorage.setItem('user', JSON.stringify(value));
-  }
-
-  deleteUser(): void {
+  delete(): void {
+    localStorage.removeItem(this.userKey);
     this.userSubject$.next(undefined);
-    localStorage.removeItem('user');
   }
 
-  getUserFromStorage(): User {
-    return JSON.parse(localStorage.getItem('user') as string) as User;
+  private init(): void {
+    const userString = localStorage.getItem(this.userKey) as string;
+    const user = (JSON.parse(userString) as User) ?? undefined;
+    this.userSubject$.next(user);
   }
 }

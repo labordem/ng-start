@@ -3,13 +3,16 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   TemplateRef,
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Meta, Title } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Subject, Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { ThemeService } from '../theme.service';
@@ -27,26 +30,25 @@ interface Destination {
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutComponent implements OnInit, AfterViewChecked {
+export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   @ViewChild('appTitle') appTitle?: ElementRef<HTMLElement>;
   @ViewChild('appDescription') appDescription?: ElementRef<HTMLElement>;
   destinations: Destination[] = [];
-  user$: Observable<User>;
+  user: User | undefined;
   version = environment.version;
+  private readonly isDestroyed$ = new Subject<boolean>();
 
   constructor(
     private readonly themeService: ThemeService,
     private readonly titleService: Title,
     private readonly metaService: Meta,
     private readonly userService: UserService,
-    private readonly dialog: MatDialog
-  ) {
-    this.user$ = this.userService.getUser$();
-  }
+    private readonly dialog: MatDialog,
+    private readonly router: Router
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): Subscription {
     this.themeService.init();
-    this.user$ = this.userService.getUser$();
     this.destinations = [
       {
         name: $localize`:@@home:Home`,
@@ -64,6 +66,11 @@ export class LayoutComponent implements OnInit, AfterViewChecked {
         icon: 'book',
       },
     ];
+
+    return this.userService.user$.pipe(takeUntil(this.isDestroyed$)).subscribe({
+      next: (user) => (this.user = user),
+      error: () => (this.user = undefined),
+    });
   }
 
   ngAfterViewChecked(): void {
@@ -72,7 +79,8 @@ export class LayoutComponent implements OnInit, AfterViewChecked {
   }
 
   onSignout(): void {
-    this.userService.deleteUser();
+    this.userService.delete();
+    this.router.navigate(['/auth/signin']);
   }
 
   onOpenDialog(templateRef: TemplateRef<Component>): void {
@@ -85,6 +93,12 @@ export class LayoutComponent implements OnInit, AfterViewChecked {
 
   trackByIndex(index: number): number {
     return index;
+  }
+
+  ngOnDestroy(): void {
+    console.info(`💥 destroyed: ${this.constructor.name}`);
+    this.isDestroyed$.next(true);
+    this.isDestroyed$.complete();
   }
 
   private setTitle(): void {
