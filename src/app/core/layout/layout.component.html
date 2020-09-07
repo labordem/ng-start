@@ -54,6 +54,8 @@
           (click)="sidenav.toggle()"
           matTooltip="Toggle sidenav"
           i18n-matTooltip
+          aria-label="Button that displays a tooltip when focused or hovered over"
+          i18n-aria-label="@@button-with-tooltip"
         >
           <mat-icon>menu</mat-icon>
         </button>
@@ -81,6 +83,8 @@
           class="profile-button"
           matTooltip="Trigger profile menu"
           i18n-matTooltip
+          aria-label="Button that displays a tooltip when focused or hovered over"
+          i18n-aria-label="@@button-with-tooltip"
         >
           <span>{{ user.username }}</span>
           <img
