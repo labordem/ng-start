@@ -53,7 +53,7 @@ export class UserEditComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.info(`💥 destroyed: ${this.constructor.name}`);
+    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }

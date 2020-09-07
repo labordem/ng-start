@@ -26,6 +26,7 @@ export class UserService {
 
   update(user: User): User {
     localStorage.setItem(this.userKey, JSON.stringify(user));
+    console.info(`💾 update: ${this.userKey}`);
     this.userSubject$.next(user);
 
     return user;
@@ -33,6 +34,7 @@ export class UserService {
 
   delete(): void {
     localStorage.removeItem(this.userKey);
+    console.info(`💾 delete: ${this.userKey}`);
     this.userSubject$.next(undefined);
   }
 
