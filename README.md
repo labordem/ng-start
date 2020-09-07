@@ -1,5 +1,11 @@
 # NgStart
 
+![lighthouse performance](./docs/lighthouse_performance.svg)
+![lighthouse accessibility](./docs/lighthouse_accessibility.svg)
+![lighthouse best practices](./docs/lighthouse_best-practices.svg)
+![lighthouse seo](./docs/lighthouse_seo.svg)
+![lighthouse pwa](./docs/lighthouse_pwa.svg)
+
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Angular progressive web app starter.
@@ -11,7 +17,7 @@ Angular progressive web app starter.
 
 ### Run this project on your machine
 
-> You need Node.js or Docker or Podman to run this project
+> You need [Node.js](https://nodejs.org) or [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/getting-started/) to run this project
 
 ```bash
 # get this repo
@@ -35,6 +41,13 @@ npm run container
 
 > During build you can see `npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents`, it's normal, `fsevents` is just for OSX systems, not required on Linux.
 
+### Documentation
+
+```bash
+# build documentation website and open it
+npm run doc
+```
+
 ### Internationalization
 
 This project is available in two languages, it implements `@angular/localize`. If you run it in container Nginx server redirects users to the correct version of the app, according to their browser language.
@@ -48,14 +61,14 @@ npm run start
 npm run start:fr
 ```
 
-> **When you update locale you automatically perform the following actions :**
->
-> - update **messages.xlf** with angular built-in internationalization module (see [Angular i18n](https://angular.io/guide/i18n))
-> - merge **messages.xlf** and **messages.fr.xlf** using [ngx-i18nsupport-lib](https://github.com/martinroob/ngx-i18nsupport-lib) thanks to [martinroob](https://github.com/martinroob) for sharing his awesome tools !
->
-> **Then you have to :**
->
-> - translate `<source>` in `<target>` in **messages.fr.xlf**
+**When you update locale you automatically perform the following actions :**
+
+- update **messages.xlf** with angular built-in internationalization module (see [Angular i18n](https://angular.io/guide/i18n))
+- merge **messages.xlf** and **messages.fr.xlf** using [ngx-i18nsupport-lib](https://github.com/martinroob/ngx-i18nsupport-lib) thanks to [martinroob](https://github.com/martinroob) for sharing his awesome tools !
+
+**Then you have to :**
+
+- translate `<source>` in `<target>` in **messages.fr.xlf**
 
 ### Make your commits
 
@@ -77,12 +90,23 @@ git push --follow-tags
 npm run release
 ```
 
-> **When you create a release you automatically perform the following actions :**
->
-> - increment version number in package.json (respect [semantic versioning](https://semver.org))
-> - add a git tag
-> - build Github Pages demo
-> - update CHANGELOG.md with _fix:_ and _feat:_ commit label
+**When you create a release you automatically perform the following actions :**
+
+- increment version number in package.json (respect [semantic versioning](https://semver.g))
+- add a git tag
+- build Github Pages demo
+- update CHANGELOG.md with _fix:_ and _feat:_ commit label
+
+**Then you have to :**
+
+- push release : `git push --follow-tags`
+- (optional) update lighthouse badges with :
+
+```bash
+npm run lighthouse && git add ./docs
+git commit -m 'docs(lighthouse): README.md badges updated'
+git push
+```
 
 ### Performances monitoring
 
@@ -91,6 +115,8 @@ npm run release
 npm run analyze
 # check lighthouse score
 open https://web.dev/measure
+# check hosted app lighthouse score, update README.md badges
+npm run lighthouse
 ```
 
 ### VSCode Chrome debugger

@@ -11,6 +11,8 @@
     "build:docs": "ng build --prod --output-path docs --base-href /ng-start/",
     "build:stats": "ng build --stats-json",
     "analyze": "npm run build:stats && npx webpack-bundle-analyzer dist/ng-start/en-US/stats.json",
+    "doc": "compodoc -p tsconfig.base.json -s -o -d ./dist/ng-start/compodoc --hideGenerator --customLogo ./src/assets/icons/icon-128x128.png",
+    "lighthouse": "npx lighthouse-badges --urls https://miaborde.github.io/ng-start/en-US/ -o ./docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
