@@ -104,7 +104,7 @@ npm run release
 
 ```bash
 npm run lighthouse && git add ./docs
-git commit -m 'docs(lighthouse): README.md badges updated'
+git commit -m 'docs(lighthouse): readme lighthouse badges updated'
 git push
 ```
 
