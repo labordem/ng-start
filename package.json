@@ -15,10 +15,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
-    "release": "standard-version --commitAll",
-    "release:major": "npm run build:docs && git add docs && standard-version --release-as major --commitAll",
-    "release:minor": "npm run build:docs && git add docs && standard-version --release-as minor --commitAll",
-    "release:patch": "npm run build:docs && git add docs && standard-version --release-as patch --commitAll",
+    "gc": "git-cz",
+    "release": "npm run build:docs && git add docs && standard-version --commitAll",
+    "release:major": "npm run release -- --release-as major",
+    "release:minor": "npm run release -- --release-as minor",
+    "release:patch": "npm run release -- --release-as patch",
     "container": "docker stop ng-start || true && docker build -t ng-start . && docker run --rm --name ng-start -d -p 80:80 -p 443:443 ng-start"
   },
   "config": {
@@ -33,7 +34,6 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged",
       "pre-push": "ng lint"
@@ -75,6 +75,7 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^10.0.0",
     "@angular-devkit/build-angular": "~0.1000.0",
     "@angular/cli": "~10.0.0",
     "@angular/compiler-cli": "~10.0.0",

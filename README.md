@@ -62,8 +62,8 @@ npm run start:fr
 ```bash
 # add your changes
 git add .
-# commit cli-tool (automatically switch to commitizen)
-git commit
+# commit with cli-tool
+npm run gc
 # push changes
 git push
 # if you perform a release remember to keep tags
