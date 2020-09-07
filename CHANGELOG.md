@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/miaborde/ng-start/compare/v1.1.0...v1.2.0) (2020-09-07)
+
+### Features
+
+- auth guards, user state service ([4b74ad9](https://github.com/miaborde/ng-start/commit/4b74ad9b9fc046fbee57f8f909df110114dafd1b))
+- package.json version in app footer, different for dev/prod mode ([a4bfb6d](https://github.com/miaborde/ng-start/commit/a4bfb6d63d39ad243f9c139ccc0184b379e0486f))
+
 ## [1.1.0](https://github.com/mIaborde/ng-start/compare/v1.0.0...v1.1.0) (2020-08-30)
 
 ### Features
