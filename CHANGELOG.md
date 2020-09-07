@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/miaborde/ng-start/compare/v1.2.0...v1.3.0) (2020-09-07)
+
+### Features
+
+- **pwa:** pwa theme color = app theme primary color ([99e9ca4](https://github.com/miaborde/ng-start/commit/99e9ca44da3e3df1571b31a0e382fca61272e504))
+
+### Bug Fixes
+
+- **a11y:** add aria-label on each matTooltip ([a9f686d](https://github.com/miaborde/ng-start/commit/a9f686da70f6e3ce663a1a6bb6e4199932b2f553))
+
 ## [1.2.0](https://github.com/miaborde/ng-start/compare/v1.1.0...v1.2.0) (2020-09-07)
 
 ### Features
