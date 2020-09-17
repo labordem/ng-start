@@ -1,4 +1,8 @@
-# NgStart
+<div style="float: left; margin-right: 10px">
+
+![angular logo](src/assets/icons/icon-152x152.png)
+
+</div>
 
 ![lighthouse performance](./docs/lighthouse_performance.svg)
 ![lighthouse accessibility](./docs/lighthouse_accessibility.svg)
@@ -7,11 +11,18 @@
 ![lighthouse pwa](./docs/lighthouse_pwa.svg)
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 
-Angular progressive web app starter.
+![angular version](https://img.shields.io/github/package-json/dependency-version/miaborde/ng-start/@angular/core?label=angular&logo=angular)
 
-- changes : [CHANGELOG.md](./CHANGELOG.md)
-- hosted results : [English](https://miaborde.github.io/ng-start/en-US) - [French](https://miaborde.github.io/ng-start/fr)
+[demo (en-US)](https://miaborde.github.io/ng-start/en-US) - [demo (fr)](https://miaborde.github.io/ng-start/fr) - [changelog](./CHANGELOG.md)
+
+## How to start your project with it
+
+- clic on **Use this template** from [this Github repo](https://github.com/mIaborde/ng-start) and clone your project
+- open your project with your favorite IDE, and replace ALL `ng-start` occurrence in folder tree with your project name
+- set **package.json** version to `0.0.0`
+- you're good to go :)
 
 ## How to use it
 
@@ -20,14 +31,8 @@ Angular progressive web app starter.
 > You need [Node.js](https://nodejs.org) or [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/getting-started/) to run this project
 
 ```bash
-# get this repo
-git clone https://github.com/mIaborde/ng-start
-# move in
-cd ng-start
-```
-
-```bash
 # run it with node.js
+npm i
 npm start
 ```
 
@@ -35,11 +40,9 @@ npm start
 # run it with docker or podman :
 docker build -t ng-start .
 docker run --name ng-start -d -p 80:80 -p 443:443 ng-start
-# or
+# or use this npm script
 npm run container
 ```
-
-> During build you can see `npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents`, it's normal, `fsevents` is just for OSX systems, not required on Linux.
 
 ### Documentation
 
@@ -64,7 +67,7 @@ npm run start:fr
 **When you update locale you automatically perform the following actions :**
 
 - update **messages.xlf** with angular built-in internationalization module (see [Angular i18n](https://angular.io/guide/i18n))
-- merge **messages.xlf** and **messages.fr.xlf** using [ngx-i18nsupport-lib](https://github.com/martinroob/ngx-i18nsupport-lib) thanks to [martinroob](https://github.com/martinroob) for sharing his awesome tools !
+- merge **messages.xlf** and **messages.fr.xlf** using [ngx-i18nsupport-lib](https://github.com/martinroob/ngx-i18nsupport-lib), thanks to [martinroob](https://github.com/martinroob) for sharing his awesome tools !
 
 **Then you have to :**
 
