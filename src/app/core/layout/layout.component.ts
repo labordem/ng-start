@@ -5,10 +5,8 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
@@ -18,7 +16,7 @@ import { environment } from 'src/environments/environment';
 import { ThemeService } from '../theme.service';
 import { User, UserService } from '../user.service';
 
-interface Destination {
+export interface Destination {
   name: string;
   path: string;
   icon: string;
@@ -31,11 +29,16 @@ interface Destination {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
-  @ViewChild('appTitle') appTitle?: ElementRef<HTMLElement>;
-  @ViewChild('appDescription') appDescription?: ElementRef<HTMLElement>;
+  @ViewChild('appTitleElement') appTitleElement?: ElementRef<HTMLElement>;
+  @ViewChild('appDescriptionElement') appDescriptionElement?: ElementRef<
+    HTMLElement
+  >;
+  appTitle = '';
+  appDescription = '';
+  appVersion = environment.version;
   destinations: Destination[] = [];
   user: User | undefined;
-  version = environment.version;
+  readonly isUnknownUserAllowedToNavigate = true;
   private readonly isDestroyed$ = new Subject<boolean>();
 
   constructor(
@@ -43,12 +46,10 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     private readonly titleService: Title,
     private readonly metaService: Meta,
     private readonly userService: UserService,
-    private readonly dialog: MatDialog,
     private readonly router: Router
-  ) {}
-
-  ngOnInit(): Subscription {
+  ) {
     this.themeService.init();
+    // Don't forget to add destinations in template for Angular i18n detection !
     this.destinations = [
       {
         name: $localize`:@@home:Home`,
@@ -66,7 +67,9 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
         icon: 'book',
       },
     ];
+  }
 
+  ngOnInit(): Subscription {
     return this.userService.user$.pipe(takeUntil(this.isDestroyed$)).subscribe({
       next: (user) => (this.user = user),
       error: () => (this.user = undefined),
@@ -83,14 +86,6 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.router.navigate(['/auth/signin']);
   }
 
-  onOpenDialog(templateRef: TemplateRef<Component>): void {
-    this.dialog.open(templateRef);
-  }
-
-  onCloseDialog(): void {
-    this.dialog.closeAll();
-  }
-
   trackByIndex(index: number): number {
     return index;
   }
@@ -102,16 +97,16 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   private setTitle(): void {
-    const appTitle = this.appTitle?.nativeElement?.textContent as string;
-    this.titleService.setTitle(appTitle);
+    this.appTitle = this.appTitleElement?.nativeElement?.textContent as string;
+    this.titleService.setTitle(this.appTitle);
   }
 
   private setMeta(): void {
-    const description = this.appDescription?.nativeElement
+    this.appDescription = this.appDescriptionElement?.nativeElement
       ?.textContent as string;
     this.metaService.updateTag({
       name: 'description',
-      content: description,
+      content: this.appDescription,
     });
   }
 }

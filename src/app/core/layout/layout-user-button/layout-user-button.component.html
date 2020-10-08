@@ -1,0 +1,37 @@
+<button
+  *ngIf="user; else notAuthedButtonTemplate"
+  mat-raised-button
+  class="rounded avatar-after"
+  [matMenuTriggerFor]="profileMenu"
+  matTooltip="Trigger profile menu"
+  i18n-matTooltip
+  aria-label="Button that displays a tooltip when focused or hovered over"
+  i18n-aria-label="@@button-with-tooltip"
+>
+  <span>{{ user.username }}</span>
+  <img
+    src="{{ user.avatar }}"
+    default="profile"
+    i18n-alt="@@your-avatar"
+    alt="Your avatar"
+  />
+</button>
+
+<mat-menu #profileMenu="matMenu" xPosition="before">
+  <ng-template matMenuContent>
+    <div class="layout-user-button-menu">
+      <app-layout-user [user]="user"></app-layout-user>
+    </div>
+  </ng-template>
+</mat-menu>
+
+<ng-template #notAuthedButtonTemplate>
+  <a
+    mat-raised-button
+    class="rounded icon-after theme-accent"
+    routerLink="/auth/signin"
+  >
+    <span i18n="@@sign-in">Sign in</span>
+    <mat-icon>person</mat-icon>
+  </a>
+</ng-template>

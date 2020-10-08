@@ -1,0 +1,11 @@
+.layout-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  line-height: 39px;
+  padding: 2px;
+
+  p {
+    margin: 0 15px;
+  }
+}

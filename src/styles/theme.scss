@@ -11,7 +11,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/resources/color
-$palette-light-primary: mat-palette($mat-grey, 800, 100, 900);
+$palette-light-primary: mat-palette($mat-grey, 200, 100, 900);
 $palette-light-accent: mat-palette($mat-light-blue, 600, 100, 900);
 $palette-light-warn: mat-palette($mat-red, 600, 100, 800);
 
@@ -40,40 +40,15 @@ $dark-theme: mat-dark-theme(
   )
 );
 
-// Uncomment only really used angular material components to keep a tiny bundle
-@mixin angular-material-theme($theme) {
-  @include mat-core-theme($theme);
-  // @include mat-autocomplete-theme($theme);
-  @include mat-button-theme($theme);
-  @include mat-button-toggle-theme($theme);
-  @include mat-card-theme($theme);
-  // @include mat-checkbox-theme($theme);
-  // @include mat-chips-theme($theme);
-  // @include mat-datepicker-theme($theme);
-  @include mat-dialog-theme($theme);
-  @include mat-divider-theme($theme);
-  @include mat-form-field-theme($theme);
-  // @include mat-grid-list-theme($theme);
-  @include mat-icon-theme($theme);
-  @include mat-input-theme($theme);
-  @include mat-list-theme($theme);
-  @include mat-menu-theme($theme);
-  @include mat-progress-bar-theme($theme);
-  // @include mat-progress-spinner-theme($theme);
-  // @include mat-radio-theme($theme);
-  // @include mat-select-theme($theme);
-  @include mat-sidenav-theme($theme);
-  @include mat-slide-toggle-theme($theme);
-  // @include mat-slider-theme($theme);
-  // @include mat-tabs-theme($theme);
-  // @include mat-toolbar-theme($theme);
-  @include mat-tooltip-theme($theme);
-}
-
 // Use color palettes from your template
 @mixin class-theme($palette, $shade) {
-  background: mat-color($palette, $shade) !important;
+  $background: mat-color($palette, $shade);
+  background: $background !important;
   color: mat-color($palette, #{$shade}-contrast) !important;
+
+  &.active {
+    background: get-correct-highlight($background);
+  }
 }
 
 @mixin class-theme-txt($palette, $shade) {
@@ -162,6 +137,10 @@ $dark-theme: mat-dark-theme(
   $palette-light-warn
 );
 
+.active {
+  background: rgba($color: #fff, $alpha: 1);
+}
+
 .theme-dark {
   @include angular-material-color($dark-theme);
   @include class-builder(
@@ -169,4 +148,16 @@ $dark-theme: mat-dark-theme(
     $palette-dark-accent,
     $palette-dark-warn
   );
+
+  .active {
+    background: rgba($color: #000, $alpha: 0.5);
+  }
+}
+
+@function get-correct-highlight($color) {
+  @if (lightness($color) > 50) {
+    @return darken($color, 70%); // Lighter background, return dark color
+  } @else {
+    @return lighten($color, 80%); // Darker background, return light color
+  }
 }

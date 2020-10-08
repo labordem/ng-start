@@ -1,0 +1,30 @@
+<section class="layout-sidenav">
+  <mat-nav-list>
+    <div class="header theme-primary">
+      <ng-container *ngIf="user; else notAuthedButtonTemplate">
+        <app-layout-user [user]="user"></app-layout-user>
+      </ng-container>
+      <ng-template #notAuthedButtonTemplate>
+        <a
+          mat-raised-button
+          class="rounded icon-after theme-accent"
+          routerLink="/auth/signin"
+          (click)="sidenav.close()"
+        >
+          <span i18n="@@sign-in">Sign in</span>
+          <mat-icon>person</mat-icon>
+        </a>
+      </ng-template>
+    </div>
+    <a
+      *ngFor="let destination of destinations; trackBy: trackByIndex"
+      mat-menu-item
+      routerLinkActive="theme-accent-txt"
+      [routerLink]="destination.path"
+      (click)="sidenav.close()"
+    >
+      <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
+      <span>{{ destination.name }}</span>
+    </a>
+  </mat-nav-list>
+</section>

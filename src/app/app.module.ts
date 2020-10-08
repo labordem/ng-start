@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { NotUserGuard } from './core/not-user.guard';
-import { UserGuard } from './core/user.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,12 +20,6 @@ export const routes: Routes = [
     path: 'auth',
     canActivate: [NotUserGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
-  },
-  {
-    path: 'user-edit',
-    canActivate: [UserGuard],
-    loadChildren: () =>
-      import('./user-edit/user-edit.module').then((m) => m.UserEditModule),
   },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];

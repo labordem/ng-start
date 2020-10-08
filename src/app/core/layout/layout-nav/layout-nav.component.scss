@@ -1,0 +1,43 @@
+.layout-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  line-height: 39px;
+  padding: 2px;
+
+  h1 {
+    line-height: 39px;
+    margin: 0 15px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .fill-remaining-space {
+    flex: 1 1 auto;
+  }
+
+  .mat-list-icon {
+    margin-right: 10px;
+  }
+}
+
+.app-brand {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    border-radius: 50%;
+    height: 39px;
+    margin-left: 5px;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0 20px 0 5px;
+  }
+}

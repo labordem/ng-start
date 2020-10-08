@@ -1,0 +1,44 @@
+<section>
+  <div class="avatar-edit">
+    <img
+      src="{{ user?.avatar }}"
+      default="profile"
+      class="avatar-img"
+      i18n-alt="@@your-avatar"
+      alt="Your avatar"
+    />
+    <div *ngIf="user" class="avatar-input" (click)="$event.stopPropagation()">
+      <app-image-input
+        [image]="user?.avatar"
+        (newImage)="onNewImage($event)"
+      ></app-image-input>
+    </div>
+  </div>
+
+  <div class="username">{{ user?.username }}</div>
+  <div class="email">{{ user?.email }}</div>
+  <button
+    (click)="onOpenDialog(dialogTemplate)"
+    mat-stroked-button
+    class="rounded signout-button"
+    i18n="@@sign-out"
+  >
+    Sign out
+  </button>
+</section>
+
+<ng-template #dialogTemplate>
+  <h2 matDialogTitle i18n="@@are-you-sure">Are you sure ?</h2>
+  <mat-dialog-content>
+    <p i18n>
+      If you sign out you will have to enter your credentials again to use
+      application !
+    </p>
+  </mat-dialog-content>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCloseDialog()" i18n="@@cancel">Cancel</button>
+    <button mat-button (click)="onSignout(); onCloseDialog()" i18n="@@sign-out">
+      Sign out
+    </button>
+  </div>
+</ng-template>

@@ -1,12 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -15,11 +7,24 @@ import { environment } from 'src/environments/environment';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.component';
+import { LayoutNavComponent } from './layout/layout-nav/layout-nav.component';
 import { LayoutSettingsComponent } from './layout/layout-settings/layout-settings.component';
+import { LayoutSidenavComponent } from './layout/layout-sidenav/layout-sidenav.component';
+import { LayoutUserButtonComponent } from './layout/layout-user-button/layout-user-button.component';
+import { LayoutUserComponent } from './layout/layout-user/layout-user.component';
 import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [LayoutComponent, LayoutSettingsComponent],
+  declarations: [
+    LayoutComponent,
+    LayoutSettingsComponent,
+    LayoutFooterComponent,
+    LayoutSidenavComponent,
+    LayoutNavComponent,
+    LayoutUserComponent,
+    LayoutUserButtonComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -28,14 +33,6 @@ import { LayoutComponent } from './layout/layout.component';
     }),
     SharedModule,
     RouterModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatIconModule,
-    MatMenuModule,
-    MatSidenavModule,
-    MatDividerModule,
-    MatListModule,
-    MatTooltipModule,
   ],
   exports: [LayoutComponent],
 })

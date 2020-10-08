@@ -1,0 +1,42 @@
+<section class="layout-nav theme-primary mat-elevation-z2">
+  <div class="hide-on-large-screen">
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      matTooltip="Toggle sidenav"
+      i18n-matTooltip
+      aria-label="Button that displays a tooltip when focused or hovered over"
+      i18n-aria-label="@@button-with-tooltip"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="app-brand">
+    <img
+      src="assets/icons/icon-128x128.png"
+      i18n-alt="@@app-icon"
+      alt="App icon"
+    />
+    <h1>{{ appTitle }}</h1>
+  </div>
+  <div class="container hide-on-small-screen">
+    <a
+      *ngFor="let destination of destinations; trackBy: trackByIndex"
+      mat-button
+      routerLinkActive="active"
+      [routerLink]="destination.path"
+    >
+      <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
+      <span>{{ destination.name }}</span>
+    </a>
+  </div>
+
+  <span class="fill-remaining-space hide-on-small-screen"></span>
+
+  <app-layout-user-button
+    [user]="user"
+    class="hide-on-small-screen"
+  ></app-layout-user-button>
+
+  <app-layout-settings></app-layout-settings>
+</section>

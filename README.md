@@ -1,8 +1,6 @@
-<div style="float: left; margin-right: 10px">
+<div align="center">
 
 ![angular logo](src/assets/icons/icon-152x152.png)
-
-</div>
 
 ![lighthouse performance](./docs/lighthouse_performance.svg)
 ![lighthouse accessibility](./docs/lighthouse_accessibility.svg)
@@ -16,6 +14,8 @@
 ![angular version](https://img.shields.io/github/package-json/dependency-version/miaborde/ng-start/@angular/core?label=angular&logo=angular)
 
 [demo (en-US)](https://miaborde.github.io/ng-start/en-US) - [demo (fr)](https://miaborde.github.io/ng-start/fr) - [changelog](./CHANGELOG.md)
+
+</div>
 
 ## How to start your project with it
 

@@ -87,12 +87,13 @@
           <button
             *ngIf="!isLoading"
             mat-raised-button
+            class="rounded icon-after"
             color="accent"
             type="submit"
             [disabled]="!formGroup.valid"
-            i18n="@@submit"
           >
-            Submit
+            <span i18n="@@submit">Submit</span>
+            <mat-icon>send</mat-icon>
           </button>
         </div>
 

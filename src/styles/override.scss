@@ -1,0 +1,36 @@
+.mat-raised-button,
+.mat-stroked-button,
+.mat-button {
+  &.rounded {
+    border-radius: 20px !important;
+  }
+}
+
+.icon-before {
+  mat-icon {
+    padding: 0 5px 0 0;
+  }
+}
+
+.icon-after {
+  mat-icon {
+    padding: 0 0 0 5px;
+  }
+}
+
+.avatar-after {
+  padding-right: 2px !important;
+
+  img {
+    border-radius: 50%;
+    height: 33px;
+    margin-left: 5px;
+    object-fit: cover;
+    width: 33px;
+  }
+}
+
+// matMenu margin
+.cdk-overlay-pane {
+  margin-top: 5px;
+}

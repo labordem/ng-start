@@ -1,0 +1,31 @@
+.avatar-edit {
+  position: relative;
+
+  .avatar-img {
+    border-radius: 50%;
+    height: 100px;
+    margin-bottom: 10px;
+    width: 100px;
+  }
+
+  .avatar-input {
+    left: 70px;
+    position: absolute;
+    top: 70px;
+  }
+}
+
+.username {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.email {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.signout-button {
+  margin-top: 10px;
+}

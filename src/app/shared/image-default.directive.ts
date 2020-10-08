@@ -17,8 +17,7 @@ export class ImageDefaultDirective {
   // tslint:disable-next-line: no-unsafe-any
   @HostListener('error') onError(): void {
     if (this.default === 'profile') {
-      this.src =
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Placeholder_no_text.svg/150px-Placeholder_no_text.svg.png';
+      this.src = 'assets/images/default_profile.webp';
     }
   }
 }

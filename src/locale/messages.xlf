@@ -2,146 +2,48 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="your-avatar" datatype="html">
-        <source>Your avatar</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">95</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="edit-your-profile" datatype="html">
-        <source>Edit your profile</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">157</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="sign-out" datatype="html">
-        <source>Sign out</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">147</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">161</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a4a34f62d65eec96b8583d499ec01300f36a6466" datatype="html">
-        <source>Toggle sidenav</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="button-with-tooltip" datatype="html">
-        <source>Button that displays a tooltip when focused or hovered over</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">57</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">86</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout-settings/layout-settings.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="app-title" datatype="html">
         <source>ng-start</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="ce13a5ee8df2664f806312588185bc9d3ebad0cd" datatype="html">
-        <source>Trigger profile menu</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="app-description" datatype="html">
         <source>
-        Angular progressive web app starter.
-      </source>
+    Angular progressive web app starter.
+  </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">108</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="home" datatype="html">
         <source>Home</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="profile" datatype="html">
         <source>Profile</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="articles" datatype="html">
         <source>Articles</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="sign-in" datatype="html">
-        <source>Sign in</source>
+      <trans-unit id="bffaf29d77027e7f2c597a253b6e8d8899769b5c" datatype="html">
+        <source>Click here to set a new image</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">133</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="are-you-sure" datatype="html">
-        <source>Are you sure ?</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">138</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cf76cbc9ca1bb0bef3aaf1bd15d0f1b90dc13c3c" datatype="html">
-        <source>
-      If you sign out you will have to enter your credentials again to use
-      application !
-    </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">140</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="cancel" datatype="html">
-        <source>Cancel</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/core/layout/layout.component.html</context>
-          <context context-type="linenumber">146</context>
+          <context context-type="sourcefile">src/app/shared/image-input/image-input.component.html</context>
+          <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="f3cdf582cab2ae634d94e68bf64961270d8aad60" datatype="html">
@@ -149,6 +51,21 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout-settings/layout-settings.component.html</context>
           <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="button-with-tooltip" datatype="html">
+        <source>Button that displays a tooltip when focused or hovered over</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-settings/layout-settings.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-nav/layout-nav.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user-button/layout-user-button.component.html</context>
+          <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="light-theme" datatype="html">
@@ -163,6 +80,86 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/core/layout/layout-settings/layout-settings.component.html</context>
           <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sign-in" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-sidenav/layout-sidenav.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user-button/layout-user-button.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a4a34f62d65eec96b8583d499ec01300f36a6466" datatype="html">
+        <source>Toggle sidenav</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-nav/layout-nav.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="app-icon" datatype="html">
+        <source>App icon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-nav/layout-nav.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="your-avatar" datatype="html">
+        <source>Your avatar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user/layout-user.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user-button/layout-user-button.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sign-out" datatype="html">
+        <source>
+    Sign out
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user/layout-user.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user/layout-user.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="are-you-sure" datatype="html">
+        <source>Are you sure ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user/layout-user.component.html</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cf76cbc9ca1bb0bef3aaf1bd15d0f1b90dc13c3c" datatype="html">
+        <source>
+      If you sign out you will have to enter your credentials again to use
+      application !
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user/layout-user.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user/layout-user.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ce13a5ee8df2664f806312588185bc9d3ebad0cd" datatype="html">
+        <source>Trigger profile menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/layout/layout-user-button/layout-user-button.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dbc151dc53bfa56fda3c792b4583459e2d0f4473" datatype="html">
@@ -289,34 +286,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="submit" datatype="html">
-        <source>
-            Submit
-          </source>
+        <source>Submit</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin/signin.component.html</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">95</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup/signup.component.html</context>
           <context context-type="linenumber">167</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="please-check-your-email" datatype="html">
         <source>Please check your email</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin/signin.component.html</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="please-check-your-password" datatype="html">
         <source>Please check your password</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin/signin.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">110</context>
         </context-group>
       </trans-unit>
       <trans-unit id="528990707d0d984a27c08d1aed61a9175f8e75ee" datatype="html">
@@ -437,41 +428,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup/signup.component.html</context>
           <context context-type="linenumber">182</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1d4d2a95fc900b745fec5468980efaa224fd3bd7" datatype="html">
-        <source>Click or drag here your image to set your avatar</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="81c2c97bbe58cb442697dee1284a2f34c8e421e7" datatype="html">
-        <source>Your informations</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="your-username" datatype="html">
-        <source>Your username</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">37</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="your-email" datatype="html">
-        <source>Your email</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="your-description" datatype="html">
-        <source>Your description</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/user-edit/user-edit.component.html</context>
-          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
     </body>
