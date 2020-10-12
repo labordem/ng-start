@@ -8,7 +8,7 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <nav>
+    <nav *ngIf="user || isUnknownUserAllowedToNavigate">
       <app-layout-nav
         [user]="user"
         [appTitle]="appTitle"

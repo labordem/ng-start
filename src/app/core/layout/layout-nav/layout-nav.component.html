@@ -1,5 +1,5 @@
 <section class="layout-nav theme-primary mat-elevation-z2">
-  <div class="hide-on-large-screen">
+  <div class="media-hide-on-large">
     <button
       mat-icon-button
       (click)="sidenav.toggle()"
@@ -19,11 +19,11 @@
     />
     <h1>{{ appTitle }}</h1>
   </div>
-  <div class="container hide-on-small-screen">
+  <div class="container media-hide-on-small">
     <a
       *ngFor="let destination of destinations; trackBy: trackByIndex"
       mat-button
-      routerLinkActive="active"
+      routerLinkActive="theme-primary active"
       [routerLink]="destination.path"
     >
       <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
@@ -31,11 +31,11 @@
     </a>
   </div>
 
-  <span class="fill-remaining-space hide-on-small-screen"></span>
+  <span class="fill-remaining-space media-hide-on-small"></span>
 
   <app-layout-user-button
     [user]="user"
-    class="hide-on-small-screen"
+    class="media-hide-on-small"
   ></app-layout-user-button>
 
   <app-layout-settings></app-layout-settings>

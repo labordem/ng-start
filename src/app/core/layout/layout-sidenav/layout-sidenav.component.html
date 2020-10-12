@@ -7,7 +7,8 @@
       <ng-template #notAuthedButtonTemplate>
         <a
           mat-raised-button
-          class="rounded icon-after theme-accent"
+          class="rounded icon-after"
+          color="accent"
           routerLink="/auth/signin"
           (click)="sidenav.close()"
         >
@@ -19,7 +20,7 @@
     <a
       *ngFor="let destination of destinations; trackBy: trackByIndex"
       mat-menu-item
-      routerLinkActive="theme-accent-txt"
+      routerLinkActive="theme-accent transparent"
       [routerLink]="destination.path"
       (click)="sidenav.close()"
     >

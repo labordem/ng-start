@@ -43,16 +43,23 @@ $dark-theme: mat-dark-theme(
 // Use color palettes from your template
 @mixin class-theme($palette, $shade) {
   $background: mat-color($palette, $shade);
-  background: $background !important;
-  color: mat-color($palette, #{$shade}-contrast) !important;
+  $color: mat-color($palette, #{$shade}-contrast);
+  background: $background;
+  color: $color;
+
+  &.transparent {
+    background: rgba($background, 0.1);
+    color: unset;
+  }
 
   &.active {
-    background: get-correct-highlight($background);
+    background: rgba($color, 0.1);
+    color: unset;
   }
 }
 
-@mixin class-theme-txt($palette, $shade) {
-  color: mat-color($palette, $shade) !important;
+@mixin class-theme-contrast($palette, $shade) {
+  color: mat-color($palette, $shade);
 }
 
 @mixin class-builder($palette-primary, $palette-accent, $palette-warn) {
@@ -60,72 +67,72 @@ $dark-theme: mat-dark-theme(
     @include class-theme($palette-primary, default);
   }
 
-  .theme-primary-txt {
-    @include class-theme-txt($palette-primary, default);
+  .theme-primary-contrast {
+    @include class-theme-contrast($palette-primary, default);
   }
 
   .theme-primary-darker {
     @include class-theme($palette-primary, darker);
   }
 
-  .theme-primary-txt-darker {
-    @include class-theme-txt($palette-primary, darker);
+  .theme-primary-contrast-darker {
+    @include class-theme-contrast($palette-primary, darker);
   }
 
   .theme-primary-lighter {
     @include class-theme($palette-primary, lighter);
   }
 
-  .theme-primary-txt-lighter {
-    @include class-theme-txt($palette-primary, lighter);
+  .theme-primary-contrast-lighter {
+    @include class-theme-contrast($palette-primary, lighter);
   }
 
   .theme-accent {
     @include class-theme($palette-accent, default);
   }
 
-  .theme-accent-txt {
-    @include class-theme-txt($palette-accent, default);
+  .theme-accent-contrast {
+    @include class-theme-contrast($palette-accent, default);
   }
 
   .theme-accent-darker {
     @include class-theme($palette-accent, darker);
   }
 
-  .theme-accent-txt-darker {
-    @include class-theme-txt($palette-accent, darker);
+  .theme-accent-contrast-darker {
+    @include class-theme-contrast($palette-accent, darker);
   }
 
   .theme-accent-lighter {
     @include class-theme($palette-accent, lighter);
   }
 
-  .theme-accent-txt-lighter {
-    @include class-theme-txt($palette-accent, lighter);
+  .theme-accent-contrast-lighter {
+    @include class-theme-contrast($palette-accent, lighter);
   }
 
   .theme-warn {
     @include class-theme($palette-warn, default);
   }
 
-  .theme-warn-txt {
-    @include class-theme-txt($palette-warn, default);
+  .theme-warn-contrast {
+    @include class-theme-contrast($palette-warn, default);
   }
 
   .theme-warn-darker {
     @include class-theme($palette-warn, darker);
   }
 
-  .theme-warn-txt-darker {
-    @include class-theme-txt($palette-warn, darker);
+  .theme-warn-contrast-darker {
+    @include class-theme-contrast($palette-warn, darker);
   }
 
   .theme-warn-lighter {
     @include class-theme($palette-warn, lighter);
   }
 
-  .theme-warn-txt-lighter {
-    @include class-theme-txt($palette-warn, lighter);
+  .theme-warn-contrast-lighter {
+    @include class-theme-contrast($palette-warn, lighter);
   }
 }
 
@@ -137,10 +144,6 @@ $dark-theme: mat-dark-theme(
   $palette-light-warn
 );
 
-.active {
-  background: rgba($color: #fff, $alpha: 1);
-}
-
 .theme-dark {
   @include angular-material-color($dark-theme);
   @include class-builder(
@@ -148,16 +151,4 @@ $dark-theme: mat-dark-theme(
     $palette-dark-accent,
     $palette-dark-warn
   );
-
-  .active {
-    background: rgba($color: #000, $alpha: 0.5);
-  }
-}
-
-@function get-correct-highlight($color) {
-  @if (lightness($color) > 50) {
-    @return darken($color, 70%); // Lighter background, return dark color
-  } @else {
-    @return lighten($color, 80%); // Darker background, return light color
-  }
 }

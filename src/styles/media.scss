@@ -13,13 +13,13 @@ $breakpoint: 768px;
   }
 }
 
-.hide-on-small-screen {
+.media-hide-on-small {
   @include media(small) {
     display: none;
   }
 }
 
-.hide-on-large-screen {
+.media-hide-on-large {
   @include media(large) {
     display: none;
   }
