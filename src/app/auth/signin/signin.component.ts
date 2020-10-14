@@ -29,20 +29,7 @@ export class SigninComponent implements OnDestroy {
     private readonly formBuilder: FormBuilder,
     private readonly router: Router
   ) {
-    this.formGroup = this.formBuilder.group(
-      // tslint:disable
-      {
-        email: [
-          undefined,
-          [Validators.required, Validators.pattern(authService.emailRegexp)],
-        ],
-        password: [undefined, [Validators.required]],
-      },
-      {
-        validators: this.mustNotBeRejectedValidator(),
-      }
-      // tslint:enable
-    );
+    this.formGroup = this.createFormGroup('submit');
   }
 
   get email(): AbstractControl | null {
@@ -53,10 +40,19 @@ export class SigninComponent implements OnDestroy {
     return this.formGroup.get('password');
   }
 
-  submit(formGroup: FormGroup): Subscription {
+  submit(formGroup: FormGroup): Subscription | undefined {
+    if (!formGroup.valid) {
+      this.formGroup = this.createFormGroup(
+        'change',
+        formGroup.value as { [key: string]: unknown }
+      );
+      this.formGroup.markAllAsTouched();
+
+      return undefined;
+    }
     const authSigninInput: AuthSigninInput = {
-      email: formGroup.get('email')?.value as string,
-      password: formGroup.get('password')?.value as string,
+      email: this.email?.value as string,
+      password: this.password?.value as string,
     };
     this.errorMessage = '';
     this.hidePassword = true;
@@ -80,6 +76,36 @@ export class SigninComponent implements OnDestroy {
     console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
+  }
+
+  private createFormGroup(
+    updateOn: 'submit' | 'change',
+    previousValue?: { [key: string]: unknown }
+  ): FormGroup {
+    const formGroup = this.formBuilder.group(
+      // tslint:disable
+      {
+        email: [
+          undefined,
+          [
+            Validators.required,
+            Validators.pattern(this.authService.emailRegexp),
+          ],
+        ],
+        password: [undefined, [Validators.required]],
+      },
+      {
+        updateOn,
+        validators: this.mustNotBeRejectedValidator(),
+      }
+      // tslint:enable
+    );
+
+    if (previousValue !== undefined) {
+      formGroup.setValue(previousValue);
+    }
+
+    return formGroup;
   }
 
   private mustNotBeRejectedValidator(): (formGroup: FormGroup) => void {

@@ -11,19 +11,16 @@
           <mat-label i18n="@@enter-your-email">Enter your email</mat-label>
           <input matInput formControlName="email" autofocus />
           <mat-error
-            *ngIf="email?.touched && email?.errors?.required"
+            *ngIf="email?.errors?.required"
             i18n="@@you-must-enter-a-value"
           >
             You must enter a value
           </mat-error>
-          <mat-error
-            *ngIf="email?.touched && email?.errors?.pattern"
-            i18n="@@must-be-an-email"
-          >
+          <mat-error *ngIf="email?.errors?.pattern" i18n="@@must-be-an-email">
             Must be an email
           </mat-error>
           <mat-error
-            *ngIf="email?.touched && email?.errors?.mustNotBeRejected"
+            *ngIf="email?.errors?.mustNotBeRejected"
             i18n="@@incorrect-email"
           >
             Incorrect email
@@ -53,13 +50,13 @@
             </mat-icon>
           </button>
           <mat-error
-            *ngIf="password?.touched && password?.errors?.required"
+            *ngIf="password?.errors?.required"
             i18n="@@you-must-enter-a-value"
           >
             You must enter a value
           </mat-error>
           <mat-error
-            *ngIf="email?.touched && email?.errors?.mustNotBeRejected"
+            *ngIf="email?.errors?.mustNotBeRejected"
             i18n="@@incorrect-password"
           >
             Incorrect password
@@ -90,7 +87,6 @@
             class="rounded icon-after"
             color="accent"
             type="submit"
-            [disabled]="!formGroup.valid"
           >
             <span i18n="@@submit">Submit</span>
             <mat-icon>send</mat-icon>

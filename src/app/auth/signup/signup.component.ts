@@ -32,31 +32,7 @@ export class SignupComponent implements OnDestroy {
     private readonly router: Router,
     private readonly dialog: MatDialog
   ) {
-    this.formGroup = this.formBuilder.group(
-      // tslint:disable
-      {
-        username: [
-          null,
-          [Validators.required, Validators.pattern(authService.usernameRegexp)],
-        ],
-        email: [
-          null,
-          [Validators.required, Validators.pattern(authService.emailRegexp)],
-        ],
-        password: [
-          null,
-          [Validators.required, Validators.pattern(authService.passwordRegexp)],
-        ],
-        confirmPassword: [null, [Validators.required]],
-      },
-      {
-        validators: [
-          this.mustMatchValidator('password', 'confirmPassword'),
-          this.mustNotBeRejectedValidator(),
-        ],
-      }
-      // tslint:enable
-    );
+    this.formGroup = this.createFormGroup('submit');
   }
 
   get email(): AbstractControl | null {
@@ -75,11 +51,20 @@ export class SignupComponent implements OnDestroy {
     return this.formGroup.get('confirmPassword');
   }
 
-  submit(formGroup: FormGroup): Subscription {
+  submit(formGroup: FormGroup): Subscription | undefined {
+    if (!formGroup.valid) {
+      this.formGroup = this.createFormGroup(
+        'change',
+        formGroup.value as { [key: string]: unknown }
+      );
+      this.formGroup.markAllAsTouched();
+
+      return undefined;
+    }
     const authSignupInput: AuthSignupInput = {
-      username: formGroup.get('username')?.value as string,
-      email: formGroup.get('email')?.value as string,
-      password: formGroup.get('password')?.value as string,
+      username: this.username?.value as string,
+      email: this.email?.value as string,
+      password: this.password?.value as string,
     };
     this.errorMessage = '';
     this.hidePassword = true;
@@ -117,6 +102,53 @@ export class SignupComponent implements OnDestroy {
     console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
+  }
+
+  private createFormGroup(
+    updateOn: 'submit' | 'change',
+    previousValue?: { [key: string]: unknown }
+  ): FormGroup {
+    const formGroup = this.formBuilder.group(
+      // tslint:disable
+      {
+        username: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern(this.authService.usernameRegexp),
+          ],
+        ],
+        email: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern(this.authService.emailRegexp),
+          ],
+        ],
+        password: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern(this.authService.passwordRegexp),
+          ],
+        ],
+        confirmPassword: [null, [Validators.required]],
+      },
+      {
+        updateOn,
+        validators: [
+          this.mustMatchValidator('password', 'confirmPassword'),
+          this.mustNotBeRejectedValidator(),
+        ],
+      }
+      // tslint:enable
+    );
+
+    if (previousValue !== undefined) {
+      formGroup.setValue(previousValue);
+    }
+
+    return formGroup;
   }
 
   private mustMatchValidator(
