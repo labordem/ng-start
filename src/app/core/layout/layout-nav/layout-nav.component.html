@@ -1,4 +1,4 @@
-<section class="layout-nav theme-primary mat-elevation-z2">
+<section class="layout-nav theme-primary mat-elevation-z2 p-2">
   <div class="media-hide-on-large">
     <button
       mat-icon-button
@@ -17,16 +17,16 @@
       i18n-alt="@@app-icon"
       alt="App icon"
     />
-    <h1>{{ appTitle }}</h1>
+    <h1 class="app-title">{{ appTitle }}</h1>
   </div>
-  <div class="container media-hide-on-small">
+  <div class="media-hide-on-small p-0">
     <a
       *ngFor="let destination of destinations; trackBy: trackByIndex"
       mat-button
       routerLinkActive="theme-primary active"
       [routerLink]="destination.path"
     >
-      <mat-icon mat-list-icon>{{ destination.icon }}</mat-icon>
+      <mat-icon mat-list-icon class="m-r-10">{{ destination.icon }}</mat-icon>
       <span>{{ destination.name }}</span>
     </a>
   </div>

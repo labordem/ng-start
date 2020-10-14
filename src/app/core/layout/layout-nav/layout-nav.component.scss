@@ -3,23 +3,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   line-height: 39px;
-  padding: 2px;
 
-  h1 {
+  .app-title {
     line-height: 39px;
-    margin: 0 15px;
-  }
-
-  .container {
-    padding: 0;
   }
 
   .fill-remaining-space {
     flex: 1 1 auto;
-  }
-
-  .mat-list-icon {
-    margin-right: 10px;
   }
 }
 

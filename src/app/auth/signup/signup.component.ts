@@ -36,8 +36,7 @@ export class SignupComponent implements OnDestroy {
       // tslint:disable
       {
         username: [
-          undefined,
-
+          null,
           [Validators.required, Validators.pattern(authService.usernameRegexp)],
         ],
         email: [

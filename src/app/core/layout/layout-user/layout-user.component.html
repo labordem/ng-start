@@ -3,7 +3,7 @@
     <img
       src="{{ user?.avatar }}"
       default="profile"
-      class="avatar-img"
+      class="avatar-img m-b-10"
       i18n-alt="@@your-avatar"
       alt="Your avatar"
     />
@@ -15,12 +15,12 @@
     </div>
   </div>
 
-  <div class="username">{{ user?.username }}</div>
-  <div class="email">{{ user?.email }}</div>
+  <div class="mat-h2 m-0">{{ user?.username }}</div>
+  <div class="theme-foreground-secondary-color">{{ user?.email }}</div>
   <button
     (click)="onOpenDialog(dialogTemplate)"
     mat-stroked-button
-    class="rounded signout-button"
+    class="rounded m-t-10"
     i18n="@@sign-out"
   >
     Sign out

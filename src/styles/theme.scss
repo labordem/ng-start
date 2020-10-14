@@ -12,16 +12,16 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/resources/color
 $palette-light-primary: mat-palette($mat-grey, 200, 100, 900);
-$palette-light-accent: mat-palette($mat-light-blue, 600, 100, 900);
-$palette-light-warn: mat-palette($mat-red, 600, 100, 800);
+$palette-light-accent: mat-palette($mat-light-blue, 800, 100, 900);
+$palette-light-warn: mat-palette($mat-red, 700, 100, 900);
 
 $palette-dark-primary: mat-palette($mat-grey, 900, 100, 900);
-$palette-dark-accent: mat-palette($mat-light-blue, 300, 100, 500);
-$palette-dark-warn: mat-palette($mat-red, 500, 100, 900);
+$palette-dark-accent: mat-palette($mat-light-blue, 500, 100, 700);
+$palette-dark-warn: mat-palette($mat-red, 500, 100, 700);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$light-theme: mat-light-theme(
+$theme-light: mat-light-theme(
   (
     color: (
       primary: $palette-light-primary,
@@ -30,7 +30,9 @@ $light-theme: mat-light-theme(
     ),
   )
 );
-$dark-theme: mat-dark-theme(
+$foreground-light: map-get($theme-light, foreground);
+
+$theme-dark: mat-dark-theme(
   (
     color: (
       primary: $palette-dark-primary,
@@ -39,11 +41,13 @@ $dark-theme: mat-dark-theme(
     ),
   )
 );
+$foreground-dark: map-get($theme-dark, foreground);
 
 // Use color palettes from your template
 @mixin class-theme($palette, $shade) {
   $background: mat-color($palette, $shade);
   $color: mat-color($palette, #{$shade}-contrast);
+
   background: $background;
   color: $color;
 
@@ -58,97 +62,110 @@ $dark-theme: mat-dark-theme(
   }
 }
 
-@mixin class-theme-contrast($palette, $shade) {
-  color: mat-color($palette, $shade);
+@mixin class-theme-color($palette, $shade) {
+  $color: mat-color($palette, $shade);
+
+  color: $color;
 }
 
-@mixin class-builder($palette-primary, $palette-accent, $palette-warn) {
+@mixin class-builder(
+  $palette-primary,
+  $palette-accent,
+  $palette-warn,
+  $foreground
+) {
   .theme-primary {
     @include class-theme($palette-primary, default);
   }
 
-  .theme-primary-contrast {
-    @include class-theme-contrast($palette-primary, default);
+  .theme-primary-color {
+    @include class-theme-color($palette-primary, default);
   }
 
   .theme-primary-darker {
     @include class-theme($palette-primary, darker);
   }
 
-  .theme-primary-contrast-darker {
-    @include class-theme-contrast($palette-primary, darker);
+  .theme-primary-color-darker {
+    @include class-theme-color($palette-primary, darker);
   }
 
   .theme-primary-lighter {
     @include class-theme($palette-primary, lighter);
   }
 
-  .theme-primary-contrast-lighter {
-    @include class-theme-contrast($palette-primary, lighter);
+  .theme-primary-color-lighter {
+    @include class-theme-color($palette-primary, lighter);
   }
 
   .theme-accent {
     @include class-theme($palette-accent, default);
   }
 
-  .theme-accent-contrast {
-    @include class-theme-contrast($palette-accent, default);
+  .theme-accent-color {
+    @include class-theme-color($palette-accent, default);
   }
 
   .theme-accent-darker {
     @include class-theme($palette-accent, darker);
   }
 
-  .theme-accent-contrast-darker {
-    @include class-theme-contrast($palette-accent, darker);
+  .theme-accent-color-darker {
+    @include class-theme-color($palette-accent, darker);
   }
 
   .theme-accent-lighter {
     @include class-theme($palette-accent, lighter);
   }
 
-  .theme-accent-contrast-lighter {
-    @include class-theme-contrast($palette-accent, lighter);
+  .theme-accent-color-lighter {
+    @include class-theme-color($palette-accent, lighter);
   }
 
   .theme-warn {
     @include class-theme($palette-warn, default);
   }
 
-  .theme-warn-contrast {
-    @include class-theme-contrast($palette-warn, default);
+  .theme-warn-color {
+    @include class-theme-color($palette-warn, default);
   }
 
   .theme-warn-darker {
     @include class-theme($palette-warn, darker);
   }
 
-  .theme-warn-contrast-darker {
-    @include class-theme-contrast($palette-warn, darker);
+  .theme-warn-color-darker {
+    @include class-theme-color($palette-warn, darker);
   }
 
   .theme-warn-lighter {
     @include class-theme($palette-warn, lighter);
   }
 
-  .theme-warn-contrast-lighter {
-    @include class-theme-contrast($palette-warn, lighter);
+  .theme-warn-color-lighter {
+    @include class-theme-color($palette-warn, lighter);
+  }
+
+  .theme-foreground-secondary-color {
+    @include class-theme-color($foreground, secondary-text);
   }
 }
 
 // body themes, light by default
-@include angular-material-theme($light-theme);
+@include angular-material-theme($theme-light);
 @include class-builder(
   $palette-light-primary,
   $palette-light-accent,
-  $palette-light-warn
+  $palette-light-warn,
+  $foreground-light
 );
 
 .theme-dark {
-  @include angular-material-color($dark-theme);
+  @include angular-material-color($theme-dark);
   @include class-builder(
     $palette-dark-primary,
     $palette-dark-accent,
-    $palette-dark-warn
+    $palette-dark-warn,
+    $foreground-dark
   );
 }

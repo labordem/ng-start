@@ -22,6 +22,7 @@
 - clic on **Use this template** from [this Github repo](https://github.com/mIaborde/ng-start) and clone your project
 - open your project with your favorite IDE, and replace ALL `ng-start` occurrence in folder tree with your project name
 - set **package.json** version to `0.0.0`
+- delete **CHANGELOG.md** file
 - you're good to go :)
 
 ## How to use it
@@ -82,8 +83,12 @@ git add .
 npm run gc
 # push changes
 git push
+
 # if you perform a release remember to keep tags
 git push --follow-tags
+
+# if your commit fail you can perform changes and retry with previous message
+npm run gc -- --retry
 ```
 
 ### Create a release

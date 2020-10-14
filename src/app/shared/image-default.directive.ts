@@ -4,14 +4,14 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
  * Replace undefined/unreachable image by a default one.
  *
  * Usage :
- * <img src="yourSource" default="profile"
+ * <img src="yourSource" default="profile .../>"
  */
 @Directive({
   // tslint:disable-next-line: directive-selector
   selector: 'img[default]',
 })
 export class ImageDefaultDirective {
-  @Input() default!: string;
+  @Input() default!: 'profile';
   @HostBinding('src') @Input() src!: string;
 
   // tslint:disable-next-line: no-unsafe-any

@@ -1,4 +1,4 @@
-mat-form-field {
+.form-field {
   width: 100%;
 
   &:first-of-type {
@@ -20,4 +20,11 @@ mat-form-field {
 
 .submit-error {
   margin: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-width: 500px;
 }

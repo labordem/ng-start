@@ -1,4 +1,4 @@
-<section class="centred-layout anime-zoom-in">
+<section class="centred anime-zoom-in">
   <mat-card class="card" [ngClass]="{ 'anime-wobble': errorMessage }">
     <mat-card-header>
       <mat-card-title i18n="@@signin">Sign In</mat-card-title>
@@ -7,7 +7,7 @@
       <form [formGroup]="formGroup" (ngSubmit)="submit(formGroup)">
         <mat-divider></mat-divider>
 
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline" color="accent" class="form-field">
           <mat-label i18n="@@enter-your-email">Enter your email</mat-label>
           <input matInput formControlName="email" autofocus />
           <mat-error
@@ -30,7 +30,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline" color="accent" class="form-field">
           <input
             matInput
             formControlName="password"

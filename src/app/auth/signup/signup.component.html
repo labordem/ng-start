@@ -1,13 +1,14 @@
-<section class="centred-layout anime-zoom-in">
+<section class="centred anime-zoom-in">
   <mat-card class="card" [ngClass]="{ 'anime-wobble': errorMessage }">
     <mat-card-header color="accent">
       <mat-card-title i18n="@@signup">Sign Up</mat-card-title>
     </mat-card-header>
+
     <mat-card-content>
       <form [formGroup]="formGroup" (ngSubmit)="submit(formGroup)" novalidate>
         <mat-divider></mat-divider>
 
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline" color="accent" class="form-field">
           <mat-label i18n="@@enter-your-username"
             >Enter your username</mat-label
           >
@@ -38,7 +39,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline" color="accent" class="form-field">
           <mat-label i18n="@@enter-your-email">Enter your email</mat-label>
           <input matInput formControlName="email" color="primary" required />
           <mat-error
@@ -61,7 +62,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline" color="accent" class="form-field">
           <input
             matInput
             formControlName="password"
@@ -98,7 +99,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" color="accent">
+        <mat-form-field appearance="outline" color="accent" class="form-field">
           <input
             matInput
             formControlName="confirmPassword"
