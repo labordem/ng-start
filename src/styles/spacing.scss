@@ -26,22 +26,18 @@ $sides: (top, bottom, left, right);
 
 @each $space in $space-amounts {
   .m-x-#{$space} {
-    margin-bottom: #{$space}px !important;
-    margin-top: #{$space}px !important;
+    margin: 0 #{$space}px !important;
   }
 
   .p-x-#{$space} {
-    padding-bottom: #{$space}px !important;
-    padding-top: #{$space}px !important;
+    padding: 0 #{$space}px !important;
   }
 
   .m-y-#{$space} {
-    margin-bottom: #{$space}px !important;
-    margin-top: #{$space}px !important;
+    margin: #{$space}px 0 !important;
   }
 
   .p-y-#{$space} {
-    padding-bottom: #{$space}px !important;
-    padding-top: #{$space}px !important;
+    padding: #{$space}px 0 !important;
   }
 }

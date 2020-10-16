@@ -1,13 +1,10 @@
-mat-sidenav-container {
-  min-height: 100%; // same height as browser window height
-}
-
-mat-sidenav-content {
+// sticky footer layout
+.layout {
   display: flex;
   flex-direction: column;
-  min-height: 100%; // same height as browser window height
+  min-height: 100%;
 }
 
-main {
-  flex: 1; // child will set to an equal size inside the container
+.content {
+  flex: 1;
 }

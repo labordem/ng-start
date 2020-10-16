@@ -2,7 +2,7 @@
   *ngIf="user; else notAuthedButtonTemplate"
   mat-raised-button
   class="rounded avatar-after"
-  [matMenuTriggerFor]="profileMenu"
+  [matMenuTriggerFor]="layoutUserMenu"
   matTooltip="Trigger profile menu"
   i18n-matTooltip
   aria-label="Button that displays a tooltip when focused or hovered over"
@@ -17,11 +17,9 @@
   />
 </button>
 
-<mat-menu #profileMenu="matMenu" xPosition="before">
+<mat-menu #layoutUserMenu="matMenu" xPosition="before" class="p-x-20 p-y-10">
   <ng-template matMenuContent>
-    <div class="layout-user-button-menu">
-      <app-layout-user [user]="user"></app-layout-user>
-    </div>
+    <app-layout-user [user]="user" [isCentred]="true"></app-layout-user>
   </ng-template>
 </mat-menu>
 

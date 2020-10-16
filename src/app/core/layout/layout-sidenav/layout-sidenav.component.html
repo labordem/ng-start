@@ -2,7 +2,7 @@
   <mat-nav-list class="m-0 p-0">
     <div class="theme-primary p-15">
       <ng-container *ngIf="user; else notAuthedButtonTemplate">
-        <app-layout-user [user]="user"></app-layout-user>
+        <app-layout-user [user]="user" [sidenav]="sidenav"></app-layout-user>
       </ng-container>
       <ng-template #notAuthedButtonTemplate>
         <a

@@ -7,7 +7,7 @@
     ></app-layout-sidenav>
   </mat-sidenav>
 
-  <mat-sidenav-content>
+  <mat-sidenav-content class="layout">
     <nav *ngIf="user || isUnknownUserAllowedToNavigate">
       <app-layout-nav
         [user]="user"
@@ -17,7 +17,7 @@
       ></app-layout-nav>
     </nav>
 
-    <main>
+    <main class="content">
       <router-outlet></router-outlet>
     </main>
 

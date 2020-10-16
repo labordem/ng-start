@@ -5,12 +5,19 @@ import { delay, tap } from 'rxjs/operators';
 import { User, UserService } from '../core/user.service';
 
 export interface AuthSigninInput {
-  email: string;
+  identifier: string;
   password: string;
 }
 
-export interface AuthSignupInput extends AuthSigninInput {
+export interface AuthSignupInput {
+  email: string;
   username: string;
+  password: string;
+}
+
+export interface AuthResponse {
+  jwt: string;
+  user: User;
 }
 
 @Injectable({
@@ -21,18 +28,24 @@ export class AuthService {
   readonly usernameRegexp = /^(?=.{4,20}$)[a-z][a-z0-9]+(?:-[a-z0-9]+)?$/;
   readonly passwordRegexp = /^.{8,191}$/;
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService // private readonly http: HttpClient
+  ) {}
 
-  signin$(authSigninInput: AuthSigninInput): Observable<User> {
+  signin$(authSigninInput: AuthSigninInput): Observable<AuthResponse> {
     return of({
-      id: 0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      username: 'johndoe',
-      email: 'john@doe.com',
-    } as User).pipe(
+      jwt: 'ey...',
+      user: {
+        id: 0,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        username: 'johndoe',
+        email: 'john.doe@kmail.com',
+        isConfirmed: true,
+      },
+    } as AuthResponse).pipe(
       delay(2000),
-      tap((user) => this.userService.update(user))
+      tap((res) => this.userService.update(res.user, res.jwt))
     );
   }
 

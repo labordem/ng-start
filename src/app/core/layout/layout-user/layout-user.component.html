@@ -1,22 +1,25 @@
-<section>
-  <div class="avatar-edit">
+<section [class]="isCentred ? 'centred' : ''">
+  <div class="avatar-edit m-b-10">
     <img
       src="{{ user?.avatar }}"
       default="profile"
-      class="avatar-img m-b-10"
       i18n-alt="@@your-avatar"
       alt="Your avatar"
+      height="100"
+      width="100"
     />
-    <div *ngIf="user" class="avatar-input" (click)="$event.stopPropagation()">
-      <app-image-input
-        [image]="user?.avatar"
-        (newImage)="onNewImage($event)"
-      ></app-image-input>
-    </div>
+    <app-image-input
+      *ngIf="user"
+      (click)="$event.stopPropagation()"
+      [image]="user?.avatar"
+      (newImage)="onNewImage($event)"
+    ></app-image-input>
   </div>
 
   <div class="mat-h2 m-0">{{ user?.username }}</div>
-  <div class="theme-foreground-secondary-color">{{ user?.email }}</div>
+  <div class="mat-small theme-foreground-secondary-color">
+    {{ user?.email }}
+  </div>
   <button
     (click)="onOpenDialog(dialogTemplate)"
     mat-stroked-button

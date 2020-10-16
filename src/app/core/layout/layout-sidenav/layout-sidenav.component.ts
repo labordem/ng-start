@@ -15,9 +15,9 @@ import { User } from '../../user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutSidenavComponent implements OnInit {
+  @Input() sidenav!: MatSidenav;
   @Input() user?: User;
   @Input() destinations?: { path: string; icon: string; name: string }[];
-  @Input() sidenav!: MatSidenav;
 
   ngOnInit(): void {}
 

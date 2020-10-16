@@ -15,9 +15,11 @@ export class UserGuard implements CanActivate {
   ) {}
 
   canActivate(): Observable<boolean | UrlTree> {
+    const jwt = this.userService.jwt;
+
     return this.userService.user$.pipe(
       map((user) => {
-        if (user === undefined) {
+        if (jwt === undefined || user === undefined) {
           return this.router.parseUrl('/auth');
         }
 
