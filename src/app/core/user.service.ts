@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 
+import { LocalStorageService } from './local-storage.service';
+
 export interface User {
   id: number;
   createdAt: Date;
@@ -22,18 +24,23 @@ export class UserService {
   user$ = this.userSubject$.asObservable();
   jwt: string | undefined;
 
-  constructor() {
-    this.init();
+  constructor(private readonly localStorageService: LocalStorageService) {
+    const user = this.localStorageService.getItemInStorage(this.userKey) as
+      | User
+      | undefined;
+    this.userSubject$.next(user);
+    const jwt = this.localStorageService.getItemInStorage(this.jwtKey) as
+      | string
+      | undefined;
+    this.jwt = jwt;
   }
 
   update(user: User, jwt?: string): User {
-    localStorage.setItem(this.userKey, JSON.stringify(user));
-    console.info(`💾 update: ${this.userKey}`);
+    this.localStorageService.setItemInStorage(this.userKey, user);
     this.userSubject$.next(user);
 
     if (jwt !== undefined) {
-      localStorage.setItem(this.jwtKey, jwt);
-      console.info(`💾 update: ${this.jwtKey}`);
+      this.localStorageService.setItemInStorage(this.jwtKey, jwt);
       this.jwt = jwt;
     }
 
@@ -41,19 +48,9 @@ export class UserService {
   }
 
   delete(): void {
-    localStorage.removeItem(this.userKey);
-    console.info(`💾 delete: ${this.userKey}`);
+    this.localStorageService.removeItemInStorage(this.userKey);
     this.userSubject$.next(undefined);
-
-    localStorage.removeItem(this.jwtKey);
-    console.info(`💾 delete: ${this.jwtKey}`);
+    this.localStorageService.removeItemInStorage(this.jwtKey);
     this.jwt = undefined;
-  }
-
-  private init(): void {
-    const userString = localStorage.getItem(this.userKey) as string;
-    const user = (JSON.parse(userString) as User) ?? undefined;
-    this.userSubject$.next(user);
-    this.jwt = localStorage.getItem(this.jwtKey) ?? undefined;
   }
 }

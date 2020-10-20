@@ -1,9 +1,13 @@
 .avatar-edit {
+  height: 100px;
   position: relative;
   width: 100px;
 
   :nth-child(1) {
     border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
   }
 
   :nth-child(2) {
