@@ -1,21 +1,22 @@
 <section style="width: 250px;">
   <mat-nav-list class="m-0 p-0">
     <div class="theme-primary p-15">
-      <ng-container *ngIf="user; else notAuthedButtonTemplate">
-        <app-layout-user [user]="user" [sidenav]="sidenav"></app-layout-user>
+      <ng-container *ngIf="user">
+        <img
+          src="{{ user?.avatar }}"
+          default="profile"
+          i18n-alt="@@your-avatar"
+          alt="Your avatar"
+          class="layout-sidenav-avatar"
+          height="100"
+          width="100"
+        />
+
+        <div class="mat-h2 m-0">{{ user?.username }}</div>
+        <div class="mat-small theme-foreground-secondary-color">
+          {{ user?.email }}
+        </div>
       </ng-container>
-      <ng-template #notAuthedButtonTemplate>
-        <a
-          mat-raised-button
-          class="rounded icon-after"
-          color="accent"
-          routerLink="/auth/signin"
-          (click)="sidenav.close()"
-        >
-          <span i18n="@@sign-in">Sign in</span>
-          <mat-icon>person</mat-icon>
-        </a>
-      </ng-template>
     </div>
     <a
       *ngFor="let destination of destinations; trackBy: trackByIndex"

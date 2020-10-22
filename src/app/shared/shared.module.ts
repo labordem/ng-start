@@ -11,7 +11,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ImageDefaultDirective } from './image-default.directive';
-import { ImageInputComponent } from './image-input/image-input.component';
 
 const materialModules = [
   MatButtonModule,
@@ -25,14 +24,13 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [ImageDefaultDirective, ImageInputComponent],
+  declarations: [ImageDefaultDirective],
   imports: [CommonModule, materialModules],
   exports: [
     materialModules,
     FormsModule,
     ReactiveFormsModule,
     ImageDefaultDirective,
-    ImageInputComponent,
   ],
 })
 export class SharedModule {}

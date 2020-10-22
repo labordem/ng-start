@@ -2,7 +2,7 @@
 .mat-stroked-button,
 .mat-button {
   &.rounded {
-    border-radius: 20px !important;
+    border-radius: 20px;
   }
 }
 
@@ -18,19 +18,7 @@
   }
 }
 
-.avatar-after {
-  padding-right: 2px !important;
-
-  img {
-    border-radius: 50%;
-    height: 33px;
-    margin-left: 5px;
-    object-fit: cover;
-    width: 33px;
-  }
-}
-
 // matMenu margin
 .cdk-overlay-pane {
-  margin-top: 5px;
+  margin-top: 10px;
 }

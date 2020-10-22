@@ -15,9 +15,9 @@ $palette-light-primary: mat-palette($mat-grey, 200, 100, 900);
 $palette-light-accent: mat-palette($mat-light-blue, 800, 100, 900);
 $palette-light-warn: mat-palette($mat-red, 700, 100, 900);
 
-$palette-dark-primary: mat-palette($mat-grey, 900, 700, 900);
-$palette-dark-accent: mat-palette($mat-light-blue, 700, 500, 900);
-$palette-dark-warn: mat-palette($mat-red, 700, 500, 900);
+$palette-dark-primary: mat-palette($mat-grey, 900, 400, 900);
+$palette-dark-accent: mat-palette($mat-light-blue, 300, 100, 400);
+$palette-dark-warn: mat-palette($mat-red, 400, 100, 400);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".

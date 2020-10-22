@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
@@ -80,8 +81,8 @@ export class SignupComponent implements OnDestroy {
           await dialog.afterClosed().toPromise();
           this.router.navigate(['/home']);
         },
-        error: (err: string) => {
-          this.errorMessage = err;
+        error: (err: HttpErrorResponse) => {
+          this.errorMessage = (err.error as { message: string })?.message ?? '';
           this.isLoading = false;
           this.formGroup.enable();
         },

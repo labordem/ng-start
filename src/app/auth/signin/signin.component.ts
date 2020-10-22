@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import {
   AbstractControl,
@@ -50,10 +51,12 @@ export class SigninComponent implements OnDestroy {
 
       return undefined;
     }
+
     const authSigninInput: AuthSigninInput = {
       identifier: this.identifier?.value as string,
       password: this.password?.value as string,
     };
+
     this.errorMessage = '';
     this.hidePassword = true;
     this.isLoading = true;
@@ -64,8 +67,8 @@ export class SigninComponent implements OnDestroy {
       .pipe(takeUntil(this.isDestroyed$))
       .subscribe({
         next: () => this.router.navigate(['home']),
-        error: (err: string) => {
-          this.errorMessage = err;
+        error: (err: HttpErrorResponse) => {
+          this.errorMessage = (err.error as { message: string })?.message ?? '';
           this.isLoading = false;
           this.formGroup.enable();
         },

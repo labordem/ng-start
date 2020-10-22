@@ -1,0 +1,30 @@
+@mixin round-button($sizeInPixels, $paddingInPixels) {
+  border-radius: 50%;
+  height: $sizeInPixels + $paddingInPixels;
+  line-height: 1;
+  min-width: unset;
+  padding: 0;
+  width: $sizeInPixels + $paddingInPixels;
+
+  img {
+    border-radius: 50%;
+    height: 100%;
+    object-fit: cover;
+    padding: $paddingInPixels;
+    width: 100%;
+  }
+}
+
+.round {
+  @include round-button(32px, 2px);
+
+  &.large {
+    @include round-button(100px, 10px);
+  }
+}
+
+/* stylelint-disable */
+::ng-deep .mat-menu-content {
+  padding: 0 !important;
+}
+/* stylelint-enable */

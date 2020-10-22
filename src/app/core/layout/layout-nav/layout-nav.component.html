@@ -20,7 +20,7 @@
       width="39"
       height="39"
     />
-    <h1 class="app-brand-title p-l-5">{{ appTitle }}</h1>
+    <h1 class="app-brand-title p-x-5">{{ appTitle }}</h1>
   </div>
   <div class="media-hide-on-small p-0">
     <a
@@ -36,10 +36,5 @@
 
   <span class="fill-remaining-space media-hide-on-small"></span>
 
-  <app-layout-user-button
-    [user]="user"
-    class="media-hide-on-small"
-  ></app-layout-user-button>
-
-  <app-layout-settings></app-layout-settings>
+  <app-layout-settings [user]="user"></app-layout-settings>
 </section>

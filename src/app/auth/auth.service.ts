@@ -1,5 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 
 import { User, UserService } from '../core/user.service';
@@ -33,6 +34,25 @@ export class AuthService {
   ) {}
 
   signin$(authSigninInput: AuthSigninInput): Observable<AuthResponse> {
+    if (
+      authSigninInput.identifier !== 'johndoe' &&
+      authSigninInput.identifier !== 'johndoe@test.com'
+    ) {
+      return throwError(
+        new HttpErrorResponse({
+          error: { message: 'incorrect username or email' },
+        })
+      );
+    }
+
+    if (authSigninInput.password !== 'johndoepass') {
+      return throwError(
+        new HttpErrorResponse({
+          error: { message: 'incorrect password' },
+        })
+      );
+    }
+
     return of({
       jwt: 'ey...',
       user: {
@@ -40,7 +60,7 @@ export class AuthService {
         createdAt: new Date(),
         updatedAt: new Date(),
         username: 'johndoe',
-        email: 'john.doe@kmail.com',
+        email: 'johndoe@test.com',
         isConfirmed: true,
       },
     } as AuthResponse).pipe(
@@ -50,6 +70,22 @@ export class AuthService {
   }
 
   signup$(authSignupInput: AuthSignupInput): Observable<User> {
+    if (authSignupInput.email === 'johndoe@test.com') {
+      return throwError(
+        new HttpErrorResponse({
+          error: { message: 'email already exists' },
+        })
+      );
+    }
+
+    if (authSignupInput.username === 'johndoe') {
+      return throwError(
+        new HttpErrorResponse({
+          error: { message: 'username already exists' },
+        })
+      );
+    }
+
     return of({
       id: 0,
       createdAt: new Date(),

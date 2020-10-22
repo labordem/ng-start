@@ -13,8 +13,6 @@ import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.comp
 import { LayoutNavComponent } from './layout/layout-nav/layout-nav.component';
 import { LayoutSettingsComponent } from './layout/layout-settings/layout-settings.component';
 import { LayoutSidenavComponent } from './layout/layout-sidenav/layout-sidenav.component';
-import { LayoutUserButtonComponent } from './layout/layout-user-button/layout-user-button.component';
-import { LayoutUserComponent } from './layout/layout-user/layout-user.component';
 import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
@@ -24,8 +22,6 @@ import { LayoutComponent } from './layout/layout.component';
     LayoutFooterComponent,
     LayoutSidenavComponent,
     LayoutNavComponent,
-    LayoutUserComponent,
-    LayoutUserButtonComponent,
   ],
   imports: [
     BrowserModule,

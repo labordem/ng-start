@@ -13,15 +13,21 @@ export class ThemeService {
     private readonly localStorageService: LocalStorageService,
     private readonly rendererFactory: RendererFactory2
   ) {
-    this.isDarkToggled = this.localStorageService.getItemInStorage(
-      this.isDarkToggledKey
-    ) as boolean;
     // tslint:disable-next-line: no-null-keyword
-    this.renderer = rendererFactory.createRenderer(undefined, null);
+    this.renderer = this.rendererFactory.createRenderer(undefined, null);
   }
 
   init(): void {
-    this.applyProperTheme(!!this.isDarkToggled);
+    const themeFromStorage = this.localStorageService.getItemInStorage(
+      this.isDarkToggledKey
+    ) as boolean | undefined;
+
+    this.isDarkToggled =
+      themeFromStorage !== undefined
+        ? (this.isDarkToggled = themeFromStorage)
+        : window?.matchMedia('(prefers-color-scheme: dark)')?.matches ?? false;
+
+    this.applyProperTheme(this.isDarkToggled);
   }
 
   toggleDark(): void {
