@@ -7,6 +7,7 @@ import { version } from '../../package.json';
 export const environment = {
   production: false,
   version: `(dev) v${version}`,
+  apiUrl: 'http://localhost:1337',
 };
 
 /*

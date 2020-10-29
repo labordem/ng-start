@@ -45,7 +45,7 @@ export class LayoutSettingsComponent implements OnInit {
 
   onSignout(): void {
     this.userService.delete();
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate(['/auth']);
   }
 
   onOpenDialog(templateRef: TemplateRef<Component>): void {

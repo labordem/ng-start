@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class HttpJwtInterceptor implements HttpInterceptor {
   constructor(private readonly userService: UserService) {}
 
   intercept(
@@ -25,7 +25,7 @@ export class JwtInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${jwt}`,
       });
       const requestWithJwt = request.clone({ headers });
-      console.info('🔑 intercept: jwt added to request');
+      console.info('🎾 intercept: jwt added to request');
 
       return next.handle(requestWithJwt);
     }

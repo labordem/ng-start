@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
@@ -25,32 +25,25 @@ export interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  readonly emailRegexp = /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-  readonly usernameRegexp = /^(?=.{4,20}$)[a-z][a-z0-9]+(?:-[a-z0-9]+)?$/;
-  readonly passwordRegexp = /^.{8,191}$/;
-
   constructor(
-    private readonly userService: UserService // private readonly http: HttpClient
+    private readonly userService: UserService,
+    private readonly http: HttpClient
   ) {}
 
   signin$(authSigninInput: AuthSigninInput): Observable<AuthResponse> {
+    // // Strapi ready signin method :
+    // return this.http
+    //   .post<AuthResponse>(`${environment.apiUrl}/auth/local`, authSigninInput)
+    //   .pipe(tap((res) => this.userService.update(res.user, res.jwt)));
+
     if (
       authSigninInput.identifier !== 'johndoe' &&
       authSigninInput.identifier !== 'johndoe@test.com'
     ) {
-      return throwError(
-        new HttpErrorResponse({
-          error: { message: 'incorrect username or email' },
-        })
-      );
+      return throwError(new Error('Auth.form.identifier.invalid'));
     }
-
     if (authSigninInput.password !== 'johndoepass') {
-      return throwError(
-        new HttpErrorResponse({
-          error: { message: 'incorrect password' },
-        })
-      );
+      return throwError(new Error('Auth.form.password.invalid'));
     }
 
     return of({
@@ -69,32 +62,35 @@ export class AuthService {
     );
   }
 
-  signup$(authSignupInput: AuthSignupInput): Observable<User> {
-    if (authSignupInput.email === 'johndoe@test.com') {
-      return throwError(
-        new HttpErrorResponse({
-          error: { message: 'email already exists' },
-        })
-      );
-    }
+  signup$(authSignupInput: AuthSignupInput): Observable<AuthResponse> {
+    // // Strapi ready signup method :
+    // return this.http
+    //   .post<AuthResponse>(
+    //     `${environment.apiUrl}/auth/local/register`,
+    //     authSignupInput
+    //   )
+    //   .pipe(tap((res) => this.userService.update(res.user, res.jwt)));
 
+    if (authSignupInput.email === 'johndoe@test.com') {
+      return throwError(new Error('Auth.form.error.email.taken'));
+    }
     if (authSignupInput.username === 'johndoe') {
-      return throwError(
-        new HttpErrorResponse({
-          error: { message: 'username already exists' },
-        })
-      );
+      return throwError(new Error('Auth.form.error.username.taken'));
     }
 
     return of({
-      id: 0,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      username: authSignupInput.username,
-      email: authSignupInput.email,
-    } as User).pipe(
+      jwt: 'ey...',
+      user: {
+        id: 0,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        username: authSignupInput.username,
+        email: authSignupInput.email,
+        isConfirmed: false,
+      },
+    } as AuthResponse).pipe(
       delay(2000),
-      tap((user) => this.userService.update(user))
+      tap((res) => this.userService.update(res.user, res.jwt))
     );
   }
 }

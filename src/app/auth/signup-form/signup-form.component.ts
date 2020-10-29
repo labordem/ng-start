@@ -1,5 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -10,79 +14,65 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { SnackbarService } from 'src/app/core/snackbar.service';
 
-import { AuthService, AuthSignupInput } from '../auth.service';
+import { AuthService } from '../auth.service';
 import { DialogCheckMailboxComponent } from '../dialog-check-mailbox/dialog-check-mailbox.component';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
+  selector: 'app-signup-form',
+  templateUrl: './signup-form.component.html',
   styleUrls: ['../auth.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignupComponent implements OnDestroy {
+export class SignupFormComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
-  errorMessage = '';
-  hidePassword = true;
   isLoading = false;
+  isPasswordHidden = true;
+  errorMessage = '';
   private readonly isDestroyed$ = new Subject<boolean>();
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.formGroup.controls;
+  }
+
   constructor(
-    private readonly authService: AuthService,
     private readonly formBuilder: FormBuilder,
+    private readonly authService: AuthService,
     private readonly router: Router,
+    private readonly snackbarService: SnackbarService,
     private readonly dialog: MatDialog
   ) {
-    this.formGroup = this.createFormGroup('submit');
+    this.formGroup = this.createFormGroup('change');
   }
 
-  get email(): AbstractControl | null {
-    return this.formGroup.get('email');
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    console.info(`💥 destroy: ${this.constructor.name}`);
+    this.isDestroyed$.next(true);
+    this.isDestroyed$.complete();
   }
 
-  get password(): AbstractControl | null {
-    return this.formGroup.get('password');
-  }
-
-  get username(): AbstractControl | null {
-    return this.formGroup.get('username');
-  }
-
-  get confirmPassword(): AbstractControl | null {
-    return this.formGroup.get('confirmPassword');
-  }
-
-  submit(formGroup: FormGroup): Subscription | undefined {
-    if (!formGroup.valid) {
-      this.formGroup = this.createFormGroup(
-        'change',
-        formGroup.value as { [key: string]: unknown }
-      );
-      this.formGroup.markAllAsTouched();
-
-      return undefined;
-    }
-    const authSignupInput: AuthSignupInput = {
-      username: this.username?.value as string,
-      email: this.email?.value as string,
-      password: this.password?.value as string,
-    };
-    this.errorMessage = '';
-    this.hidePassword = true;
+  onSubmit(): Subscription | undefined {
     this.isLoading = true;
     this.formGroup.disable();
 
     return this.authService
-      .signup$(authSignupInput)
+      .signup$({
+        username: this.f.username?.value as string,
+        email: this.f.email?.value as string,
+        password: this.f.password?.value as string,
+      })
       .pipe(takeUntil(this.isDestroyed$))
       .subscribe({
         next: async () => {
           const dialog = this.dialog.open(DialogCheckMailboxComponent);
           await dialog.afterClosed().toPromise();
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         },
-        error: (err: HttpErrorResponse) => {
-          this.errorMessage = (err.error as { message: string })?.message ?? '';
+        error: (err: Error) => {
+          this.errorMessage = err.message;
           this.isLoading = false;
           this.formGroup.enable();
         },
@@ -93,16 +83,6 @@ export class SignupComponent implements OnDestroy {
     this.dialog.closeAll();
 
     return this.router.navigate(['home']);
-  }
-
-  hasError(inputName: string, errorChecked: string): boolean {
-    return this.formGroup.get(inputName)?.hasError(errorChecked) ?? false;
-  }
-
-  ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
-    this.isDestroyed$.next(true);
-    this.isDestroyed$.complete();
   }
 
   private createFormGroup(
@@ -116,22 +96,21 @@ export class SignupComponent implements OnDestroy {
           null,
           [
             Validators.required,
-            Validators.pattern(this.authService.usernameRegexp),
+            Validators.pattern(/^(?=.{3,20}$)[a-z][a-z0-9]+(?:-[a-z0-9]+)?$/),
           ],
         ],
         email: [
           null,
           [
             Validators.required,
-            Validators.pattern(this.authService.emailRegexp),
+            Validators.pattern(
+              /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+            ),
           ],
         ],
         password: [
           null,
-          [
-            Validators.required,
-            Validators.pattern(this.authService.passwordRegexp),
-          ],
+          [Validators.required, Validators.pattern(/^.{8,191}$/)],
         ],
         confirmPassword: [null, [Validators.required]],
       },
@@ -176,16 +155,14 @@ export class SignupComponent implements OnDestroy {
 
   private mustNotBeRejectedValidator(): (formGroup: FormGroup) => void {
     return (formGroup: FormGroup) => {
-      if (this.errorMessage === 'email already exists') {
+      if (this.errorMessage === 'Auth.form.error.email.taken') {
         formGroup.controls.email.setErrors({ mustNotBeRejected: true });
-        this.errorMessage = $localize`:@@please-choose-another-email:Please choose another email`;
-      }
-      if (this.errorMessage === 'username already exists') {
+      } else if (this.errorMessage === 'Auth.form.error.username.taken') {
         formGroup.controls.username.setErrors({ mustNotBeRejected: true });
-        this.errorMessage = $localize`:@@please-choose-another-username:Please choose another username`;
+      } else if (this.errorMessage !== '') {
+        this.snackbarService.open(this.errorMessage, 'warn');
       }
-
-      return;
+      this.errorMessage = '';
     };
   }
 }

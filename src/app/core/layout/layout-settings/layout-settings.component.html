@@ -20,54 +20,47 @@
   <mat-icon *ngIf="!user">person</mat-icon>
 </button>
 
-<!-- <ng-template #unknownUserButtonTemplate>
-  <button
-    mat-raised-button
-    class="round m-x-10 mat-elevation-z1"
-    [matMenuTriggerFor]="layoutSettingsMenu"
-    matTooltip="Trigger settings menu"
-    i18n-matTooltip
-    aria-label="Button that displays a tooltip when focused or hovered over"
-    i18n-aria-label="@@button-with-tooltip"
-  ></button>
-</ng-template> -->
-
 <mat-menu
   #layoutSettingsMenu="matMenu"
   xPosition="before"
   class="layout-settings-menu"
 >
   <ng-template matMenuContent>
-    <div class="centred p-10 theme-primary">
-      <ng-container *ngIf="user; else signinButtonTemplate">
-        <button
-          mat-menu-item
-          class="round large m-x-10"
-          matTooltip="Click here to set a new image"
-          i18n-matTooltip
-          matTooltipPosition="above"
-          (click)="$event.stopPropagation(); file.click()"
-        >
-          <img
-            src="{{ user.avatar }}"
-            default="profile"
-            i18n-alt="@@your-avatar"
-            alt="Your avatar"
-          />
-          <input
-            #file
-            type="file"
-            accept="image/*"
-            (change)="onImportImage($event)"
-          />
-        </button>
+    <div *ngIf="user" class="centred p-10 theme-primary">
+      <button
+        mat-menu-item
+        class="round large m-x-10"
+        matTooltip="Click here to set a new image"
+        i18n-matTooltip
+        matTooltipPosition="above"
+        (click)="$event.stopPropagation(); file.click()"
+      >
+        <img
+          src="{{ user.avatar }}"
+          default="profile"
+          i18n-alt="@@your-avatar"
+          alt="Your avatar"
+        />
+        <input
+          #file
+          type="file"
+          accept="image/*"
+          (change)="onImportImage($event)"
+        />
+      </button>
 
-        <div class="mat-h2 m-0">{{ user.username }}</div>
-        <div class="mat-small theme-foreground-secondary-color">
-          {{ user.email }}
-        </div>
-      </ng-container>
+      <div class="mat-h2 m-0">{{ user.username }}</div>
+      <div class="mat-small theme-foreground-secondary-color">
+        {{ user.email }}
+      </div>
     </div>
+    <ng-container *ngIf="!user">
+      <a mat-menu-item routerLink="/auth">
+        <mat-icon>person</mat-icon>
+        <span i18n="@@sign-in">Sign in</span>
+      </a>
+      <mat-divider></mat-divider>
+    </ng-container>
     <ng-container *ngIf="user">
       <button mat-menu-item (click)="onOpenDialog(dialogTemplate)">
         <mat-icon>exit_to_app</mat-icon>
@@ -108,16 +101,4 @@
       Sign out
     </button>
   </div>
-</ng-template>
-
-<ng-template #signinButtonTemplate>
-  <a
-    mat-raised-button
-    class="rounded icon-after m-x-10"
-    routerLink="/auth/signin"
-    color="accent"
-  >
-    <span i18n="@@sign-in">Sign in</span>
-    <mat-icon>person</mat-icon>
-  </a>
 </ng-template>

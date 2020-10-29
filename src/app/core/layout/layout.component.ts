@@ -83,7 +83,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   onSignout(): void {
     this.userService.delete();
-    this.router.navigate(['/auth/signin']);
+    this.router.navigate(['/auth']);
   }
 
   trackByIndex(index: number): number {

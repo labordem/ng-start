@@ -1,41 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { AuthComponent } from './auth.component';
 import { DialogCheckMailboxComponent } from './dialog-check-mailbox/dialog-check-mailbox.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+import { SigninFormComponent } from './signin-form/signin-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'signin', pathMatch: 'full' },
-  { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
-];
+const routes: Routes = [{ path: '', component: AuthComponent }];
 
 @NgModule({
-  declarations: [SigninComponent, SignupComponent, DialogCheckMailboxComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    SharedModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressBarModule,
-    MatDividerModule,
-    MatIconModule,
+  declarations: [
+    AuthComponent,
+    DialogCheckMailboxComponent,
+    SigninFormComponent,
+    SignupFormComponent,
   ],
+  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 })
 export class AuthModule {}

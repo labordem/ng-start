@@ -8,7 +8,8 @@ import { environment } from 'src/environments/environment';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { JwtInterceptor } from './jwt.interceptor';
+import { HttpErrorInterceptor } from './http-error.interceptor';
+import { HttpJwtInterceptor } from './http-jwt.interceptor';
 import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.component';
 import { LayoutNavComponent } from './layout/layout-nav/layout-nav.component';
 import { LayoutSettingsComponent } from './layout/layout-settings/layout-settings.component';
@@ -37,7 +38,12 @@ import { LayoutComponent } from './layout/layout.component';
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
+      useClass: HttpJwtInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true,
     },
   ],
