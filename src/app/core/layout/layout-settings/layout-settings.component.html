@@ -20,16 +20,12 @@
   <mat-icon *ngIf="!user">person</mat-icon>
 </button>
 
-<mat-menu
-  #layoutSettingsMenu="matMenu"
-  xPosition="before"
-  class="layout-settings-menu"
->
+<mat-menu #layoutSettingsMenu="matMenu" xPosition="before">
   <ng-template matMenuContent>
     <div *ngIf="user" class="centred p-10 theme-primary">
       <button
         mat-menu-item
-        class="round large m-x-10"
+        class="round large m-x-20"
         matTooltip="Click here to set a new image"
         i18n-matTooltip
         matTooltipPosition="above"

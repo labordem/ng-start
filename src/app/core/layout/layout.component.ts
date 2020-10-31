@@ -2,10 +2,8 @@ import {
   AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -29,15 +27,11 @@ export interface Destination {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
-  @ViewChild('appTitleElement') appTitleElement?: ElementRef<HTMLElement>;
-  @ViewChild('appDescriptionElement') appDescriptionElement?: ElementRef<
-    HTMLElement
-  >;
   appTitle = '';
   appDescription = '';
-  appVersion = environment.version;
   destinations: Destination[] = [];
   user: User | undefined;
+  readonly appVersion = environment.version;
   readonly isUnknownUserAllowedToNavigate = true;
   private readonly isDestroyed$ = new Subject<boolean>();
 
@@ -49,7 +43,6 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     private readonly router: Router
   ) {
     this.themeService.init();
-    // Don't forget to add destinations in template for Angular i18n detection !
     this.destinations = [
       {
         name: $localize`:@@home:Home`,
@@ -77,7 +70,6 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngAfterViewChecked(): void {
-    this.setTitle();
     this.setMeta();
   }
 
@@ -96,14 +88,10 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.isDestroyed$.complete();
   }
 
-  private setTitle(): void {
-    this.appTitle = this.appTitleElement?.nativeElement?.textContent as string;
-    this.titleService.setTitle(this.appTitle);
-  }
-
   private setMeta(): void {
-    this.appDescription = this.appDescriptionElement?.nativeElement
-      ?.textContent as string;
+    this.appTitle = $localize`:@@app-title:ng-start`;
+    this.titleService.setTitle(this.appTitle);
+    this.appDescription = $localize`:@@app-description:Angular progressive web app starter.`;
     this.metaService.updateTag({
       name: 'description',
       content: this.appDescription,

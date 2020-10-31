@@ -21,7 +21,7 @@ export class NotUserGuard implements CanActivate {
           return true;
         }
 
-        return this.router.parseUrl('/home');
+        return this.router.parseUrl('/');
       })
     );
   }
