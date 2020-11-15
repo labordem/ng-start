@@ -1,10 +1,15 @@
 <section class="centred anime-zoom-in">
-  <mat-card class="p-0 auth-card" [ngClass]="{ 'anime-wobble': hasError }">
+  <mat-card
+    class="p-0 auth-card"
+    [ngClass]="{ 'anime-wobble': !!errorMessage }"
+  >
     <mat-tab-group mat-stretch-tabs animationDuration="0ms" color="accent">
       <mat-tab i18n-label="@@signin" label="Sign in">
         <ng-template matTabContent>
           <mat-card-content class="p-20">
-            <app-signin-form></app-signin-form>
+            <app-signin-form
+              (errorHappens)="onErrorHappens($event)"
+            ></app-signin-form>
           </mat-card-content>
         </ng-template>
       </mat-tab>
@@ -12,7 +17,9 @@
       <mat-tab i18n-label="@@signup" label="Sign up">
         <ng-template matTabContent>
           <mat-card-content class="p-20">
-            <app-signup-form></app-signup-form>
+            <app-signup-form
+              (errorHappens)="onErrorHappens($event)"
+            ></app-signup-form>
           </mat-card-content>
         </ng-template>
       </mat-tab>

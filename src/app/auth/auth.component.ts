@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -7,11 +12,17 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent implements OnInit {
-  hasError = false;
+  errorMessage = '';
+
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
-  onErrorHappens(hasError: boolean): void {
-    this.hasError = hasError;
+  onErrorHappens(errorMessage: string): void {
+    this.errorMessage = errorMessage;
+    this.changeDetectorRef.detectChanges();
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 500);
   }
 }

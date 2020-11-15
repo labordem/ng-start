@@ -21,19 +21,18 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       // tslint:disable-next-line: rxjs-no-implicit-any-catch
-      catchError((error: HttpErrorResponse) => {
+      catchError((err: HttpErrorResponse) => {
         let message = '';
 
-        if (error.error instanceof ErrorEvent) {
-          console.info('🎾 intercept: http client side error');
-          message = error?.error?.message;
-        } else if (error.error instanceof ProgressEvent) {
-          console.info('🎾 intercept: http server not responding');
-          message = error.message;
+        if (err.error instanceof ErrorEvent) {
+          console.info('🎾 intercept: http errorEvent');
+          message = err?.error?.message;
+        } else if (err.error instanceof ProgressEvent) {
+          console.info('🎾 intercept: http progressEvent');
+          message = err.message;
         } else {
-          console.info('🎾 intercept: http server side error');
-          message = (error.error as ServerSideError)?.message[0]?.messages[0]
-            ?.id;
+          console.info('🎾 intercept: server error response');
+          message = (err.error as ServerSideError)?.message[0]?.messages[0]?.id;
         }
 
         return throwError(new Error(message));

@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -17,15 +19,16 @@ import { takeUntil } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/snackbar.service';
 
 import { AuthService } from '../auth.service';
-import { DialogCheckMailboxComponent } from '../dialog-check-mailbox/dialog-check-mailbox.component';
+import { ConfirmEmailDialogComponent } from '../confirm-email-dialog/confirm-email-dialog.component';
 
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
-  styleUrls: ['../auth.component.scss'],
+  styleUrls: ['./signup-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent implements OnInit, OnDestroy {
+  @Output() readonly errorHappens = new EventEmitter<string>();
   formGroup: FormGroup;
   isLoading = false;
   isPasswordHidden = true;
@@ -57,6 +60,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   onSubmit(): Subscription | undefined {
     this.isLoading = true;
     this.formGroup.disable();
+    this.isPasswordHidden = true;
 
     return this.authService
       .signup$({
@@ -67,11 +71,12 @@ export class SignupFormComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.isDestroyed$))
       .subscribe({
         next: async () => {
-          const dialog = this.dialog.open(DialogCheckMailboxComponent);
+          const dialog = this.dialog.open(ConfirmEmailDialogComponent);
           await dialog.afterClosed().toPromise();
           this.router.navigate(['/']);
         },
         error: (err: Error) => {
+          this.errorHappens.emit(err.message);
           this.errorMessage = err.message;
           this.isLoading = false;
           this.formGroup.enable();

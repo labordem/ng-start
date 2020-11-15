@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 
 import { LocalStorageService } from './local-storage.service';
@@ -24,7 +25,10 @@ export class UserService {
   user$ = this.userSubject$.asObservable();
   jwt: string | undefined;
 
-  constructor(private readonly localStorageService: LocalStorageService) {
+  constructor(
+    private readonly localStorageService: LocalStorageService,
+    private readonly router: Router
+  ) {
     const user = this.localStorageService.getItemInStorage(this.userKey) as
       | User
       | undefined;
@@ -52,5 +56,6 @@ export class UserService {
     this.userSubject$.next(undefined);
     this.localStorageService.removeItemInStorage(this.jwtKey);
     this.jwt = undefined;
+    this.router.navigate(['/auth']);
   }
 }

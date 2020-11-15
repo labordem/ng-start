@@ -3,14 +3,14 @@
   class="round m-x-10 mat-elevation-z1"
   [class]="user ? '' : 'theme-accent'"
   [matMenuTriggerFor]="layoutSettingsMenu"
-  matTooltip="Trigger settings menu"
+  matTooltip="Trigger user settings menu"
   i18n-matTooltip
   aria-label="Button that displays a tooltip when focused or hovered over"
   i18n-aria-label="@@button-with-tooltip"
 >
   <img
     *ngIf="user"
-    src="{{ user.avatar }}"
+    src="{{ user!.avatar }}"
     default="profile"
     i18n-alt="@@your-avatar"
     alt="Your avatar"

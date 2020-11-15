@@ -2,8 +2,10 @@ import {
   AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   OnDestroy,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -27,6 +29,11 @@ export interface Destination {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
+  @ViewChild('appTitleElement') appTitleElement?: ElementRef<HTMLElement>;
+  @ViewChild('appDescriptionElement') appDescriptionElement?: ElementRef<
+    HTMLElement
+  >;
+
   appTitle = '';
   appDescription = '';
   destinations: Destination[] = [];
@@ -50,13 +57,8 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
         icon: 'home',
       },
       {
-        name: $localize`:@@profile:Profile`,
-        path: 'profile',
-        icon: 'person',
-      },
-      {
         name: $localize`:@@articles:Articles`,
-        path: 'articles',
+        path: 'article',
         icon: 'book',
       },
     ];
@@ -73,25 +75,26 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     this.setMeta();
   }
 
-  onSignout(): void {
-    this.userService.delete();
-    this.router.navigate(['/auth']);
-  }
-
-  trackByIndex(index: number): number {
-    return index;
-  }
-
   ngOnDestroy(): void {
     console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }
 
+  onSignout(): void {
+    this.userService.delete();
+  }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
+
   private setMeta(): void {
-    this.appTitle = $localize`:@@app-title:ng-start`;
+    this.appTitle = this.appTitleElement?.nativeElement?.textContent as string;
     this.titleService.setTitle(this.appTitle);
-    this.appDescription = $localize`:@@app-description:Angular progressive web app starter.`;
+
+    this.appDescription = this.appDescriptionElement?.nativeElement
+      ?.textContent as string;
     this.metaService.updateTag({
       name: 'description',
       content: this.appDescription,

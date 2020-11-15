@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnDestroy,
   OnInit,
+  Output,
 } from '@angular/core';
 import {
   AbstractControl,
@@ -20,10 +22,11 @@ import { AuthService } from './../auth.service';
 @Component({
   selector: 'app-signin-form',
   templateUrl: './signin-form.component.html',
-  styleUrls: ['../auth.component.scss'],
+  styleUrls: ['./signin-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SigninFormComponent implements OnInit, OnDestroy {
+  @Output() readonly errorHappens = new EventEmitter<string>();
   formGroup: FormGroup;
   isLoading = false;
   isPasswordHidden = true;
@@ -54,6 +57,7 @@ export class SigninFormComponent implements OnInit, OnDestroy {
   onSubmit(): Subscription | undefined {
     this.isLoading = true;
     this.formGroup.disable();
+    this.isPasswordHidden = true;
 
     return this.authService
       .signin$({
@@ -64,6 +68,7 @@ export class SigninFormComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () => this.router.navigate(['/']),
         error: (err: Error) => {
+          this.errorHappens.emit(err.message);
           this.errorMessage = err.message;
           this.isLoading = false;
           this.formGroup.enable();
@@ -75,7 +80,7 @@ export class SigninFormComponent implements OnInit, OnDestroy {
     updateOn: 'submit' | 'change',
     previousValue?: { [key: string]: unknown }
   ): FormGroup {
-    return this.formBuilder.group(
+    const formGroup = this.formBuilder.group(
       // tslint:disable
       {
         identifier: [undefined, [Validators.required]],
@@ -87,6 +92,11 @@ export class SigninFormComponent implements OnInit, OnDestroy {
       }
       // tslint:enable
     );
+    if (previousValue !== undefined) {
+      formGroup.setValue(previousValue);
+    }
+
+    return formGroup;
   }
 
   private mustNotBeRejectedValidator(): () => void {

@@ -8,7 +8,6 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 
 import { ThemeService } from '../../theme.service';
 import { User, UserService } from '../../user.service';
@@ -27,7 +26,6 @@ export class LayoutSettingsComponent implements OnInit {
     @Inject(LOCALE_ID) readonly localeId: string,
     private readonly themeService: ThemeService,
     private readonly userService: UserService,
-    private readonly router: Router,
     private readonly dialog: MatDialog
   ) {}
 
@@ -45,7 +43,6 @@ export class LayoutSettingsComponent implements OnInit {
 
   onSignout(): void {
     this.userService.delete();
-    this.router.navigate(['/auth']);
   }
 
   onOpenDialog(templateRef: TemplateRef<Component>): void {

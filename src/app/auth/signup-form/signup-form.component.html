@@ -103,15 +103,13 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-divider></mat-divider>
-
-  <div class="button-group m-t-20">
+  <div class="button-group">
     <mat-progress-bar
       *ngIf="isLoading"
       mode="indeterminate"
       color="accent"
     ></mat-progress-bar>
-
+    <span class="fill-remaining-space"></span>
     <button
       *ngIf="!isLoading"
       [disabled]="!formGroup.valid"

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { NotUserGuard } from './core/not-user.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,8 +17,12 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    canActivate: [NotUserGuard],
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'article',
+    loadChildren: () =>
+      import('./article/article.module').then((m) => m.ArticleModule),
   },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];

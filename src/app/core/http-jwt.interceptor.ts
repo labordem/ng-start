@@ -1,12 +1,13 @@
 import {
+  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
-  HttpHeaders,
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 import { UserService } from './user.service';
 
@@ -19,17 +20,26 @@ export class HttpJwtInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     const jwt = this.userService.jwt;
-
+    let newRequest = request;
     if (jwt !== undefined) {
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${jwt}`,
+      newRequest = request.clone({
+        setHeaders: { Authorization: `Bearer ${jwt}` },
       });
-      const requestWithJwt = request.clone({ headers });
       console.info('🎾 intercept: jwt added to request');
-
-      return next.handle(requestWithJwt);
     }
 
-    return next.handle(request);
+    return next.handle(newRequest).pipe(
+      tap(
+        () => {},
+        (err: unknown) => {
+          if (err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              console.info('🎾 intercept: 401 error, user deleted');
+              this.userService.delete();
+            }
+          }
+        }
+      )
+    );
   }
 }

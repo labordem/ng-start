@@ -1,8 +1,8 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline" color="accent" class="form-field">
-    <mat-label i18n="@@enter-your-identifier"
-      >Enter your username or email</mat-label
-    >
+    <mat-label i18n="@@enter-your-identifier">
+      Enter your username or email
+    </mat-label>
     <input matInput formControlName="identifier" />
     <mat-error
       *ngIf="f.identifier?.errors?.required"
@@ -52,15 +52,22 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-divider></mat-divider>
-
-  <div class="button-group m-t-20">
+  <div class="button-group">
     <mat-progress-bar
       *ngIf="isLoading"
       mode="indeterminate"
       color="accent"
     ></mat-progress-bar>
-
+    <button
+      type="button"
+      *ngIf="!isLoading"
+      mat-button
+      color="accent"
+      routerLink="/auth/forgot-password"
+      i18n="@@forgot-your-password"
+    >
+      Forgot your password?
+    </button>
     <button
       [disabled]="!formGroup.valid"
       *ngIf="!isLoading"
@@ -70,17 +77,6 @@
     >
       <span i18n="@@submit">Submit</span>
       <mat-icon>send</mat-icon>
-    </button>
-
-    <button
-      type="button"
-      *ngIf="!isLoading"
-      mat-button
-      color="accent"
-      routerLink="/auth/signup"
-      i18n="@@forgot-your-password"
-    >
-      Forgot your password?
     </button>
   </div>
 </form>

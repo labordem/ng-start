@@ -17,11 +17,13 @@ export class NotUserGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> {
     return this.userService.user$.pipe(
       map((user) => {
-        if (user === undefined) {
-          return true;
+        if (user !== undefined) {
+          console.info(`⚔️ guard: ${this.constructor.name}`);
+
+          return this.router.parseUrl('/');
         }
 
-        return this.router.parseUrl('/');
+        return true;
       })
     );
   }
