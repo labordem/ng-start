@@ -17,8 +17,8 @@ export class ConfirmedUserGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> {
     return this.userService.user$.pipe(
       map((user) => {
-        const isConfirmed = user?.isConfirmed ?? false;
-        if (!isConfirmed) {
+        const confirmed = user?.confirmed ?? false;
+        if (!confirmed) {
           console.info(`⚔️ guard: ${this.constructor.name}`);
 
           return this.router.parseUrl('/auth/confirm-email');

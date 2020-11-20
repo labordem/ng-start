@@ -11,7 +11,7 @@ export interface User {
   username: string;
   email: string;
   avatar?: string;
-  isConfirmed?: boolean;
+  confirmed?: boolean;
   description?: string;
 }
 
