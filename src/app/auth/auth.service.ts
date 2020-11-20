@@ -72,7 +72,7 @@ export class AuthService {
         updatedAt: new Date(),
         username: 'johndoe',
         email: 'johndoe@test.com',
-        isConfirmed: true,
+        confirmed: true,
       },
     } as AuthOutput).pipe(
       delay(2000),
@@ -110,7 +110,7 @@ export class AuthService {
         updatedAt: new Date(),
         username: input.username,
         email: input.email,
-        isConfirmed: false,
+        confirmed: false,
       },
     } as AuthOutput).pipe(
       delay(2000),
@@ -142,7 +142,7 @@ export class AuthService {
         updatedAt: new Date(),
         username: 'johndoe',
         email: 'johndoe@test.com',
-        isConfirmed: true,
+        confirmed: true,
       },
     } as AuthOutput).pipe(
       delay(2000),

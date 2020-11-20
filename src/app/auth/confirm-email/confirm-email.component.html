@@ -4,7 +4,7 @@
       <ng-container *ngIf="token; else emailNotConfirmedTemplate">
         <ng-container
           *ngIf="
-            user?.isConfirmed;
+            user?.confirmed;
             then emailConfirmedTemplate;
             else emailConfirmErrorTemplate
           "
