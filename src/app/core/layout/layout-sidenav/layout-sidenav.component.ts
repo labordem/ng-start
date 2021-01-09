@@ -18,7 +18,7 @@ import { Destination } from '../layout.component';
 export class LayoutSidenavComponent implements OnInit {
   @Input() sidenav!: MatSidenav;
   @Input() user?: User;
-  @Input() destinations?: Destination[];
+  @Input() destinations?: { path: string; icon: string; name: string }[];
 
   ngOnInit(): void {}
 

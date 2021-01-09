@@ -1,6 +1,7 @@
 <section class="layout-nav theme-primary mat-elevation-z2 p-2">
   <div class="media-hide-on-large">
     <button
+      *ngIf="sidenav"
       mat-icon-button
       (click)="sidenav.toggle()"
       matTooltip="Toggle sidenav"

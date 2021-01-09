@@ -16,10 +16,10 @@ import { Destination } from '../layout.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutNavComponent implements OnInit {
-  @Input() sidenav!: MatSidenav;
+  @Input() sidenav?: MatSidenav;
   @Input() appTitle?: string;
   @Input() user?: User;
-  @Input() destinations?: Destination[];
+  @Input() destinations?: { path: string; icon: string; name: string }[];
 
   ngOnInit(): void {}
 
