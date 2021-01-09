@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { HttpErrorInterceptor } from './http-error.interceptor';
-import { HttpJwtInterceptor } from './http-jwt.interceptor';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+import { HttpJwtInterceptor } from './interceptors/http-jwt.interceptor';
 import { LayoutFooterComponent } from './layout/layout-footer/layout-footer.component';
 import { LayoutNavComponent } from './layout/layout-nav/layout-nav.component';
 import { LayoutSettingsComponent } from './layout/layout-settings/layout-settings.component';

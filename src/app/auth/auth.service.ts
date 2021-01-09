@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, switchMap, tap } from 'rxjs/operators';
 
-import { User, UserService } from '../core/user.service';
+import { User, UserService } from '../core/services/user.service';
 
 export interface SigninInput {
   identifier: string;

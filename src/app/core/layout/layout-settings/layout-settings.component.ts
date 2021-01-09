@@ -9,8 +9,8 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { ThemeService } from '../../theme.service';
-import { User, UserService } from '../../user.service';
+import { ThemeService } from '../../services/theme.service';
+import { User, UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-layout-settings',

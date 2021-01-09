@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
-import { SnackbarService } from 'src/app/core/snackbar.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
 import { AuthService } from '../auth.service';
 

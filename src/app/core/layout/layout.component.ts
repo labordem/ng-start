@@ -8,13 +8,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { ThemeService } from '../theme.service';
-import { User, UserService } from '../user.service';
+import { ThemeService } from '../services/theme.service';
+import { User, UserService } from '../services/user.service';
 
 export interface Destination {
   name: string;
@@ -46,8 +45,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     private readonly themeService: ThemeService,
     private readonly titleService: Title,
     private readonly metaService: Meta,
-    private readonly userService: UserService,
-    private readonly router: Router
+    private readonly userService: UserService
   ) {
     this.themeService.init();
     this.destinations = [

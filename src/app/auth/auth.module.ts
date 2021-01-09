@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NotUserGuard } from '../core/not-user.guard';
-import { UserGuard } from '../core/user.guard';
+import { NotUserGuard } from '../core/guards/not-user.guard';
+import { UserGuard } from '../core/guards/user.guard';
 import { SharedModule } from '../shared/shared.module';
 
 import { AuthComponent } from './auth.component';

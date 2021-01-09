@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ConfirmedUserGuard } from '../core/confirmed-user.guard';
+import { ConfirmedUserGuard } from '../core/guards/confirmed-user.guard';
 
 import { ArticleComponent } from './article.component';
 

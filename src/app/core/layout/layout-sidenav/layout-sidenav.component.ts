@@ -6,8 +6,7 @@ import {
 } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
-import { User } from '../../user.service';
-import { Destination } from '../layout.component';
+import { User } from '../../services/user.service';
 
 @Component({
   selector: 'app-layout-sidenav',

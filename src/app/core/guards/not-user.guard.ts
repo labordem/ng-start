@@ -3,12 +3,12 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { UserService } from './user.service';
+import { UserService } from '../services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ConfirmedUserGuard implements CanActivate {
+export class NotUserGuard implements CanActivate {
   constructor(
     private readonly userService: UserService,
     private readonly router: Router
@@ -17,11 +17,10 @@ export class ConfirmedUserGuard implements CanActivate {
   canActivate(): Observable<boolean | UrlTree> {
     return this.userService.user$.pipe(
       map((user) => {
-        const isConfirmed = user?.isConfirmed ?? false;
-        if (!isConfirmed) {
+        if (user !== undefined) {
           console.info(`⚔️ guard: ${this.constructor.name}`);
 
-          return this.router.parseUrl('/auth/confirm-email');
+          return this.router.parseUrl('/');
         }
 
         return true;

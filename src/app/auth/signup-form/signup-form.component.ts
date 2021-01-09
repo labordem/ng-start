@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { SnackbarService } from 'src/app/core/snackbar.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
 import { AuthService } from '../auth.service';
 import { ConfirmEmailDialogComponent } from '../confirm-email-dialog/confirm-email-dialog.component';
