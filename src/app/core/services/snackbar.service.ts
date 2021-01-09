@@ -18,7 +18,7 @@ export class SnackbarService {
 
   open(
     message: string,
-    color: 'primary' | 'warn' | 'accent'
+    color: 'primary' | 'warn' | 'accent',
   ): MatSnackBarRef<TextOnlySnackBar> {
     return this.snackBar.open(message, undefined, {
       duration: 3000,

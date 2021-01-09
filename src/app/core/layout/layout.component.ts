@@ -45,7 +45,7 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
     private readonly themeService: ThemeService,
     private readonly titleService: Title,
     private readonly metaService: Meta,
-    private readonly userService: UserService
+    private readonly userService: UserService,
   ) {
     this.themeService.init();
     this.destinations = [

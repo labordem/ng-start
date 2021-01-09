@@ -11,7 +11,7 @@ export class ThemeService {
 
   constructor(
     private readonly localStorageService: LocalStorageService,
-    private readonly rendererFactory: RendererFactory2
+    private readonly rendererFactory: RendererFactory2,
   ) {
     // tslint:disable-next-line: no-null-keyword
     this.renderer = this.rendererFactory.createRenderer(undefined, null);
@@ -19,7 +19,7 @@ export class ThemeService {
 
   init(): void {
     const themeFromStorage = this.localStorageService.getItemInStorage(
-      this.isDarkToggledKey
+      this.isDarkToggledKey,
     ) as boolean | undefined;
 
     this.isDarkToggled =
@@ -35,14 +35,14 @@ export class ThemeService {
     this.applyProperTheme(this.isDarkToggled);
     this.localStorageService.setItemInStorage(
       this.isDarkToggledKey,
-      this.isDarkToggled
+      this.isDarkToggled,
     );
   }
 
   private applyProperTheme(isDarkTheme: boolean): void {
     this.renderer[isDarkTheme ? 'addClass' : 'removeClass'](
       document.body,
-      'theme-dark'
+      'theme-dark',
     );
   }
 }

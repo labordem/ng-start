@@ -47,7 +47,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     private readonly snackbarService: SnackbarService,
     private readonly dialog: MatDialog,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
   ) {
     this.formGroup = this.createFormGroup('change');
   }
@@ -79,7 +79,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
           this.formGroup.enable();
           this.changeDetectorRef.detectChanges();
         }),
-        takeUntil(this.isDestroyed$)
+        takeUntil(this.isDestroyed$),
       )
       .subscribe({
         next: () => {
@@ -93,7 +93,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   private createFormGroup(
     updateOn: 'submit' | 'change',
-    previousValue?: { [key: string]: unknown }
+    previousValue?: { [key: string]: unknown },
   ): FormGroup {
     const formGroup = this.formBuilder.group(
       // tslint:disable
@@ -111,7 +111,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
           this.mustNotBeRejectedValidator(),
           this.mustMatchValidator('password', 'confirmPassword'),
         ],
-      }
+      },
       // tslint:enable
     );
     if (previousValue !== undefined) {
@@ -131,7 +131,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           this.changeDetectorRef.detectChanges();
         }),
-        takeUntil(this.isDestroyed$)
+        takeUntil(this.isDestroyed$),
       )
       .subscribe({
         next: () => (this.isValidToken = true),
@@ -150,7 +150,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
 
   private mustMatchValidator(
     controlName: string,
-    matchingControlName: string
+    matchingControlName: string,
   ): (formGroup: FormGroup) => void {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];

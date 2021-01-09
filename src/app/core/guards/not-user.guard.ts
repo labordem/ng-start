@@ -11,7 +11,7 @@ import { UserService } from '../services/user.service';
 export class NotUserGuard implements CanActivate {
   constructor(
     private readonly userService: UserService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {}
 
   canActivate(): Observable<boolean | UrlTree> {
@@ -24,7 +24,7 @@ export class NotUserGuard implements CanActivate {
         }
 
         return true;
-      })
+      }),
     );
   }
 }

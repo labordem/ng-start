@@ -17,7 +17,7 @@ export class HttpJwtInterceptor implements HttpInterceptor {
 
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     const jwt = this.userService.jwt;
     let newRequest = request;
@@ -38,8 +38,8 @@ export class HttpJwtInterceptor implements HttpInterceptor {
               this.userService.delete();
             }
           }
-        }
-      )
+        },
+      ),
     );
   }
 }

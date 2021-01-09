@@ -41,7 +41,7 @@ export class SigninFormComponent implements OnInit, OnDestroy {
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
     private readonly router: Router,
-    private readonly snackbarService: SnackbarService
+    private readonly snackbarService: SnackbarService,
   ) {
     this.formGroup = this.createFormGroup('change');
   }
@@ -78,7 +78,7 @@ export class SigninFormComponent implements OnInit, OnDestroy {
 
   private createFormGroup(
     updateOn: 'submit' | 'change',
-    previousValue?: { [key: string]: unknown }
+    previousValue?: { [key: string]: unknown },
   ): FormGroup {
     const formGroup = this.formBuilder.group(
       // tslint:disable
@@ -89,7 +89,7 @@ export class SigninFormComponent implements OnInit, OnDestroy {
       {
         updateOn,
         validators: this.mustNotBeRejectedValidator(),
-      }
+      },
       // tslint:enable
     );
     if (previousValue !== undefined) {

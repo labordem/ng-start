@@ -8,7 +8,7 @@ export class LocalStorageService {
     const stringValue = localStorage.getItem(key) as string;
     const value = (JSON.parse(stringValue) as unknown) ?? undefined;
     console.info(
-      value !== undefined ? `💾 get: ${key}` : `💾 get: ${key} (${value})`
+      value !== undefined ? `💾 get: ${key}` : `💾 get: ${key} (${value})`,
     );
 
     return value;

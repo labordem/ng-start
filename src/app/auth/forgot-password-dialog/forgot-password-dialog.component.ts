@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ForgotPasswordDialogComponent implements OnInit {
   constructor(
-    private readonly dialogRef: MatDialogRef<ForgotPasswordDialogComponent>
+    private readonly dialogRef: MatDialogRef<ForgotPasswordDialogComponent>,
   ) {}
 
   ngOnInit(): void {}

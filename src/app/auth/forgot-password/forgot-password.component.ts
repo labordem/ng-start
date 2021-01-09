@@ -41,7 +41,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly snackbarService: SnackbarService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
   ) {
     this.formGroup = this.createFormGroup('change');
   }
@@ -79,7 +79,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
 
   private createFormGroup(
     updateOn: 'submit' | 'change',
-    previousValue?: { [key: string]: unknown }
+    previousValue?: { [key: string]: unknown },
   ): FormGroup {
     return this.formBuilder.group(
       // tslint:disable
@@ -89,7 +89,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
           [
             Validators.required,
             Validators.pattern(
-              /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+              /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
             ),
           ],
         ],
@@ -97,7 +97,7 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       {
         updateOn,
         validators: this.mustNotBeRejectedValidator(),
-      }
+      },
       // tslint:enable
     );
   }

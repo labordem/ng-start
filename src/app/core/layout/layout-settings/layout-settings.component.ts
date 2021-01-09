@@ -26,7 +26,7 @@ export class LayoutSettingsComponent implements OnInit {
     @Inject(LOCALE_ID) readonly localeId: string,
     private readonly themeService: ThemeService,
     private readonly userService: UserService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {

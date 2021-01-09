@@ -6,12 +6,12 @@ describe('HttpErrorInterceptor', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       providers: [HttpErrorInterceptor],
-    })
+    }),
   );
 
   it('should be created', () => {
     const interceptor: HttpErrorInterceptor = TestBed.inject(
-      HttpErrorInterceptor
+      HttpErrorInterceptor,
     );
     expect(interceptor).toBeTruthy();
   });

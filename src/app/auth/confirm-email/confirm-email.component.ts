@@ -40,7 +40,7 @@ export class ConfirmEmailComponent implements OnInit, OnDestroy {
     private readonly authService: AuthService,
     private readonly userService: UserService,
     private readonly dialog: MatDialog,
-    private readonly router: Router
+    private readonly router: Router,
   ) {}
 
   async ngOnInit(): Promise<Subscription | undefined> {
@@ -62,9 +62,9 @@ export class ConfirmEmailComponent implements OnInit, OnDestroy {
     return this.userService.user$
       .pipe(
         switchMap((user) =>
-          this.authService.requestConfirmEmailToken$(user as User)
+          this.authService.requestConfirmEmailToken$(user as User),
         ),
-        takeUntil(this.isDestroyed$)
+        takeUntil(this.isDestroyed$),
       )
       .subscribe({
         next: async () => {
@@ -85,7 +85,7 @@ export class ConfirmEmailComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           this.changeDetectorRef.detectChanges();
         }),
-        takeUntil(this.isDestroyed$)
+        takeUntil(this.isDestroyed$),
       )
       .subscribe({
         next: (res) => {

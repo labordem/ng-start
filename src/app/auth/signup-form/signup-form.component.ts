@@ -44,7 +44,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     private readonly authService: AuthService,
     private readonly router: Router,
     private readonly snackbarService: SnackbarService,
-    private readonly dialog: MatDialog
+    private readonly dialog: MatDialog,
   ) {
     this.formGroup = this.createFormGroup('change');
   }
@@ -92,7 +92,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
   private createFormGroup(
     updateOn: 'submit' | 'change',
-    previousValue?: { [key: string]: unknown }
+    previousValue?: { [key: string]: unknown },
   ): FormGroup {
     const formGroup = this.formBuilder.group(
       // tslint:disable
@@ -109,7 +109,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           [
             Validators.required,
             Validators.pattern(
-              /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/
+              /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
             ),
           ],
         ],
@@ -125,7 +125,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           this.mustMatchValidator('password', 'confirmPassword'),
           this.mustNotBeRejectedValidator(),
         ],
-      }
+      },
       // tslint:enable
     );
 
@@ -138,7 +138,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
   private mustMatchValidator(
     controlName: string,
-    matchingControlName: string
+    matchingControlName: string,
   ): (formGroup: FormGroup) => void {
     return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];

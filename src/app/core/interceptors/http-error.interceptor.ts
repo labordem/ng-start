@@ -17,7 +17,7 @@ interface ServerSideError {
 export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(
     request: HttpRequest<unknown>,
-    next: HttpHandler
+    next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       // tslint:disable-next-line: rxjs-no-implicit-any-catch
@@ -36,7 +36,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
 
         return throwError(new Error(message));
-      })
+      }),
     );
   }
 }

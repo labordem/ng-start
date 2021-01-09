@@ -39,7 +39,7 @@ export interface TokenInput {
 export class AuthService {
   constructor(
     private readonly userService: UserService,
-    private readonly http: HttpClient
+    private readonly http: HttpClient,
   ) {}
 
   signin$(input: SigninInput): Observable<AuthOutput> {
@@ -54,13 +54,13 @@ export class AuthService {
     ) {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.identifier.invalid')))
+        switchMap(() => throwError(new Error('Auth.form.identifier.invalid'))),
       );
     }
     if (input.password !== 'johndoepass') {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.password.invalid')))
+        switchMap(() => throwError(new Error('Auth.form.password.invalid'))),
       );
     }
 
@@ -76,7 +76,7 @@ export class AuthService {
       },
     } as AuthOutput).pipe(
       delay(2000),
-      tap((res) => this.userService.update(res.user, res.jwt))
+      tap((res) => this.userService.update(res.user, res.jwt)),
     );
   }
 
@@ -92,13 +92,15 @@ export class AuthService {
     if (input.email.toLowerCase() === 'johndoe@test.com') {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.error.email.taken')))
+        switchMap(() => throwError(new Error('Auth.form.error.email.taken'))),
       );
     }
     if (input.username.toLowerCase() === 'johndoe') {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.error.username.taken')))
+        switchMap(() =>
+          throwError(new Error('Auth.form.error.username.taken')),
+        ),
       );
     }
 
@@ -114,7 +116,7 @@ export class AuthService {
       },
     } as AuthOutput).pipe(
       delay(2000),
-      tap((res) => this.userService.update(res.user, res.jwt))
+      tap((res) => this.userService.update(res.user, res.jwt)),
     );
   }
 
@@ -130,7 +132,7 @@ export class AuthService {
     if (input.token !== 'johndoeToken') {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.identifier.invalid')))
+        switchMap(() => throwError(new Error('Auth.form.identifier.invalid'))),
       );
     }
 
@@ -146,12 +148,12 @@ export class AuthService {
       },
     } as AuthOutput).pipe(
       delay(2000),
-      tap((res) => this.userService.update(res.user, res.jwt))
+      tap((res) => this.userService.update(res.user, res.jwt)),
     );
   }
 
   requestResetPasswordToken$(
-    input: RequestResetPasswordTokenInput
+    input: RequestResetPasswordTokenInput,
   ): Observable<unknown> {
     // // Strapi ready signin method :
     // return this.http
@@ -160,7 +162,9 @@ export class AuthService {
     if (input.email.toLowerCase() !== 'johndoe@test.com') {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.error.user.not-exist')))
+        switchMap(() =>
+          throwError(new Error('Auth.form.error.user.not-exist')),
+        ),
       );
     }
 
@@ -173,7 +177,7 @@ export class AuthService {
     if (input.token !== 'johndoe') {
       return of(undefined).pipe(
         delay(2000),
-        switchMap(() => throwError(new Error('Auth.form.identifier.invalid')))
+        switchMap(() => throwError(new Error('Auth.form.identifier.invalid'))),
       );
     }
 

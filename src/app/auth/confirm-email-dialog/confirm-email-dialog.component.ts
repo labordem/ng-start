@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ConfirmEmailDialogComponent implements OnInit {
   constructor(
-    private readonly dialogRef: MatDialogRef<ConfirmEmailDialogComponent>
+    private readonly dialogRef: MatDialogRef<ConfirmEmailDialogComponent>,
   ) {}
 
   ngOnInit(): void {}

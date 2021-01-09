@@ -8,7 +8,7 @@ describe('HttpJwtInterceptor', () => {
     TestBed.configureTestingModule({
       providers: [HttpJwtInterceptor],
       imports: [RouterTestingModule],
-    })
+    }),
   );
 
   it('should be created', () => {

@@ -27,7 +27,7 @@ export class UserService {
 
   constructor(
     private readonly localStorageService: LocalStorageService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     const user = this.localStorageService.getItemInStorage(this.userKey) as
       | User
