@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,18 +11,20 @@ describe('ForgotPasswordDialogComponent', () => {
   let component: ForgotPasswordDialogComponent;
   let fixture: ComponentFixture<ForgotPasswordDialogComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ForgotPasswordDialogComponent],
-      imports: [
-        ReactiveFormsModule,
-        RouterTestingModule,
-        HttpClientModule,
-        MatSnackBarModule,
-      ],
-      providers: [{ provide: MatDialogRef, useValue: {} }],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ForgotPasswordDialogComponent],
+        imports: [
+          ReactiveFormsModule,
+          RouterTestingModule,
+          HttpClientModule,
+          MatSnackBarModule,
+        ],
+        providers: [{ provide: MatDialogRef, useValue: {} }],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ForgotPasswordDialogComponent);

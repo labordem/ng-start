@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LayoutSidenavComponent } from './layout-sidenav.component';
 
@@ -6,11 +6,13 @@ describe('LayoutSidenavComponent', () => {
   let component: LayoutSidenavComponent;
   let fixture: ComponentFixture<LayoutSidenavComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LayoutSidenavComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [LayoutSidenavComponent],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LayoutSidenavComponent);

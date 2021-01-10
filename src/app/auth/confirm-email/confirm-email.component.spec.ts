@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RouterTestingModule } from '@angular/router/testing';
 
@@ -9,12 +9,14 @@ describe('ConfirmEmailComponent', () => {
   let component: ConfirmEmailComponent;
   let fixture: ComponentFixture<ConfirmEmailComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ConfirmEmailComponent],
-      imports: [MatDialogModule, RouterTestingModule, HttpClientModule],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [ConfirmEmailComponent],
+        imports: [MatDialogModule, RouterTestingModule, HttpClientModule],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ConfirmEmailComponent);

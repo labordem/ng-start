@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,18 +11,20 @@ describe('SignupFormComponent', () => {
   let component: SignupFormComponent;
   let fixture: ComponentFixture<SignupFormComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [SignupFormComponent],
-      imports: [
-        ReactiveFormsModule,
-        RouterTestingModule,
-        HttpClientModule,
-        MatSnackBarModule,
-        MatDialogModule,
-      ],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [SignupFormComponent],
+        imports: [
+          ReactiveFormsModule,
+          RouterTestingModule,
+          HttpClientModule,
+          MatSnackBarModule,
+          MatDialogModule,
+        ],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SignupFormComponent);

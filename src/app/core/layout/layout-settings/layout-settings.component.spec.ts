@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -9,12 +9,14 @@ describe('LayoutSettingsComponent', () => {
   let component: LayoutSettingsComponent;
   let fixture: ComponentFixture<LayoutSettingsComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LayoutSettingsComponent],
-      imports: [RouterTestingModule, MatDialogModule, MatMenuModule],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [LayoutSettingsComponent],
+        imports: [RouterTestingModule, MatDialogModule, MatMenuModule],
+      }).compileComponents();
+    }),
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LayoutSettingsComponent);

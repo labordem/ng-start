@@ -29,7 +29,10 @@ export const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [CoreModule, RouterModule.forRoot(routes)],
+  imports: [
+    CoreModule,
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
