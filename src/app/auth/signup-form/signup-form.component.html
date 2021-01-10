@@ -1,40 +1,28 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline" color="accent" class="form-field">
-    <mat-label i18n="@@email">Email address</mat-label>
+    <mat-label i18n>Email address</mat-label>
     <input matInput formControlName="email" color="primary" required />
-    <mat-error
-      *ngIf="f.email?.errors?.required"
-      i18n="@@you-must-enter-a-value"
-    >
+    <mat-error *ngIf="f.email?.errors?.required" i18n>
       You must enter a value
     </mat-error>
-    <mat-error *ngIf="f.email?.errors?.pattern" i18n="@@not-a-valid-email">
+    <mat-error *ngIf="f.email?.errors?.pattern" i18n>
       Not a valid email
     </mat-error>
-    <mat-error
-      *ngIf="f.email?.errors?.mustNotBeRejected"
-      i18n="@@email-is-already-taken"
-    >
+    <mat-error *ngIf="f.email?.errors?.mustNotBeRejected" i18n>
       Email is already taken
     </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" color="accent" class="form-field">
-    <mat-label i18n="@@username">Username</mat-label>
+    <mat-label i18n>Username</mat-label>
     <input matInput formControlName="username" color="primary" required />
-    <mat-error
-      *ngIf="f.username?.errors?.required"
-      i18n="@@you-must-enter-a-value"
-    >
+    <mat-error *ngIf="f.username?.errors?.required" i18n>
       You must enter a value
     </mat-error>
     <mat-error *ngIf="f.username?.errors?.pattern" i18n>
       Must contain 3-20 alphanumeric characters
     </mat-error>
-    <mat-error
-      *ngIf="f.username?.errors?.mustNotBeRejected"
-      i18n="@@username-is-already-taken"
-    >
+    <mat-error *ngIf="f.username?.errors?.mustNotBeRejected" i18n>
       Username is already taken
     </mat-error>
   </mat-form-field>
@@ -46,7 +34,7 @@
       [type]="isPasswordHidden ? 'password' : 'text'"
       required
     />
-    <mat-label i18n="@@password">Password</mat-label>
+    <mat-label i18n>Password</mat-label>
     <button
       type="button"
       mat-icon-button
@@ -54,16 +42,14 @@
       (click)="isPasswordHidden = !isPasswordHidden"
       [attr.aria-label]="'isPasswordHidden password'"
       [attr.aria-pressed]="isPasswordHidden"
-      i18n-aria-label="@@toggle-password-visibility"
+      i18n-aria-label
       aria-label="Toggle password visibility"
     >
       <mat-icon>{{
         isPasswordHidden ? 'visibility_off' : 'visibility'
       }}</mat-icon>
     </button>
-    <mat-error
-      *ngIf="f.password?.errors?.required"
-      i18n="@@you-must-enter-a-value"
+    <mat-error *ngIf="f.password?.errors?.required" i18n
       >You must enter a value</mat-error
     >
     <mat-error *ngIf="f.password?.errors?.pattern" i18n>
@@ -78,7 +64,7 @@
       [type]="isPasswordHidden ? 'password' : 'text'"
       required
     />
-    <mat-label i18n="@@confirm-password">Confirm password</mat-label>
+    <mat-label i18n>Confirm password</mat-label>
     <button
       type="button"
       mat-icon-button
@@ -86,7 +72,7 @@
       (click)="isPasswordHidden = !isPasswordHidden"
       [attr.aria-label]="'isPasswordHidden password'"
       [attr.aria-pressed]="isPasswordHidden"
-      i18n-aria-label="@@toggle-password-visibility"
+      i18n-aria-label
       aria-label="Toggle password visibility"
     >
       <mat-icon>
@@ -96,9 +82,7 @@
     <mat-error *ngIf="f.confirmPassword?.errors?.mustMatch" i18n
       >Passwords doesn't match</mat-error
     >
-    <mat-error
-      *ngIf="f.confirmPassword?.errors?.required"
-      i18n="@@you-must-enter-a-value"
+    <mat-error *ngIf="f.confirmPassword?.errors?.required" i18n
       >You must enter a value
     </mat-error>
   </mat-form-field>
@@ -117,7 +101,7 @@
       class="theme-accent icon-after rounded"
       type="submit"
     >
-      <span i18n="@@submit">Submit</span>
+      <span i18n>Submit</span>
       <mat-icon>send</mat-icon>
     </button>
   </div>

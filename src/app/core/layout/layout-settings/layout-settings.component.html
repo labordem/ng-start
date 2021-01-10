@@ -6,13 +6,13 @@
   matTooltip="Trigger user settings menu"
   i18n-matTooltip
   aria-label="Button that displays a tooltip when focused or hovered over"
-  i18n-aria-label="@@button-with-tooltip"
+  i18n-aria-label
 >
   <img
     *ngIf="user"
     src="{{ user!.avatar }}"
     default="profile"
-    i18n-alt="@@your-avatar"
+    i18n-alt
     alt="Your avatar"
     height="33"
     width="33"
@@ -34,7 +34,7 @@
         <img
           src="{{ user.avatar }}"
           default="profile"
-          i18n-alt="@@your-avatar"
+          i18n-alt
           alt="Your avatar"
         />
         <input
@@ -53,25 +53,25 @@
     <ng-container *ngIf="!user">
       <a mat-menu-item routerLink="/auth">
         <mat-icon>person</mat-icon>
-        <span i18n="@@sign-in">Sign in</span>
+        <span i18n>Sign in</span>
       </a>
       <mat-divider></mat-divider>
     </ng-container>
     <ng-container *ngIf="user">
       <button mat-menu-item (click)="onOpenDialog(dialogTemplate)">
         <mat-icon>exit_to_app</mat-icon>
-        <span i18n="@@sign-out">Sign out</span>
+        <span i18n>Sign out</span>
       </button>
       <mat-divider></mat-divider>
     </ng-container>
     <button mat-menu-item (click)="onToggleDarkTheme()">
       <ng-container *ngIf="isDarkThemeToggled; else darkThemeTemplate">
         <mat-icon>wb_sunny</mat-icon>
-        <span i18n="@@light-theme">Light theme</span>
+        <span i18n>Light theme</span>
       </ng-container>
       <ng-template #darkThemeTemplate>
         <mat-icon>nights_stay</mat-icon>
-        <span i18n="@@dark-theme">Dark theme</span>
+        <span i18n>Dark theme</span>
       </ng-template>
     </button>
     <a mat-menu-item href="../{{ localeId === 'fr' ? 'en-US' : 'fr' }}/">
@@ -82,7 +82,7 @@
 </mat-menu>
 
 <ng-template #dialogTemplate>
-  <h2 matDialogTitle i18n="@@are-you-sure">Are you sure ?</h2>
+  <h2 matDialogTitle i18n>Are you sure ?</h2>
   <mat-dialog-content>
     <p i18n>
       If you sign out you will have to enter your credentials again to use
@@ -90,10 +90,10 @@
     </p>
   </mat-dialog-content>
   <div mat-dialog-actions>
-    <button mat-button (click)="onCloseDialog()" i18n="@@cancel">
+    <button mat-button (click)="onCloseDialog()" i18n>
       Cancel
     </button>
-    <button mat-button (click)="onSignout(); onCloseDialog()" i18n="@@sign-out">
+    <button mat-button (click)="onSignout(); onCloseDialog()" i18n>
       Sign out
     </button>
   </div>

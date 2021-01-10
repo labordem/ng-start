@@ -4,7 +4,7 @@
     [ngClass]="{ 'anime-wobble': !!errorMessage }"
   >
     <mat-tab-group mat-stretch-tabs animationDuration="0ms" color="accent">
-      <mat-tab i18n-label="@@signin" label="Sign in">
+      <mat-tab i18n-label label="Sign in">
         <ng-template matTabContent>
           <mat-card-content class="p-40 mb-0">
             <app-signin-form
@@ -14,7 +14,7 @@
         </ng-template>
       </mat-tab>
 
-      <mat-tab i18n-label="@@signup" label="Sign up">
+      <mat-tab i18n-label label="Sign up">
         <ng-template matTabContent>
           <mat-card-content class="p-40 mb-0">
             <app-signup-form

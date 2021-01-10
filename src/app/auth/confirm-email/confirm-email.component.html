@@ -23,17 +23,12 @@
   <div class="centred">
     <mat-icon class="status-icon">done</mat-icon>
   </div>
-  <p i18n="@@email-confirmed" class="py-20">
+  <p i18n class="py-20">
     Welcome {{ user!.username }} ! Your are now a confirmed user !
   </p>
   <div class="button-group">
     <span class="fill-remain-space"></span>
-    <button
-      mat-raised-button
-      class="theme-accent rounded"
-      routerLink="/"
-      i18n="@@continue"
-    >
+    <button mat-raised-button class="theme-accent rounded" routerLink="/" i18n>
       Continue
     </button>
   </div>
@@ -43,11 +38,11 @@
   <div class="centred">
     <mat-icon class="status-icon">error_outline</mat-icon>
   </div>
-  <p i18n="@@email-not-confirmed" class="pt-20">
+  <p i18n class="pt-20">
     You have not confirmed your email address, verify your inbox and click on
     the link in the email to continue.
   </p>
-  <p i18n="@@you-can-request-a-new-link">
+  <p i18n>
     You can request a new verification link if the old one has expired.
   </p>
   <div class="button-group mt-40">
@@ -65,7 +60,7 @@
       class="theme-accent icon-after rounded"
       (click)="onRequestConfirmEmailToken()"
     >
-      <span i18n="@@resend">Resend</span>
+      <span i18n>Resend</span>
       <mat-icon>send</mat-icon>
     </button>
   </div>
@@ -75,10 +70,10 @@
   <div class="centred">
     <mat-icon class="status-icon">error_outline</mat-icon>
   </div>
-  <p i18n="@@email-confirm-error" class="py-20">
+  <p i18n class="py-20">
     Could not confirm your address.
   </p>
-  <p i18n="@@you-can-request-a-new-link">
+  <p i18n>
     You can request a new verification link if the old one has expired.
   </p>
   <div class="button-group">
@@ -96,7 +91,7 @@
       class="theme-accent icon-after rounded"
       (click)="onRequestConfirmEmailToken()"
     >
-      <span i18n="@@resend">Resend</span>
+      <span i18n>Resend</span>
       <mat-icon>send</mat-icon>
     </button>
   </div>
@@ -106,17 +101,12 @@
   <div class="centred">
     <mat-icon class="status-icon">done</mat-icon>
   </div>
-  <p i18n="@@already-confirmed-email" class="py-20">
+  <p i18n class="py-20">
     Everything is ready, your email address has already been verified.
   </p>
   <div class="button-group">
     <span class="fill-remain-space"></span>
-    <button
-      mat-raised-button
-      class="theme-primary rounded"
-      routerLink="/"
-      i18n="@@continue"
-    >
+    <button mat-raised-button class="theme-primary rounded" routerLink="/" i18n>
       Continue
     </button>
   </div>
