@@ -1,5 +1,5 @@
 <section class="centred">
-  <mat-card class="p-20 auth-card">
+  <mat-card class="p-40 auth-card">
     <ng-container *ngIf="!isLoading; else loadingTemplate">
       <ng-container *ngIf="token; else emailNotConfirmedTemplate">
         <ng-container
@@ -23,14 +23,14 @@
   <div class="centred">
     <mat-icon class="status-icon">done</mat-icon>
   </div>
-  <p i18n="@@email-confirmed" class="p-y-10">
+  <p i18n="@@email-confirmed" class="py-20">
     Welcome {{ user!.username }} ! Your are now a confirmed user !
   </p>
   <div class="button-group">
     <span class="fill-remain-space"></span>
     <button
       mat-raised-button
-      class="theme-primary rounded"
+      class="theme-accent rounded"
       routerLink="/"
       i18n="@@continue"
     >
@@ -43,14 +43,14 @@
   <div class="centred">
     <mat-icon class="status-icon">error_outline</mat-icon>
   </div>
-  <p i18n="@@email-not-confirmed" class="p-y-10">
+  <p i18n="@@email-not-confirmed" class="pt-20">
     You have not confirmed your email address, verify your inbox and click on
     the link in the email to continue.
   </p>
   <p i18n="@@you-can-request-a-new-link">
     You can request a new verification link if the old one has expired.
   </p>
-  <div class="button-group">
+  <div class="button-group mt-40">
     <mat-progress-bar
       *ngIf="isProcessing"
       mode="indeterminate"
@@ -62,7 +62,7 @@
     <button
       *ngIf="!isProcessing"
       mat-raised-button
-      class="theme-primary icon-after rounded"
+      class="theme-accent icon-after rounded"
       (click)="onRequestConfirmEmailToken()"
     >
       <span i18n="@@resend">Resend</span>
@@ -75,7 +75,7 @@
   <div class="centred">
     <mat-icon class="status-icon">error_outline</mat-icon>
   </div>
-  <p i18n="@@email-confirm-error" class="p-y-10">
+  <p i18n="@@email-confirm-error" class="py-20">
     Could not confirm your address.
   </p>
   <p i18n="@@you-can-request-a-new-link">
@@ -93,7 +93,7 @@
     <button
       *ngIf="!isProcessing"
       mat-raised-button
-      class="theme-primary icon-after rounded"
+      class="theme-accent icon-after rounded"
       (click)="onRequestConfirmEmailToken()"
     >
       <span i18n="@@resend">Resend</span>
@@ -106,7 +106,7 @@
   <div class="centred">
     <mat-icon class="status-icon">done</mat-icon>
   </div>
-  <p i18n="@@already-confirmed-email" class="p-y-10">
+  <p i18n="@@already-confirmed-email" class="py-20">
     Everything is ready, your email address has already been verified.
   </p>
   <div class="button-group">

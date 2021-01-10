@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "scripts": {
     "ng": "ng",
-    "locale": "ng xi18n --output-path src/locale --format xlf && xliffmerge --profile xliffmerge.json",
+    "locale": "ng extract-i18n --output-path src/locale --format xlf && xliffmerge --profile xliffmerge.json",
     "start": "ng serve",
     "start:fr": "ng serve --configuration=fr --port=4201",
     "build": "ng build",

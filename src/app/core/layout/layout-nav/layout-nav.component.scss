@@ -1,11 +1,12 @@
+$nav-height: 44px;
+
 .layout-nav {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  line-height: 39px;
+  line-height: $nav-height;
 
   .app-title {
-    line-height: 39px;
+    line-height: $nav-height;
   }
 
   .fill-remaining-space {
@@ -16,7 +17,7 @@
 .app-brand {
   display: flex;
   flex-direction: row;
-  height: 39px;
+  height: $nav-height;
 
   .app-brand-icon {
     border-radius: 50%;
@@ -24,8 +25,8 @@
   }
 
   .app-brand-title {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: normal;
-    line-height: 39px;
+    line-height: $nav-height;
   }
 }

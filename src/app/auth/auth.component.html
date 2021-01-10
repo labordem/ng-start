@@ -6,7 +6,7 @@
     <mat-tab-group mat-stretch-tabs animationDuration="0ms" color="accent">
       <mat-tab i18n-label="@@signin" label="Sign in">
         <ng-template matTabContent>
-          <mat-card-content class="p-20">
+          <mat-card-content class="p-40 mb-0">
             <app-signin-form
               (errorHappens)="onErrorHappens($event)"
             ></app-signin-form>
@@ -16,7 +16,7 @@
 
       <mat-tab i18n-label="@@signup" label="Sign up">
         <ng-template matTabContent>
-          <mat-card-content class="p-20">
+          <mat-card-content class="p-40 mb-0">
             <app-signup-form
               (errorHappens)="onErrorHappens($event)"
             ></app-signup-form>

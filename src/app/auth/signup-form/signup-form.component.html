@@ -1,6 +1,6 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline" color="accent" class="form-field">
-    <mat-label i18n="@@enter-your-email">Enter your email</mat-label>
+    <mat-label i18n="@@email">Email address</mat-label>
     <input matInput formControlName="email" color="primary" required />
     <mat-error
       *ngIf="f.email?.errors?.required"
@@ -20,7 +20,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" color="accent" class="form-field">
-    <mat-label i18n="@@enter-your-username">Enter your username</mat-label>
+    <mat-label i18n="@@username">Username</mat-label>
     <input matInput formControlName="username" color="primary" required />
     <mat-error
       *ngIf="f.username?.errors?.required"
@@ -46,7 +46,7 @@
       [type]="isPasswordHidden ? 'password' : 'text'"
       required
     />
-    <mat-label i18n="@@enter-your-password">Enter your password</mat-label>
+    <mat-label i18n="@@password">Password</mat-label>
     <button
       type="button"
       mat-icon-button
@@ -78,7 +78,7 @@
       [type]="isPasswordHidden ? 'password' : 'text'"
       required
     />
-    <mat-label i18n="@@confirm-your-password">Confirm your password</mat-label>
+    <mat-label i18n="@@confirm-password">Confirm password</mat-label>
     <button
       type="button"
       mat-icon-button
@@ -99,11 +99,11 @@
     <mat-error
       *ngIf="f.confirmPassword?.errors?.required"
       i18n="@@you-must-enter-a-value"
-      >You must confirm the password
+      >You must enter a value
     </mat-error>
   </mat-form-field>
 
-  <div class="button-group">
+  <div class="button-group mt-20">
     <mat-progress-bar
       *ngIf="isLoading"
       mode="indeterminate"

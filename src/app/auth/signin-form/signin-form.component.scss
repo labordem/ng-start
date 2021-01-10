@@ -4,6 +4,6 @@
 
 .button-group {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap-reverse;
   justify-content: space-between;
 }
