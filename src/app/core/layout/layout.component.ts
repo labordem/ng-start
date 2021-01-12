@@ -42,9 +42,9 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   private readonly isDestroyed$ = new Subject<boolean>();
 
   constructor(
+    private readonly metaService: Meta,
     private readonly themeService: ThemeService,
     private readonly titleService: Title,
-    private readonly metaService: Meta,
     private readonly userService: UserService,
   ) {
     this.themeService.init();
@@ -63,10 +63,10 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngOnInit(): Subscription {
-    return this.userService.user$.pipe(takeUntil(this.isDestroyed$)).subscribe({
-      next: (user) => (this.user = user),
-      error: () => (this.user = undefined),
-    });
+    return this.userService.user$.pipe(takeUntil(this.isDestroyed$)).subscribe(
+      (res) => (this.user = res),
+      (err) => (this.user = undefined),
+    );
   }
 
   ngAfterViewChecked(): void {
@@ -74,7 +74,6 @@ export class LayoutComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }

@@ -49,7 +49,6 @@ export class SigninFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }
@@ -65,23 +64,23 @@ export class SigninFormComponent implements OnInit, OnDestroy {
         password: this.f.password?.value as string,
       })
       .pipe(takeUntil(this.isDestroyed$))
-      .subscribe({
-        next: () => this.router.navigate(['/']),
-        error: (err: Error) => {
-          this.errorHappens.emit(err.message);
-          this.errorMessage = err.message;
+      .subscribe(
+        (res) => this.router.navigate(['/']),
+        (err) => {
+          this.errorHappens.emit((err as Error).message);
+          this.errorMessage = (err as Error).message;
           this.isLoading = false;
           this.formGroup.enable();
         },
-      });
+      );
   }
 
   private createFormGroup(
     updateOn: 'submit' | 'change',
     previousValue?: { [key: string]: unknown },
   ): FormGroup {
+    // tslint:disable
     const formGroup = this.formBuilder.group(
-      // tslint:disable
       {
         identifier: [undefined, [Validators.required]],
         password: [undefined, [Validators.required]],

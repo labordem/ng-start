@@ -1,5 +1,5 @@
 // Adjust this to include the pixel amounts you need.
-$space-amounts: (0, 2, 5, 10, 15, 20, 40);
+$space-amounts: (0, 2, 5, 10, 16, 20);
 $sides: (top, bottom, left, right);
 
 @each $space in $space-amounts {

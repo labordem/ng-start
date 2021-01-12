@@ -14,12 +14,6 @@ import { User, UserService } from 'src/app/core/services/user.service';
 import { AuthService } from '../auth.service';
 import { ConfirmEmailDialogComponent } from '../confirm-email-dialog/confirm-email-dialog.component';
 
-type EmailConfirmTemplate =
-  | 'emailConfirmed'
-  | 'emailNotConfirmed'
-  | 'emailConfirmError'
-  | 'loading';
-
 @Component({
   selector: 'app-confirm-email',
   templateUrl: './confirm-email.component.html',
@@ -29,7 +23,7 @@ type EmailConfirmTemplate =
 export class ConfirmEmailComponent implements OnInit, OnDestroy {
   isLoading = false;
   isProcessing = false;
-  template: EmailConfirmTemplate = 'loading';
+  isUserAlreadyConfirmed = false;
   token: string | undefined = undefined;
   user: User | undefined = undefined;
   private readonly isDestroyed$ = new Subject<boolean>();
@@ -43,15 +37,23 @@ export class ConfirmEmailComponent implements OnInit, OnDestroy {
     private readonly router: Router,
   ) {}
 
-  async ngOnInit(): Promise<Subscription | undefined> {
-    this.token =
-      this.activatedRoute.snapshot.paramMap.get('token') ?? undefined;
+  ngOnInit(): void {
+    this.userService.user$
+      .pipe(takeUntil(this.isDestroyed$))
+      .subscribe((user) => {
+        this.isUserAlreadyConfirmed = user?.isConfirmed ?? false;
 
-    return this.token === undefined ? undefined : this.verifyToken(this.token);
+        this.token =
+          this.activatedRoute.snapshot.paramMap.get('token') ?? undefined;
+
+        return this.token === undefined
+          ? undefined
+          : this.verifyToken(this.token);
+      })
+      .unsubscribe();
   }
 
   ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }
@@ -64,18 +66,16 @@ export class ConfirmEmailComponent implements OnInit, OnDestroy {
         switchMap((user) =>
           this.authService.requestConfirmEmailToken$(user as User),
         ),
+        switchMap((res) =>
+          this.dialog.open(ConfirmEmailDialogComponent).afterClosed(),
+        ),
         takeUntil(this.isDestroyed$),
       )
-      .subscribe({
-        next: async () => {
-          const dialog = this.dialog.open(ConfirmEmailDialogComponent);
-          await dialog.afterClosed().toPromise();
-          this.router.navigate(['/']);
-        },
-      });
+      .subscribe((afterClosed) => this.router.navigate(['/']));
   }
 
   private verifyToken(token: string): Subscription {
+    this.isUserAlreadyConfirmed = false;
     this.isLoading = true;
 
     return this.authService
@@ -87,12 +87,17 @@ export class ConfirmEmailComponent implements OnInit, OnDestroy {
         }),
         takeUntil(this.isDestroyed$),
       )
-      .subscribe({
-        next: (res) => {
+      .subscribe(
+        (res) => {
           this.user = res.user;
           this.changeDetectorRef.detectChanges();
         },
-        error: (err: Error) => {},
-      });
+        (err) => {
+          if ((err as Error)?.message === 'email already confirmed') {
+            this.isUserAlreadyConfirmed = true;
+            this.changeDetectorRef.detectChanges();
+          }
+        },
+      );
   }
 }

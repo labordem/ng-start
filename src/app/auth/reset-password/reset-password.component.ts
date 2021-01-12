@@ -11,8 +11,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
@@ -43,9 +42,7 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
-    private readonly router: Router,
     private readonly snackbarService: SnackbarService,
-    private readonly dialog: MatDialog,
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly activatedRoute: ActivatedRoute,
   ) {
@@ -59,7 +56,6 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }
@@ -81,22 +77,18 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
         }),
         takeUntil(this.isDestroyed$),
       )
-      .subscribe({
-        next: () => {
-          this.isDone = true;
-        },
-        error: (err: Error) => {
-          this.errorMessage = err.message;
-        },
-      });
+      .subscribe(
+        (res) => (this.isDone = true),
+        (err) => (this.errorMessage = (err as Error)?.message),
+      );
   }
 
   private createFormGroup(
     updateOn: 'submit' | 'change',
     previousValue?: { [key: string]: unknown },
   ): FormGroup {
+    // tslint:disable
     const formGroup = this.formBuilder.group(
-      // tslint:disable
       {
         password: [
           null,
@@ -133,10 +125,10 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
         }),
         takeUntil(this.isDestroyed$),
       )
-      .subscribe({
-        next: () => (this.isValidToken = true),
-        error: (err: Error) => (this.isValidToken = false),
-      });
+      .subscribe(
+        (res) => (this.isValidToken = true),
+        (err) => (this.isValidToken = false),
+      );
   }
 
   private mustNotBeRejectedValidator(): () => void {

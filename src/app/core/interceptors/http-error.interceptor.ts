@@ -9,12 +9,16 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { LogService } from '../services/log.service';
+
 interface ServerSideError {
   message: [{ messages: [{ id: string }] }];
 }
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private readonly logService: LogService) {}
+
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler,
@@ -25,13 +29,22 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         let message = '';
 
         if (err.error instanceof ErrorEvent) {
-          console.info('🎾 intercept: http errorEvent');
+          this.logService.info(
+            'intercept',
+            `${this.constructor.name} errorEvent`,
+          );
           message = err?.error?.message;
         } else if (err.error instanceof ProgressEvent) {
-          console.info('🎾 intercept: http progressEvent');
+          this.logService.info(
+            'intercept',
+            `${this.constructor.name} progressEvent`,
+          );
           message = err.message;
         } else {
-          console.info('🎾 intercept: server error response');
+          this.logService.info(
+            'intercept',
+            `${this.constructor.name} serverSideError`,
+          );
           message = (err.error as ServerSideError)?.message[0]?.messages[0]?.id;
         }
 

@@ -82,44 +82,12 @@ $foreground-dark: map-get($theme-dark, foreground);
     @include class-theme-color($palette-primary, default);
   }
 
-  .theme-primary-darker {
-    @include class-theme($palette-primary, darker);
-  }
-
-  .theme-primary-color-darker {
-    @include class-theme-color($palette-primary, darker);
-  }
-
-  .theme-primary-lighter {
-    @include class-theme($palette-primary, lighter);
-  }
-
-  .theme-primary-color-lighter {
-    @include class-theme-color($palette-primary, lighter);
-  }
-
   .theme-accent {
     @include class-theme($palette-accent, default);
   }
 
   .theme-accent-color {
     @include class-theme-color($palette-accent, default);
-  }
-
-  .theme-accent-darker {
-    @include class-theme($palette-accent, darker);
-  }
-
-  .theme-accent-color-darker {
-    @include class-theme-color($palette-accent, darker);
-  }
-
-  .theme-accent-lighter {
-    @include class-theme($palette-accent, lighter);
-  }
-
-  .theme-accent-color-lighter {
-    @include class-theme-color($palette-accent, lighter);
   }
 
   .theme-warn {
@@ -130,35 +98,20 @@ $foreground-dark: map-get($theme-dark, foreground);
     @include class-theme-color($palette-warn, default);
   }
 
-  .theme-warn-darker {
-    @include class-theme($palette-warn, darker);
-  }
-
-  .theme-warn-color-darker {
-    @include class-theme-color($palette-warn, darker);
-  }
-
-  .theme-warn-lighter {
-    @include class-theme($palette-warn, lighter);
-  }
-
-  .theme-warn-color-lighter {
-    @include class-theme-color($palette-warn, lighter);
-  }
-
   .theme-foreground-secondary-color {
     @include class-theme-color($foreground, secondary-text);
   }
 }
 
-// body themes, light by default
-@include angular-material-theme($theme-light);
-@include class-builder(
-  $palette-light-primary,
-  $palette-light-accent,
-  $palette-light-warn,
-  $foreground-light
-);
+.theme-light {
+  @include angular-material-theme($theme-light);
+  @include class-builder(
+    $palette-light-primary,
+    $palette-light-accent,
+    $palette-light-warn,
+    $foreground-light
+  );
+}
 
 .theme-dark {
   @include angular-material-color($theme-dark);

@@ -1,4 +1,4 @@
-<section class="layout-nav theme-primary mat-elevation-z2">
+<section class="layout-nav theme-primary">
   <div class="media-hide-on-large">
     <button
       *ngIf="sidenav"
@@ -18,10 +18,10 @@
       class="app-brand-icon"
       i18n-alt
       alt="App icon"
-      width="39"
-      height="39"
+      width="44"
+      height="44"
     />
-    <h1 class="app-brand-title px-5">{{ appTitle }}</h1>
+    <h1 class="app-brand-title px-5">{{ appTitle | titlecase }}</h1>
   </div>
   <div class="media-hide-on-small p-0">
     <a

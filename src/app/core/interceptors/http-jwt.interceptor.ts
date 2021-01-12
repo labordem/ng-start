@@ -9,11 +9,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+import { LogService } from '../services/log.service';
 import { UserService } from '../services/user.service';
 
 @Injectable()
 export class HttpJwtInterceptor implements HttpInterceptor {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly logService: LogService,
+  ) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -25,7 +29,10 @@ export class HttpJwtInterceptor implements HttpInterceptor {
       newRequest = request.clone({
         setHeaders: { Authorization: `Bearer ${jwt}` },
       });
-      console.info('🎾 intercept: jwt added to request');
+      this.logService.info(
+        'intercept',
+        `${this.constructor.name} jwt added to request`,
+      );
     }
 
     return next.handle(newRequest).pipe(
@@ -34,7 +41,10 @@ export class HttpJwtInterceptor implements HttpInterceptor {
         (err: unknown) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
-              console.info('🎾 intercept: 401 error, user deleted');
+              this.logService.info(
+                'intercept',
+                `${this.constructor.name} 401 forbidden`,
+              );
               this.userService.delete();
             }
           }

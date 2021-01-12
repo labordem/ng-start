@@ -13,7 +13,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
 import { AuthService } from '../auth.service';
@@ -49,7 +49,6 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }
@@ -62,27 +61,25 @@ export class ForgotPasswordComponent implements OnInit, OnDestroy {
       .requestResetPasswordToken$({
         email: this.f.email?.value as string,
       })
-      .pipe(takeUntil(this.isDestroyed$))
-      .subscribe({
-        next: async () => {
-          const dialog = this.dialog.open(ForgotPasswordDialogComponent);
-          await dialog.afterClosed().toPromise();
-          this.router.navigate(['/auth']);
-        },
-        error: (err: Error) => {
-          this.errorMessage = err.message;
+      .pipe(
+        switchMap((res) =>
+          this.dialog.open(ForgotPasswordDialogComponent).afterClosed(),
+        ),
+        takeUntil(this.isDestroyed$),
+      )
+      .subscribe(
+        (afterClosed) => this.router.navigate(['/auth']),
+        (err) => {
+          this.errorMessage = (err as Error)?.message;
           this.isLoading = false;
           this.formGroup.enable();
         },
-      });
+      );
   }
 
-  private createFormGroup(
-    updateOn: 'submit' | 'change',
-    previousValue?: { [key: string]: unknown },
-  ): FormGroup {
+  private createFormGroup(updateOn: 'submit' | 'change'): FormGroup {
+    // tslint:disable
     return this.formBuilder.group(
-      // tslint:disable
       {
         email: [
           null,

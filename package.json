@@ -17,22 +17,19 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
-    "gc": "git-cz",
-    "release": "standard-version --commitAll",
-    "release:major": "npm run release -- --release-as major",
-    "release:minor": "npm run release -- --release-as minor",
-    "release:patch": "npm run release -- --release-as patch",
-    "container": "docker stop ng-start || true && docker build -t ng-start . && docker run --rm --name ng-start -d -p 80:80 -p 443:443 ng-start"
+    "docker:prod": "docker run --name ng-start -p 80:80 -p 443:443 ng-start",
+    "docker:build:prod": "docker build -t ng-start .",
+    "cz": "cz",
+    "release": "standard-version --commitAll --releaseCommitMessageFormat \"release: v{{currentTag}}\"",
+    "release:alpha": "standard-version --prerelease alpha --commitAll --releaseCommitMessageFormat \"release: v{{currentTag}}\""
   },
   "config": {
     "commitizen": {
-      "path": "cz-conventional-changelog"
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.json"
     }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "standard-version": {
     "scripts": {
@@ -41,9 +38,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged",
-      "pre-push": "ng lint"
+      "commit-msg": "cz-customizable-ghooks",
+      "pre-commit": "ng lint && lint-staged"
     }
   },
   "lint-staged": {
@@ -82,18 +78,17 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^10.0.1",
+    "@angular-builders/custom-webpack": "^11.0.0",
     "@angular-devkit/build-angular": "^0.1100.6",
     "@angular/cli": "^11.0.6",
     "@angular/compiler-cli": "^11.0.7",
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.2",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.19.12",
     "codelyzer": "^6.0.0",
     "commitizen": "^4.2.2",
-    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.3.0",
+    "cz-customizable-ghooks": "^2.0.0",
     "husky": "^4.3.7",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -107,7 +102,7 @@
     "prettier": "2.0.5",
     "protractor": "~7.0.0",
     "rxjs-tslint-rules": "^4.34.7",
-    "standard-version": "^8.0.2",
+    "standard-version": "^9.1.0",
     "stylelint": "^13.8.0",
     "stylelint-config-sass-guidelines": "^7.1.0",
     "ts-node": "~8.3.0",

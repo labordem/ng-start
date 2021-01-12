@@ -1,8 +1,9 @@
 FROM node:14.15.1-alpine AS builder
 WORKDIR /app
+COPY package*.json ./
+RUN npm install --only=prod
 COPY . .
 RUN npm install @angular/cli @angular-builders/custom-webpack
-RUN npm install --only=prod
 RUN npm run build:prod
 
 FROM nginx:stable-alpine

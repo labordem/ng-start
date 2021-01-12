@@ -196,7 +196,7 @@
       </trans-unit>
       <trans-unit id="c40c132843f349c3aa49730405de1d0ca733aef6" datatype="html">
         <source>Sign up</source>
-        <target state="translated">Se déconnecter</target>
+        <target state="translated">S'enregistrer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
           <context context-type="linenumber">17</context>
@@ -388,7 +388,7 @@
       </trans-unit>
       <trans-unit id="69b6ac577a19acc39fc0c22342092f327fff2529" datatype="html">
         <source>Email address</source>
-        <target state="translated">E-mail adresse</target>
+        <target state="translated">Adresse e-mail</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
           <context context-type="linenumber">16</context>

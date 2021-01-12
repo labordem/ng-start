@@ -15,7 +15,7 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { switchMap, takeUntil } from 'rxjs/operators';
 import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
 import { AuthService } from '../auth.service';
@@ -52,7 +52,6 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    console.info(`💥 destroy: ${this.constructor.name}`);
     this.isDestroyed$.next(true);
     this.isDestroyed$.complete();
   }
@@ -68,20 +67,21 @@ export class SignupFormComponent implements OnInit, OnDestroy {
         email: this.f.email?.value as string,
         password: this.f.password?.value as string,
       })
-      .pipe(takeUntil(this.isDestroyed$))
-      .subscribe({
-        next: async () => {
-          const dialog = this.dialog.open(ConfirmEmailDialogComponent);
-          await dialog.afterClosed().toPromise();
-          this.router.navigate(['/']);
-        },
-        error: (err: Error) => {
-          this.errorHappens.emit(err.message);
-          this.errorMessage = err.message;
+      .pipe(
+        switchMap((res) =>
+          this.dialog.open(ConfirmEmailDialogComponent).afterClosed(),
+        ),
+        takeUntil(this.isDestroyed$),
+      )
+      .subscribe(
+        (afterClosed) => this.router.navigate(['/']),
+        (err) => {
+          this.errorHappens.emit((err as Error).message);
+          this.errorMessage = (err as Error).message;
           this.isLoading = false;
           this.formGroup.enable();
         },
-      });
+      );
   }
 
   onCloseDialog(): Promise<boolean> {
@@ -94,8 +94,8 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     updateOn: 'submit' | 'change',
     previousValue?: { [key: string]: unknown },
   ): FormGroup {
+    // tslint:disable
     const formGroup = this.formBuilder.group(
-      // tslint:disable
       {
         username: [
           null,

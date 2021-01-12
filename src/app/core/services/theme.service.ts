@@ -44,5 +44,9 @@ export class ThemeService {
       document.body,
       'theme-dark',
     );
+    this.renderer[isDarkTheme ? 'removeClass' : 'addClass'](
+      document.body,
+      'theme-light',
+    );
   }
 }
