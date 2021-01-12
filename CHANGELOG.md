@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/mIaborde/ng-start/compare/v1.4.0...v1.5.0) (2021-01-12)
+
+### Features
+
+- forgot/reset password ([fc1e9cc](https://github.com/mIaborde/ng-start/commit/fc1e9ccd99bd7ad7be98a974d144840b28b562f7))
+- **auth:** strapi ready reactive auth forms ([bdb9e49](https://github.com/mIaborde/ng-start/commit/bdb9e499773b2ac2b19722ef38ba0aeacb85e7f5))
+- **settings:** bettter settings, accessibility improved ([d7ea11a](https://github.com/mIaborde/ng-start/commit/d7ea11af9dc4ed29b052d368f619adc0afe0ea82))
+
+### Bug Fixes
+
+- blank page on production build ([3f340ed](https://github.com/mIaborde/ng-start/commit/3f340ed5a5c22c5e9031af5d5236bdaed0c894ee))
+- import ([c3be577](https://github.com/mIaborde/ng-start/commit/c3be57712cc0c5b3635aff90088283ae16893f54))
+
 ## [1.4.0](https://github.com/mIaborde/ng-start/compare/v1.3.0...v1.4.0) (2020-10-14)
 
 ### Features
