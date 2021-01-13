@@ -1,9 +1,10 @@
-$nav-height: 44px;
+$nav-height: 50px;
 
 .layout-nav {
   display: flex;
   justify-content: space-between;
   line-height: $nav-height - 2px;
+  padding: 0 8px;
 
   .fill-remaining-space {
     flex: 1 1 auto;

@@ -16,7 +16,7 @@
 }
 
 .round {
-  @include round-button(32px, 2px);
+  @include round-button(36px, 2px);
 
   &.large {
     @include round-button(100px, 10px);
