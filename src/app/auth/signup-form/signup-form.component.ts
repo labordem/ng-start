@@ -101,7 +101,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           null,
           [
             Validators.required,
-            Validators.pattern(/^(?=.{3,20}$)[a-z][a-z0-9]+(?:-[a-z0-9]+)?$/),
+            Validators.pattern(/^(?=.{2,20}$)[a-z][a-z0-9]+(?:-[a-z0-9]+)?$/),
           ],
         ],
         email: [
@@ -109,13 +109,13 @@ export class SignupFormComponent implements OnInit, OnDestroy {
           [
             Validators.required,
             Validators.pattern(
-              /^(?=.{4,64}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+              /^(?=.{4,255}$)[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
             ),
           ],
         ],
         password: [
           null,
-          [Validators.required, Validators.pattern(/^.{8,191}$/)],
+          [Validators.required, Validators.pattern(/^.{8,255}$/)],
         ],
         confirmPassword: [null, [Validators.required]],
       },

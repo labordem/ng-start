@@ -127,7 +127,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">154</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5d22c795daf43877a5f708dca2bccd549eb0471d" datatype="html">
@@ -227,19 +227,19 @@
         <target state="translated"> Ok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email-dialog/confirm-email-dialog.component.html</context>
-          <context context-type="linenumber">15,16</context>
+          <context context-type="linenumber">16</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/forgot-password-dialog/forgot-password-dialog.component.html</context>
-          <context context-type="linenumber">15,16</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b4d87d363e168a451cc51c10011ee2ae6b44a0b0" datatype="html">
-        <source> Welcome <x id="INTERPOLATION" equiv-text="{{ user!.username }}"/> ! Your are now a confirmed user ! </source>
-        <target state="new"> Bienvenue <x id="INTERPOLATION" equiv-text="{{ user!.username }}"/> ! Vous êtes maintenant un utilisateur confirmé ! </target>
+      <trans-unit id="6e6c51b1639b26712f8fba249a09125e5f6fb1c3" datatype="html">
+        <source>Welcome <x id="INTERPOLATION" equiv-text="{{ user!.username }}"/> ! Your are now a confirmed user !</source>
+        <target state="translated">Bienvenue <x id="INTERPOLATION" equiv-text="{{ user!.username }}"/> ! Vous êtes maintenant un utilisateur confirmé !</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">26,28</context>
+          <context context-type="linenumber">28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="d8be89df0f7689e784ded095554331510617728c" datatype="html">
@@ -247,11 +247,11 @@
         <target state="translated"> Continuer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">32,33</context>
+          <context context-type="linenumber">38</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">110,111</context>
+          <context context-type="linenumber">124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="33d708365caeed7dc115e8aa31b72f461a7fb043" datatype="html">
@@ -259,7 +259,7 @@
         <target state="translated">Vous n'avez pas confirmé votre adresse e-mail, vérifiez votre boîte de réception et cliquez sur le lien dans l'e-mail pour continuer.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">42,44</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="934904fdb713532d2012e371b214af939c22c99e" datatype="html">
@@ -267,15 +267,15 @@
         <target state="translated">Vous pouvez demander un nouveau lien de vérification si l'ancien a expiré.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">46,47</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">77,78</context>
+          <context context-type="linenumber">85</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">115,116</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="a542f0e26578e5b464c3ee8a5472bc57d673d67b" datatype="html">
@@ -283,11 +283,11 @@
         <target state="translated">Renvoyer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">71</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="e107dae4bc1764083d31dbd829fb07600420db0d" datatype="html">
@@ -295,47 +295,23 @@
         <target state="translated">Impossible de confirmer votre adresse.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">74,75</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="094fbe0f7cc726b6ed34432cde9d6709f30f5a84" datatype="html">
-        <source> Everything is ready, your email address has already been verified. </source>
-        <target state="translated">Tout est prêt, votre adresse e-mail a déjà été vérifiée.</target>
+      <trans-unit id="687160e81028c740f3185d656d6dcf781249166f" datatype="html">
+        <source>Everything is ready, your email address has already been verified.</source>
+        <target state="new">Tout est prêt, votre adresse e-mail a déjà été vérifiée.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/confirm-email/confirm-email.component.html</context>
-          <context context-type="linenumber">105,106</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="392f23a4e8888caca4125fc0d958d98782fb75a6" datatype="html">
-        <source> Must contain 3-20 alphanumeric characters </source>
-        <target state="translated">Doit contenir 3-20 caractères alphanumériques</target>
+      <trans-unit id="36f03010cd019785d2edfe5f2e354856793b5066" datatype="html">
+        <source>You must fill in this field </source>
+        <target state="new">Vous devez renseigner ce champs </target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4e4ed198a8966b7d34961f9309205c85c7e7b5fb" datatype="html">
-        <source> Username is already taken </source>
-        <target state="translated">Nom d'utilisateur déjà pris</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">26,27</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6cef12828d191545b3b1cd4d7cacbca325bb8621" datatype="html">
-        <source> Must contain 8+ characters </source>
-        <target state="translated">Doit contenir plus de 8 caractères</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">56</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9ae574e18520d5f95be11233bf45e92402c08a35" datatype="html">
-        <source>You must enter a value </source>
-        <target state="translated">Vous devez entrer une valeur</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">86,87</context>
+          <context context-type="linenumber">87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="148d6efa7c5c6c2c034f568f1994cee1d8cc0679" datatype="html">
@@ -343,11 +319,11 @@
         <target state="translated">Les mots de passe ne sont pas identiques</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">79</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">83</context>
+          <context context-type="linenumber">84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ab46cf914471bfa1c89a7c90a839d0eb958e4181" datatype="html">
@@ -355,7 +331,15 @@
         <target state="translated">Vous devez confirmer votre mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="f345a28fd2069bd239c55803f22556949edede7c" datatype="html">
+        <source>Could not reset your password.</source>
+        <target state="new">Impossible de réinitialiser votre mot de passe.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8ff12a50ca24aed0afbc4e8b4fae743ce2056f4b" datatype="html">
@@ -375,7 +359,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">132</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="372de1d367afc87fc52bb169df23c7e37354b40b" datatype="html">
@@ -391,35 +375,11 @@
         <target state="translated">Adresse e-mail</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
           <context context-type="linenumber">3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="a9eead9ad65235b207662c094ad7242b697e8e90" datatype="html">
-        <source> You must enter a value </source>
-        <target state="translated">Vous devez entrer une valeur</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">19,20</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6a743458fb0f11b8f0093aacec1a9b3933976412" datatype="html">
-        <source> Not a valid email </source>
-        <target state="translated">N'est pas un e-mail valide</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">22,23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="65611f04456672e44f66d01493062bb323f1ae63" datatype="html">
-        <source> Please check your email address </source>
-        <target state="translated">Veuillez vérifier votre adresse e-mail</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">25,26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6ad17443c5d0be7954254eb2455fe0b32ee2ff05" datatype="html">
@@ -427,7 +387,7 @@
         <target state="translated"> Se connecter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">44,45</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="71c77bb8cecdf11ec3eead24dd1ba506573fa9cd" datatype="html">
@@ -435,19 +395,19 @@
         <target state="translated">Confirmer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">101</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">106</context>
         </context-group>
       </trans-unit>
       <trans-unit id="73283770f87a052d8ccb4ead3e5c3d8076574175" datatype="html">
@@ -463,15 +423,15 @@
         <target state="translated">Mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">19</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="75d428e93e784d146f3d3258650f8c53741aa78d" datatype="html">
@@ -479,27 +439,27 @@
         <target state="translated">Afficher le mot de passe en clair</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">72</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">47</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7f3bdcce4b2e8c37cd7f0f6c92ef8cff34b039b8" datatype="html">
@@ -507,39 +467,75 @@
         <target state="translated">Confirmer le mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">63</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cb6334a7d1abea807f69ca55f96b2ec0cd6ced85" datatype="html">
-        <source>You must enter a value</source>
-        <target state="translated">Vous devez entrer une valeur</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">48</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">53</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="95d4e8609f5721be6f0e168e7c1298c21647befb" datatype="html">
-        <source> Must contain 8+ characters </source>
+      <trans-unit id="d6727eec764890d5e1389ff0d0fd0a59c720a3ec" datatype="html">
+        <source>Must contain 8+ characters</source>
         <target state="translated">Doit contenir 8+ caractères</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="95bd787f160bc429dea5b6fb881da50bc566e5f6" datatype="html">
-        <source> Could not reset your password. </source>
-        <target state="translated">Impossible de réinitialiser votre mot de passe.</target>
+      <trans-unit id="30cc844c9d9ee130f7a5ccf7e35ad52d426aab62" datatype="html">
+        <source>You must fill in this field</source>
+        <target state="translated">Vous devez renseigner ce champs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="67e487efd39c632566aed29b721ce9c4af5a4753" datatype="html">
+        <source>Not a valid email</source>
+        <target state="translated">N'est pas un e-mail valide</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="b4c71ede16cf31fad0ab13fa24cf5916941c6119" datatype="html">
+        <source>Please check your email address</source>
+        <target state="translated">Veuillez vérifier votre adresse e-mail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.html</context>
+          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="23cb5f5b5c01159c0993037ae1b96748a5b79cfa" datatype="html">
@@ -547,51 +543,31 @@
         <target state="translated">Vous venez de changer votre mot de passe, vous pouvez maintenant vous authentifier</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.html</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="47fc4c32699a070aaa0319b562264a221d07d08c" datatype="html">
-        <source> Username or email </source>
-        <target state="translated">Nom d'utilisateur ou e-mail</target>
+      <trans-unit id="967932eaf8868def8d598d0336c58916c24f50d7" datatype="html">
+        <source>Username or email</source>
+        <target state="translated">Nom d'utilisateur ou email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">3</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="e3c55609431df9abc23b9af5cc79ef6840d0042c" datatype="html">
-        <source> You must enter a value </source>
-        <target state="translated">Vous devez entrer une valeur</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">8,9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">36,37</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">6,7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">20,21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="c2a562d33cf293a1d19fb6c31e89ba3d3f0dfb1a" datatype="html">
-        <source> Please check your identifier </source>
+      <trans-unit id="27d60a5c1e2868f6266e822d31718a48d574634d" datatype="html">
+        <source>Please check your identifier</source>
         <target state="translated">Veuillez vérifier votre identifiant</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">11,12</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="cc3642a93ec376cbc4fd90017d5f38f076dcef38" datatype="html">
-        <source> Please check your password </source>
+      <trans-unit id="3f2eb97238b1107f2556a3e474231dcf0bfc8525" datatype="html">
+        <source>Please check your password</source>
         <target state="translated">Veuillez vérifier votre mot de passe</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">39,40</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2c66d5d252366a0c9fa98c55e7e62cfe6afc055b" datatype="html">
@@ -599,7 +575,7 @@
         <target state="translated">Mot de passe oublié</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signin-form/signin-form.component.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="08c74dc9762957593b91f6eb5d65efdfc975bf48" datatype="html">
@@ -610,20 +586,28 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="0ad465524a09a3dcbaad558b19d93cb4d6ca6b9e" datatype="html">
-        <source> Not a valid email </source>
-        <target state="translated">N'est pas un e-mail valide</target>
+      <trans-unit id="775a3a6abb822de6dedd304b7121ae3bd6aa0b37" datatype="html">
+        <source>Email is already taken</source>
+        <target state="translated">Adresse e-mail déjà utilisée</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">9,10</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="b9d5f4d641a076b46e0905d89f1e7ae9f2b1180b" datatype="html">
-        <source> Email is already taken </source>
-        <target state="translated">Cet e-mail est déjà enregistré</target>
+      <trans-unit id="bc5a31feae9b3279f9e76b8f40e5b1b3d26b51ce" datatype="html">
+        <source>Must contain 2-20 alphanumeric characters</source>
+        <target state="translated">Doit contenir 2-20 caractères alphanumériques</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
-          <context context-type="linenumber">12,13</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="239b7e7d6ed8a9b66146b2a6e792eed5f381ac95" datatype="html">
+        <source>Username is already taken</source>
+        <target state="translated">Nom d'utilisateur déjà pris</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/signup-form/signup-form.component.html</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
     </body>

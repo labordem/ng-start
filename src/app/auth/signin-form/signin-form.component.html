@@ -1,15 +1,13 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <mat-form-field appearance="outline" color="accent" class="form-field">
-    <mat-label i18n>
-      Username or email
-    </mat-label>
+    <mat-label i18n>Username or email</mat-label>
     <input matInput formControlName="identifier" />
-    <mat-error *ngIf="f.identifier?.errors?.required" i18n>
-      You must enter a value
-    </mat-error>
-    <mat-error *ngIf="f.identifier?.errors?.mustNotBeRejected" i18n>
-      Please check your identifier
-    </mat-error>
+    <mat-error *ngIf="f.identifier?.errors?.required" i18n
+      >You must fill in this field</mat-error
+    >
+    <mat-error *ngIf="f.identifier?.errors?.mustNotBeRejected" i18n
+      >Please check your identifier</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field appearance="outline" color="accent" class="form-field">
@@ -28,16 +26,16 @@
       i18n-aria-label
       aria-label="Toggle password visibility"
     >
-      <mat-icon>
-        {{ isPasswordHidden ? 'visibility_off' : 'visibility' }}
-      </mat-icon>
+      <mat-icon>{{
+        isPasswordHidden ? 'visibility_off' : 'visibility'
+      }}</mat-icon>
     </button>
-    <mat-error *ngIf="f.password?.errors?.required" i18n>
-      You must enter a value
-    </mat-error>
-    <mat-error *ngIf="f.password?.errors?.mustNotBeRejected" i18n>
-      Please check your password
-    </mat-error>
+    <mat-error *ngIf="f.password?.errors?.required" i18n
+      >You must fill in this field</mat-error
+    >
+    <mat-error *ngIf="f.password?.errors?.mustNotBeRejected" i18n
+      >Please check your password</mat-error
+    >
   </mat-form-field>
 
   <div class="button-group mt-20">
