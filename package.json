@@ -9,8 +9,7 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "build:docs": "ng build --prod --output-path docs --base-href /ng-start/",
-    "build:stats": "ng build --stats-json",
-    "analyze": "npm run build:stats && npx webpack-bundle-analyzer dist/ng-start/en-US/stats.json",
+    "analyze": "ng build --prod --source-map && npx source-map-explorer dist/ng-start/en-US/main.*.js",
     "doc": "compodoc -p tsconfig.base.json -s -o -d ./dist/ng-start/compodoc --hideGenerator --customLogo ./src/assets/icons/icon-128x128.png",
     "lighthouse": "npx lighthouse-badges --urls https://miaborde.github.io/ng-start/en-US/ -o ./docs",
     "test": "ng test",
@@ -18,7 +17,7 @@
     "e2e": "ng e2e",
     "format": "prettier --write '**/*.{ts,js,html,scss,json,yaml,yml,md}'",
     "docker:prod": "docker run --name ng-start -p 80:80 -p 443:443 ng-start",
-    "docker:build:prod": "docker build -t ng-start .",
+    "docker:build:prod": "docker build --target production -t ng-start .",
     "cz": "cz",
     "release": "standard-version --commitAll --releaseCommitMessageFormat \"release: v{{currentTag}}\"",
     "release:alpha": "standard-version --prerelease alpha --commitAll --releaseCommitMessageFormat \"release: v{{currentTag}}\""
@@ -78,7 +77,6 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^11.0.0",
     "@angular-devkit/build-angular": "^0.1100.6",
     "@angular/cli": "^11.0.6",
     "@angular/compiler-cli": "^11.0.7",

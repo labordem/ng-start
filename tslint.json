@@ -132,6 +132,7 @@
       "allow-static-only",
       "allow-empty-class"
     ],
+    "unnecessary-constructor": false,
     "one-variable-per-declaration": [true, "ignore-for-loop"],
     "object-literal-sort-keys": false,
     "no-unused-declaration": true,

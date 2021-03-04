@@ -35,7 +35,7 @@
 
 ### Local Node.js
 
-You can run this project in watch/debug mode in local dev environment, to do so you need [Node.js (14.15.1)](https://nodejs.org).
+You can run this project in watch/debug mode in local dev environment, to do so you need [Node.js (14.15.4)](https://nodejs.org).
 
 **Example :**
 
@@ -78,7 +78,7 @@ npm run docker:prod
 
 ### Local Node.js
 
-You can build this project and serve it in production mode directly on your development environment, to do so you need [Node.js (14.15.1)](https://nodejs.org).
+You can build this project and serve it in production mode directly on your development environment, to do so you need [Node.js (14.15.4)](https://nodejs.org).
 
 **Example :**
 
